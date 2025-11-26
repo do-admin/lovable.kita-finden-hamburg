@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
-    <footer className="border-t border-border bg-muted/30 mt-16">
-      <div className="container-custom section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <footer className="border-t border-border bg-muted/30">
+      <div className="container-custom py-[80px]">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-8">
           <div>
             <h3 className="font-semibold mb-4">Navigation</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">

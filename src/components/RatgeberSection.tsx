@@ -15,8 +15,8 @@ const articles = [
 
 const RatgeberSection = () => {
   return (
-    <section id="ratgeber" className="section-padding">
-      <h2 className="text-3xl font-bold mb-3">Ratgeber für Praxis & Kita-Alltag</h2>
+    <section id="ratgeber">
+      <h2>Ratgeber für Praxis & Kita-Alltag</h2>
       <p className="text-muted-foreground mb-8">
         Unser Ratgeber unterstützt Sie mit praxisnahen Artikeln zu Themen wie Kita-Suche, Kita-Gutschein, Eingewöhnung und Zusammenarbeit mit Trägern. Die Inhalte werden regelmäßig aktualisiert und bauen auf der Erfahrung von Fachleuten und Eltern in Hamburg auf.
       </p>
