@@ -1,4 +1,4 @@
-import { Star, Phone, Clock, Users, Globe, DollarSign, TrendingUp, UserCheck, ThumbsUp } from "lucide-react";
+import { Star, Phone, Clock, Users, Globe, DollarSign, UserCheck, ThumbsUp } from "lucide-react";
 
 const criteria = [
   {
@@ -32,7 +32,7 @@ const criteria = [
     description: "Verhältnis der Kinder pro Gruppe für eine angemessene Betreuungsintensität.",
   },
   {
-    icon: TrendingUp,
+    icon: null,
     title: "Personalschlüssel",
     description: "Anzahl der Betreuungspersonen pro Kind für optimale Förderung.",
   },
@@ -62,9 +62,11 @@ const QualityCriteria = () => {
           const Icon = criterion.icon;
           return (
             <div key={criterion.title} className="flex gap-4">
-              <div className="flex-shrink-0">
-                <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
-              </div>
+              {Icon && (
+                <div className="flex-shrink-0">
+                  <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+                </div>
+              )}
               <div>
                 <h4 className="font-semibold mb-2">{criterion.title}</h4>
                 <p className="text-sm text-muted-foreground">{criterion.description}</p>
