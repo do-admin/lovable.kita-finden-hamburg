@@ -14,9 +14,9 @@ import {
 const AddKitaForm = () => {
   return (
     <section id="kita-hinzufuegen" className="section-padding">
-      <div className="max-w-2xl">
-        <h2 className="text-3xl font-bold mb-3">Kita hinzufügen</h2>
-        <p className="text-muted-foreground mb-8">
+      <div className="max-w-2xl mx-auto">
+        <h2 className="text-3xl font-bold mb-3 text-center">Kita hinzufügen</h2>
+        <p className="text-muted-foreground mb-8 text-center">
           Sie leiten eine Kita in Hamburg oder sind als Träger verantwortlich und möchten, dass Ihre Einrichtung im Verzeichnis von „Kita finden Hamburg" erscheint oder aktualisiert wird? Nutzen Sie das Formular, um uns die wichtigsten Informationen zu übermitteln.
         </p>
         

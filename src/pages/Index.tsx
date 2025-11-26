@@ -44,13 +44,13 @@ const Index = () => {
       
       {/* Full-width sections */}
       <FAQ />
+      <ContactSection />
+      <AddKitaForm />
+      
       <div className="container-custom">
-        <ContactSection />
-        <AddKitaForm />
-        
         {/* Cross-project links */}
-        <section className="section-padding max-w-4xl">
-          <h2 className="text-2xl font-bold mb-4">Weitere hilfreiche Angebote</h2>
+        <section className="section-padding max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-4 text-center">Weitere hilfreiche Angebote</h2>
           <ul className="space-y-2 text-muted-foreground">
             <li>
               <a href="https://kita-gutschein-hamburg.de" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline inline-flex items-center gap-2">
