@@ -27,6 +27,8 @@ const Index = () => {
       
       <InfoSection />
       
+      <TrustBlock />
+      
       <div className="py-8 md:py-12"></div>
       
       {/* Three-column layout */}
@@ -89,7 +91,6 @@ const Index = () => {
         </section>
       </div>
       
-      <TrustBlock />
       <Footer />
     </div>
   );
