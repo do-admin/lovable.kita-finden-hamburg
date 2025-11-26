@@ -61,15 +61,15 @@ const QualityCriteria = () => {
         {criteria.map((criterion) => {
           const Icon = criterion.icon;
           return (
-            <div key={criterion.title} className="flex gap-3">
+            <div key={criterion.title} className="flex gap-3 items-start">
               {Icon && (
-                <div className="flex-shrink-0 py-3">
+                <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center">
                   <Icon className="h-6 w-6 text-primary" strokeWidth={2} />
                 </div>
               )}
-              <div>
-                <h4 className="font-semibold mb-3">{criterion.title}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{criterion.description}</p>
+              <div className="flex-1 max-w-[260px]">
+                <h4 className="font-semibold mb-2 leading-tight">{criterion.title}</h4>
+                <p className="text-sm text-muted-foreground leading-[1.45] mt-1">{criterion.description}</p>
               </div>
             </div>
           );
