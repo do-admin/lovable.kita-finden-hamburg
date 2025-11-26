@@ -51,8 +51,8 @@ const faqs = [
 const FAQ = () => {
   return (
     <section className="section-padding">
-      <div className="container-custom max-w-4xl mx-auto">
-        <h2 className="mb-8">Häufig gestellte Fragen zur Kita-Suche in Hamburg</h2>
+      <div className="content-width">
+        <h2 className="text-center">Häufig gestellte Fragen zur Kita-Suche in Hamburg</h2>
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, index) => (
             <AccordionItem key={index} value={`item-${index}`}>

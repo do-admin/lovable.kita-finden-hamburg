@@ -18,29 +18,20 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
-      
-      <div className="py-8 md:py-12"></div>
-      
       <SearchModule />
-      
-      <div className="py-8 md:py-12"></div>
-      
       <InfoSection />
-      
       <TrustBlock />
       
-      <div className="py-8 md:py-12"></div>
-      
       {/* Three-column layout */}
-      <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-[20%_55%_25%] gap-8 section-padding">
+      <div className="container-custom section-padding">
+        <div className="grid grid-cols-1 lg:grid-cols-[20%_55%_25%] gap-8">
           {/* Left sidebar - Districts */}
           <div className="hidden lg:block">
             <DistrictNavigation />
           </div>
           
           {/* Center content */}
-          <div className="space-y-20 md:space-y-24">
+          <div className="space-y-[80px]">
             <KitaListing />
             <QualityCriteria />
             <RatgeberSection />
@@ -53,17 +44,9 @@ const Index = () => {
         </div>
       </div>
       
-      <div className="py-8 md:py-12"></div>
-      
       {/* Full-width sections */}
       <FAQ />
-      
-      <div className="py-8 md:py-12"></div>
-      
       <ContactSection />
-      
-      <div className="py-8 md:py-12"></div>
-      
       <AddKitaForm />
       
       <div className="container-custom">
