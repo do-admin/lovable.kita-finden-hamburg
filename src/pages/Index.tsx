@@ -10,6 +10,7 @@ import RatgeberSection from "@/components/RatgeberSection";
 import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
 import AddKitaForm from "@/components/AddKitaForm";
+import TrustBlock from "@/components/TrustBlock";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -72,6 +73,7 @@ const Index = () => {
         </section>
       </div>
       
+      <TrustBlock />
       <Footer />
     </div>
   );
