@@ -1,29 +1,33 @@
+import logoBMFSFJ from "@/assets/logo-bmfsfj.svg";
+import logoHamburg from "@/assets/logo-hamburg.png";
+import logoAWO from "@/assets/logo-awo.png";
+import logoDiakonie from "@/assets/logo-diakonie.svg";
+
 const TrustBlock = () => {
   const partners = [
     {
       name: "BMFSFJ",
       description: "Offizieller Partner",
-      url: "https://www.bmfsfj.de"
+      url: "https://www.bmfsfj.de",
+      logo: logoBMFSFJ
     },
     {
-      name: "BSB Hamburg",
+      name: "hamburg.de",
       description: "Hamburgs Kita-Behörde",
-      url: "https://www.hamburg.de/bsb/"
+      url: "https://www.hamburg.de/bsb/",
+      logo: logoHamburg
     },
     {
       name: "AWO Hamburg",
       description: "Kooperationspartner",
-      url: "https://www.awo-hamburg.de"
+      url: "https://www.awo-hamburg.de",
+      logo: logoAWO
     },
     {
       name: "Diakonie Hamburg",
       description: "Soziale Verantwortung",
-      url: "https://www.diakonie-hamburg.de"
-    },
-    {
-      name: "NDR",
-      description: "Medienpartner",
-      url: "https://www.ndr.de"
+      url: "https://www.diakonie-hamburg.de",
+      logo: logoDiakonie
     }
   ];
 
@@ -34,7 +38,7 @@ const TrustBlock = () => {
           Daten basieren auf offiziellen Quellen
         </p>
         
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
           {partners.map((partner) => (
             <a
               key={partner.name}
@@ -44,15 +48,12 @@ const TrustBlock = () => {
               className="group"
               title={partner.description}
             >
-              <div className="h-[60px] px-6 flex items-center justify-center grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300">
-                <div className="text-center">
-                  <div className="text-xs font-semibold text-foreground/60 group-hover:text-foreground transition-colors">
-                    {partner.name}
-                  </div>
-                  <div className="text-[10px] text-muted-foreground mt-1">
-                    {partner.description}
-                  </div>
-                </div>
+              <div className="h-[60px] flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name}
+                  className="max-h-[60px] max-w-[180px] object-contain"
+                />
               </div>
             </a>
           ))}
