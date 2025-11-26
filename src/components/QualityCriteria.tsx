@@ -1,4 +1,4 @@
-import { Star, Phone, Clock, Users, Globe, DollarSign, UserCheck, ThumbsUp } from "lucide-react";
+import { Star, Phone, Clock, Users, Globe, DollarSign, UserCheck, ThumbsUp, Key } from "lucide-react";
 
 const criteria = [
   {
@@ -32,7 +32,7 @@ const criteria = [
     description: "Verhältnis der Kinder pro Gruppe für eine angemessene Betreuungsintensität.",
   },
   {
-    icon: null,
+    icon: Key,
     title: "Personalschlüssel",
     description: "Anzahl der Betreuungspersonen pro Kind für optimale Förderung.",
   },
@@ -57,19 +57,19 @@ const QualityCriteria = () => {
         Sie erhalten eine objektive, transparente Einschätzung, basierend auf folgenden Kriterien:
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-10">
         {criteria.map((criterion) => {
           const Icon = criterion.icon;
           return (
-            <div key={criterion.title} className="flex gap-4">
+            <div key={criterion.title} className="flex gap-3">
               {Icon && (
-                <div className="flex-shrink-0">
-                  <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+                <div className="flex-shrink-0 py-3">
+                  <Icon className="h-6 w-6 text-primary" strokeWidth={2} />
                 </div>
               )}
               <div>
-                <h4 className="font-semibold mb-2">{criterion.title}</h4>
-                <p className="text-sm text-muted-foreground">{criterion.description}</p>
+                <h4 className="font-semibold mb-3">{criterion.title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{criterion.description}</p>
               </div>
             </div>
           );
