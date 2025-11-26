@@ -103,3 +103,21 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .container-custom {
+    @apply max-w-[1200px] mx-auto px-5 md:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .card-shadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .card-shadow-lg {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  }
+}

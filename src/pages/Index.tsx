@@ -18,8 +18,16 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
+      
+      <div className="py-8 md:py-12"></div>
+      
       <SearchModule />
+      
+      <div className="py-8 md:py-12"></div>
+      
       <InfoSection />
+      
+      <div className="py-8 md:py-12"></div>
       
       {/* Three-column layout */}
       <div className="container-custom">
@@ -30,7 +38,7 @@ const Index = () => {
           </div>
           
           {/* Center content */}
-          <div className="space-y-16">
+          <div className="space-y-20 md:space-y-24">
             <KitaListing />
             <QualityCriteria />
             <RatgeberSection />
@@ -43,9 +51,17 @@ const Index = () => {
         </div>
       </div>
       
+      <div className="py-8 md:py-12"></div>
+      
       {/* Full-width sections */}
       <FAQ />
+      
+      <div className="py-8 md:py-12"></div>
+      
       <ContactSection />
+      
+      <div className="py-8 md:py-12"></div>
+      
       <AddKitaForm />
       
       <div className="container-custom">
