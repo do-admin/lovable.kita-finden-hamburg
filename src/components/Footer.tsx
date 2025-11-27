@@ -1,7 +1,12 @@
+import logo from "@/assets/logo-kitakompass.png";
+
 const Footer = () => {
   return (
     <footer className="border-t border-border bg-muted/30">
       <div className="container-custom py-[80px]">
+        <div className="mb-12 flex justify-center">
+          <img src={logo} alt="KITAKOMPASS HAMBURG" className="h-16" />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-8">
           <div>
             <h3 className="font-semibold mb-4">Navigation</h3>
