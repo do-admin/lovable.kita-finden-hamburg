@@ -1,6 +1,7 @@
 import { Search } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import logoIcon from "@/assets/logo-icon.png";
 
 const Hero = () => {
   const districts = [
@@ -18,7 +19,8 @@ const Hero = () => {
       <div className="pt-[120px] md:pt-[160px] pb-[80px] px-5 md:px-6 lg:px-8">
         <div className="max-w-[640px] mx-auto text-center">
           {/* Logo */}
-          <div className="mb-10">
+          <div className="mb-10 flex flex-col items-center">
+            <img src={logoIcon} alt="KITAKOMPASS" className="h-[120px] md:h-[160px] mb-6" />
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">
               kita-finden-hamburg.de
             </h2>
