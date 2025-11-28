@@ -6,15 +6,23 @@ const KitaHinzufuegen = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <div className="container-custom py-16">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">Kita hinzufügen</h1>
-          <p className="text-lg text-muted-foreground mb-8">
-            Kennst du eine Kita, die noch nicht in unserer Liste ist? Hilf uns, unser Verzeichnis zu vervollständigen.
+      <section className="py-[80px] px-6">
+        <div className="max-w-[800px] mx-auto text-center">
+          <h1 className="text-3xl lg:text-4xl font-bold text-foreground">
+            Kita zur Liste hinzufügen
+          </h1>
+          <p className="mt-3 text-lg text-muted-foreground leading-relaxed">
+            Du leitest eine Kita in Hamburg oder bist als Träger verantwortlich?
+            Dann kannst du hier deine Einrichtung für unser Verzeichnis vorschlagen
+            oder bestehende Angaben aktualisieren. Fülle einfach das Formular aus –
+            wir prüfen deine Angaben und melden uns bei Rückfragen.
           </p>
         </div>
-      </div>
-      <AddKitaForm />
+        
+        <div className="mt-8 max-w-[800px] mx-auto">
+          <AddKitaForm />
+        </div>
+      </section>
       <Footer />
     </div>
   );
