@@ -24,11 +24,11 @@ const Index = () => {
       
       {/* Three-column layout */}
       <div className="container-custom section-padding">
-        <div className="grid grid-cols-1 lg:grid-cols-[20%_80%] gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 items-start">
           {/* Left sidebar - Districts */}
-          <div className="hidden lg:block">
+          <aside className="hidden lg:block sticky top-4">
             <DistrictNavigation />
-          </div>
+          </aside>
           
           {/* Center content */}
           <div className="space-y-[80px]">
