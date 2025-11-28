@@ -32,7 +32,13 @@ const Hero = () => {
   };
 
   const handleShowAll = () => {
-    navigate('/kitas');
+    const stadtteileSection = document.getElementById("stadtteile-section");
+    if (stadtteileSection) {
+      stadtteileSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
   };
 
   return (

@@ -36,7 +36,7 @@ const PopularDistricts = () => {
   const allNeighborhoods = districts.flatMap(district => district.neighborhoods);
 
   return (
-    <section className="bg-muted/30">
+    <section id="stadtteile-section" className="bg-muted/30">
       <div className="container-custom section-padding">
         <div className="max-w-[1280px] mx-auto">
           <h2 className="mb-6 text-center">Beliebte Stadtteile in Hamburg</h2>
