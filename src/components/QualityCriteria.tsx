@@ -50,14 +50,14 @@ const criteria = [
 
 const QualityCriteria = () => {
   return (
-    <section id="criteria">
+    <section id="criteria" className="max-w-[1200px] mx-auto">
       <h2>Unsere Prüfkriterien im Überblick</h2>
       <h3 className="text-xl text-muted-foreground mb-8">So bewerten wir Kitas in Hamburg</h3>
       <p className="text-muted-foreground mb-8">
         Du bekommst eine objektive, transparente Einschätzung, basierend auf folgenden Kriterien:
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-8">
         {criteria.map((criterion) => {
           const Icon = criterion.icon;
           return (

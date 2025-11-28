@@ -38,21 +38,21 @@ const TrustBlock = () => {
           Daten basieren auf offiziellen Quellen
         </p>
         
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
+        <div className="flex flex-wrap items-center justify-center gap-8">
           {partners.map((partner) => (
             <a
               key={partner.name}
               href={partner.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group"
+              className="group w-[140px] h-[50px]"
               title={partner.description}
             >
-              <div className="h-[60px] flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
+              <div className="w-full h-full flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
                 <img 
                   src={partner.logo} 
                   alt={partner.name}
-                  className="max-h-[60px] max-w-[180px] object-contain"
+                  className="max-h-[45px] max-w-[130px] object-contain"
                 />
               </div>
             </a>

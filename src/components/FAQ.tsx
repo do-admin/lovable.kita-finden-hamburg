@@ -50,10 +50,10 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <section className="section-padding">
+    <section className="py-12 md:py-16">
       <div className="content-width">
-        <h2 className="text-center">Häufig gestellte Fragen zur Kita-Suche in Hamburg</h2>
-        <Accordion type="single" collapsible className="w-full">
+        <h2 className="text-center mb-8">Häufig gestellte Fragen zur Kita-Suche in Hamburg</h2>
+        <Accordion type="single" collapsible className="w-full space-y-2">
           {faqs.map((faq, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger className="text-left">

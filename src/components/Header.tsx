@@ -7,14 +7,12 @@ const Header = () => {
           
           <nav className="hidden md:flex items-center gap-8">
             <a href="/#kitas" className="text-sm font-medium hover:underline hover:text-foreground/80">Kitas</a>
-            <a href="/#traeger" className="text-sm font-medium hover:underline hover:text-foreground/80">Träger</a>
-            <a href="/#wissen" className="text-sm font-medium hover:underline hover:text-foreground/80">Wissen</a>
             <a href="/#ratgeber" className="text-sm font-medium hover:underline hover:text-foreground/80">Ratgeber</a>
-            <a href="/lexikon" className="text-sm font-medium hover:underline hover:text-foreground/80">Lexikon</a>
-            <a href="/#kita-hinzufuegen" className="text-sm font-medium hover:underline hover:text-foreground/80">Kita hinzufügen</a>
+            <a href="/#wissen" className="text-sm font-medium hover:underline hover:text-foreground/80">Wissen</a>
+            <a href="/kita-hinzufuegen" className="text-sm font-medium hover:underline hover:text-foreground/80">Kita hinzufügen</a>
           </nav>
           
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+          <div className="flex items-center gap-4 text-sm text-muted-foreground" style={{ visibility: 'hidden' }}>
             <span>DE</span>
             <a href="#login" className="hover:text-foreground">Login</a>
           </div>
