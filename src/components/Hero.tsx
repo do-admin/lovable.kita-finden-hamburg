@@ -2,6 +2,7 @@ import { Search } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import logoIcon from "@/assets/logo-icon.png";
+import heroBackground from "@/assets/hero-background.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -41,7 +42,7 @@ const Hero = () => {
         {/* Background Image */}
         <div 
           className="absolute inset-0 opacity-[0.08] bg-cover bg-center pointer-events-none"
-          style={{ backgroundImage: `url(${logoIcon})` }}
+          style={{ backgroundImage: `url(${heroBackground})` }}
         />
 
         {/* Logo */}
