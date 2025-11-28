@@ -13,7 +13,7 @@ const SearchModule = () => {
         <div className="card-shadow-lg rounded-xl p-8 bg-card">
           <h2 className="mb-2">Kita-Suche für Hamburg</h2>
           <p className="text-muted-foreground mb-6">
-            Geben Sie Postleitzahl, Stadtteil oder Kita-Namen ein, um passende Einrichtungen in Ihrer Nähe zu finden.
+            Gib Postleitzahl, Stadtteil oder Kita-Namen ein, um passende Einrichtungen in deiner Nähe zu finden.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">

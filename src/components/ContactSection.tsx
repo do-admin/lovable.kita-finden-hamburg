@@ -17,17 +17,17 @@ const ContactSection = () => {
       <div className="content-width">
         <h2 className="text-center">Kontakt</h2>
         <p className="text-muted-foreground mb-8 text-center">
-          Sie haben Fragen zur Kita-Suche in Hamburg, wünschen sich Unterstützung bei der Orientierung oder möchten uns Feedback geben? Schreiben Sie uns – wir melden uns so schnell wie möglich bei Ihnen.
+          Du hast Fragen zur Kita-Suche in Hamburg, brauchst Unterstützung bei der Orientierung oder möchtest uns Feedback geben? Schreib uns – wir melden uns so schnell wie möglich bei dir.
         </p>
         
         <form className="card-shadow rounded-lg p-8 bg-card space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="name">Ihr Name</Label>
+            <Label htmlFor="name">Dein Name</Label>
             <Input id="name" placeholder="Max Mustermann" required />
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="email">Ihre E-Mail-Adresse</Label>
+            <Label htmlFor="email">Deine E-Mail-Adresse</Label>
             <Input id="email" type="email" placeholder="max@beispiel.de" required />
           </div>
           
@@ -47,10 +47,10 @@ const ContactSection = () => {
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="message">Ihre Nachricht</Label>
+            <Label htmlFor="message">Deine Nachricht</Label>
             <Textarea 
               id="message" 
-              placeholder="Ihre Nachricht an uns..."
+              placeholder="Deine Nachricht an uns..."
               className="min-h-32"
               required
             />

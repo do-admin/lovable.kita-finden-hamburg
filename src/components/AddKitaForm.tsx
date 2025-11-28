@@ -17,7 +17,7 @@ const AddKitaForm = () => {
       <div className="content-width">
         <h2 className="text-center">Kita hinzufügen</h2>
         <p className="text-muted-foreground mb-8 text-center">
-          Sie leiten eine Kita in Hamburg oder sind als Träger verantwortlich und möchten, dass Ihre Einrichtung im Verzeichnis von „Kita finden Hamburg" erscheint oder aktualisiert wird? Nutzen Sie das Formular, um uns die wichtigsten Informationen zu übermitteln.
+          Du leitest eine Kita in Hamburg oder bist als Träger verantwortlich und möchtest, dass deine Einrichtung im Verzeichnis von „Kita finden Hamburg" erscheint oder aktualisiert wird? Nutz das Formular, um uns die wichtigsten Informationen zu übermitteln.
         </p>
         
         <form className="card-shadow rounded-lg p-8 bg-card space-y-6">
@@ -97,7 +97,7 @@ const AddKitaForm = () => {
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="rolle">Ihre Rolle</Label>
+            <Label htmlFor="rolle">Deine Rolle</Label>
             <Input id="rolle" placeholder="z.B. Leitung, Träger, Verwaltung" required />
           </div>
           

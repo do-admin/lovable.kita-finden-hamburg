@@ -76,7 +76,7 @@ const KitaListing = () => {
     <section id="kitas">
       <h2>Beliebte Kitas in Hamburg</h2>
       <p className="text-muted-foreground mb-8">
-        Hier sehen Sie eine erste Auswahl beliebter Kitas in Hamburg. Die Liste kann nach Bezirk, Stadtteil und weiteren Kriterien gefiltert werden.
+        Hier siehst du eine erste Auswahl beliebter Kitas in Hamburg. Die Liste kannst du nach Bezirk, Stadtteil und weiteren Kriterien filtern.
       </p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
