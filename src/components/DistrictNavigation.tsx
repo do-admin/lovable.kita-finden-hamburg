@@ -45,9 +45,9 @@ const DistrictNavigation = () => {
 
   return (
     <aside className="bg-background">
-      <div className="sticky top-20">
-        <h2 className="text-xl font-semibold mb-2">Kitas nach Bezirk & Stadtteil</h2>
-        <p className="text-sm text-muted-foreground mb-6">
+      <div>
+        <h2 className="mb-6">Kitas nach Bezirk & Stadtteil</h2>
+        <p className="text-sm text-muted-foreground mb-8">
           Wähl einen Bezirk und dann den passenden Stadtteil, um Kitas in deiner Umgebung anzuzeigen.
         </p>
         
