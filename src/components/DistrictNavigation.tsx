@@ -71,7 +71,7 @@ const DistrictNavigation = () => {
                   {district.neighborhoods.map((neighborhood) => (
                     <li key={neighborhood}>
                       <a
-                        href={`#${neighborhood.toLowerCase()}`}
+                        href={`/kitas?stadtteil=${encodeURIComponent(neighborhood)}`}
                         className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                       >
                         {neighborhood}

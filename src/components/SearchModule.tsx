@@ -8,7 +8,7 @@ const SearchModule = () => {
   const [showFilters, setShowFilters] = useState(false);
 
   return (
-    <section id="search" className="section-padding">
+    <section id="search" className="section-padding" style={{ display: 'none' }}>
       <div className="container-custom max-w-4xl mx-auto">
         <div className="card-shadow-lg rounded-xl p-8 bg-card">
           <h2 className="mb-2">Kita-Suche für Hamburg</h2>

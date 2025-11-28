@@ -21,7 +21,7 @@ const RatgeberSection = () => {
         Unser Ratgeber unterstützt dich mit praxisnahen Artikeln zu Themen wie Kita-Suche, Kita-Gutschein, Eingewöhnung und Zusammenarbeit mit Trägern. Die Inhalte werden regelmäßig aktualisiert und bauen auf der Erfahrung von Fachleuten und Eltern in Hamburg auf.
       </p>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1200px]">
         {articles.map((article) => (
           <article key={article.title} className="card-shadow rounded-lg p-6 bg-card hover:shadow-lg transition-shadow">
             <h3 className="text-lg font-semibold mb-3">{article.title}</h3>

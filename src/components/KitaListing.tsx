@@ -79,7 +79,7 @@ const KitaListing = () => {
         Hier siehst du eine erste Auswahl beliebter Kitas in Hamburg. Die Liste kannst du nach Bezirk, Stadtteil und weiteren Kriterien filtern.
       </p>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {kitas.map((kita) => (
           <KitaCard key={kita.name} {...kita} />
         ))}
