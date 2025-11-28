@@ -15,13 +15,13 @@ const articles = [
 
 const RatgeberSection = () => {
   return (
-    <section id="ratgeber">
-      <h2>Ratgeber für Praxis & Kita-Alltag</h2>
+    <section id="ratgeber" className="max-w-[880px] mx-auto">
+      <h2 className="mb-6">Ratgeber für Praxis & Kita-Alltag</h2>
       <p className="text-muted-foreground mb-8">
         Unser Ratgeber unterstützt dich mit praxisnahen Artikeln zu Themen wie Kita-Suche, Kita-Gutschein, Eingewöhnung und Zusammenarbeit mit Trägern. Die Inhalte werden regelmäßig aktualisiert und bauen auf der Erfahrung von Fachleuten und Eltern in Hamburg auf.
       </p>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1200px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {articles.map((article) => (
           <article key={article.title} className="card-shadow rounded-lg p-6 bg-card hover:shadow-lg transition-shadow">
             <h3 className="text-lg font-semibold mb-3">{article.title}</h3>

@@ -14,8 +14,8 @@ import {
 const ContactSection = () => {
   return (
     <section className="section-padding">
-      <div className="content-width">
-        <h2 className="text-center">Kontakt</h2>
+      <div className="max-w-[760px] mx-auto">
+        <h2 className="text-center mb-6">Kontakt</h2>
         <p className="text-muted-foreground mb-8 text-center">
           Du hast Fragen zur Kita-Suche in Hamburg, brauchst Unterstützung bei der Orientierung oder möchtest uns Feedback geben? Schreib uns – wir melden uns so schnell wie möglich bei dir.
         </p>
