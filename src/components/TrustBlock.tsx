@@ -60,7 +60,7 @@ const TrustBlock = () => {
         </div>
         
         <p className="text-center text-xs text-muted-foreground mt-8 max-w-2xl mx-auto">
-          Wir arbeiten mit offiziellen und etablierten Partnern zusammen, um Ihnen verlässliche Informationen zur Verfügung zu stellen.
+          Wir arbeiten mit offiziellen und etablierten Partnern zusammen, um dir verlässliche Informationen zur Verfügung zu stellen.
         </p>
       </div>
     </section>

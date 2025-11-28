@@ -9,42 +9,42 @@ const faqs = [
   {
     question: "Wer hat Anspruch auf einen Kita-Gutschein in Hamburg?",
     answer:
-      "Grundsätzlich haben alle Familien mit Wohnsitz in Hamburg Anspruch auf einen Kita-Gutschein. Die bewilligte Betreuungszeit hängt vom individuellen Bedarf ab – zum Beispiel Berufstätigkeit, Ausbildung, Arbeitssuche oder besondere familiäre Situationen. Zusätzlich können pädagogische Gründe berücksichtigt werden, etwa wenn ein Kind zusätzliche Förderung benötigt.",
+      "Grundsätzlich haben alle Familien mit Wohnsitz in Hamburg Anspruch auf einen Kita-Gutschein. Die bewilligte Betreuungszeit hängt vom individuellen Bedarf ab – zum Beispiel Berufstätigkeit, Ausbildung, Arbeitssuche oder besondere familiäre Situationen. Auch pädagogische Gründe können berücksichtigt werden, etwa wenn dein Kind zusätzliche Förderung benötigt.",
   },
   {
     question: "Was kostet ein 8-Stunden-Kita-Platz in Hamburg ungefähr?",
     answer:
-      "Die tatsächlichen Kosten für einen 8-Stunden-Kita-Platz hängen vom Haushaltsnettoeinkommen und der bewilligten Betreuungszeit ab. Ein großer Teil der Kosten wird über den Kita-Gutschein finanziert, Eltern zahlen einen einkommensabhängigen Eigenanteil. Für viele Familien liegt dieser im niedrigen bis mittleren zweistelligen Bereich pro Monat. Genaue Beträge berechnet das Jugendamt auf Basis der aktuellen Hamburger Staffelung.",
+      "Die Kosten für einen 8-Stunden-Kita-Platz hängen vom Haushaltsnettoeinkommen und der bewilligten Betreuungszeit ab. Ein großer Teil wird über den Kita-Gutschein finanziert, du zahlst einen einkommensabhängigen Eigenanteil. Für viele Familien liegt dieser im niedrigen bis mittleren zweistelligen Bereich pro Monat. Genaue Beträge berechnet das Jugendamt auf Basis der aktuellen Hamburger Staffelung.",
   },
   {
     question: "Ist Kindergarten in Hamburg wirklich beitragsfrei?",
     answer:
-      "Für bis zu fünf Stunden tägliche Betreuung ist der Kindergartenbesuch in Hamburg beitragsfrei. Eltern zahlen in diesem Fall in der Regel lediglich Verpflegungskosten und gegebenenfalls Zusatzangebote. Für längere Betreuungszeiten oder besondere Angebote können zusätzliche Beiträge anfallen.",
+      "Für bis zu fünf Stunden tägliche Betreuung ist der Kindergartenbesuch in Hamburg beitragsfrei. Du zahlst in diesem Fall in der Regel nur Verpflegungskosten und eventuell Zusatzangebote. Für längere Betreuungszeiten oder besondere Angebote können zusätzliche Beiträge anfallen.",
   },
   {
     question: "Welche Kita-Träger gibt es in Hamburg?",
     answer:
-      "In Hamburg gibt es eine vielfältige Trägerlandschaft. Dazu zählen städtische Träger, große freie Träger, kirchliche Einrichtungen, gemeinnützige Vereine und private Anbieter. Jeder Träger setzt eigene pädagogische Schwerpunkte und organisiert die Rahmenbedingungen der Betreuung. Über Kita finden Hamburg können Sie Kitas unabhängig vom Träger vergleichen.",
+      "In Hamburg gibt es eine vielfältige Trägerlandschaft. Dazu zählen städtische Träger, große freie Träger, kirchliche Einrichtungen, gemeinnützige Vereine und private Anbieter. Jeder Träger setzt eigene pädagogische Schwerpunkte und organisiert die Rahmenbedingungen der Betreuung. Über Kita finden Hamburg kannst du Kitas unabhängig vom Träger vergleichen.",
   },
   {
     question: "Wie finde ich eine Kita in meinem Stadtteil?",
     answer:
-      "Sie können über die Navigation Kitas nach Bezirk & Stadtteil zunächst Ihren Bezirk und dann den gewünschten Stadtteil auswählen. Anschließend werden Ihnen passende Einrichtungen im Kita-Verzeichnis angezeigt. Alternativ nutzen Sie die Suchfelder und geben PLZ oder Stadtteilnamen direkt ein.",
+      "Du kannst über die Navigation Kitas nach Bezirk & Stadtteil zunächst deinen Bezirk und dann den gewünschten Stadtteil auswählen. Danach werden dir passende Einrichtungen im Kita-Verzeichnis angezeigt. Alternativ nutzt du die Suchfelder und gibst PLZ oder Stadtteilnamen direkt ein.",
   },
   {
     question: "Garantiert der Kita-Gutschein automatisch einen Platz?",
     answer:
-      "Der Kita-Gutschein ermöglicht die Finanzierung eines Betreuungsplatzes, garantiert aber keinen konkreten Platz in einer bestimmten Einrichtung. Die Platzvergabe erfolgt durch die Kitas selbst und hängt von freien Kapazitäten ab. Es ist sinnvoll, mehrere Einrichtungen anzusprechen und frühzeitig mit der Suche zu beginnen.",
+      "Der Kita-Gutschein ermöglicht die Finanzierung eines Betreuungsplatzes, garantiert aber keinen konkreten Platz in einer bestimmten Einrichtung. Die Platzvergabe erfolgt durch die Kitas selbst und hängt von freien Kapazitäten ab. Sprich am besten mehrere Einrichtungen an und beginne frühzeitig mit der Suche.",
   },
   {
     question: "Wie weit darf eine Kita von meinem Wohnort entfernt sein?",
     answer:
-      "Es gibt keine strikt vorgegebene maximale Entfernung. In der Praxis wählen viele Familien Einrichtungen in einem Radius von ein bis drei Kilometern zum Wohn- oder Arbeitsort, um Wege im Alltag kurz zu halten. Gerade für jüngere Kinder sind kurze Anfahrtszeiten oft eine spürbare Entlastung.",
+      "Es gibt keine strikt vorgegebene maximale Entfernung. Viele Familien wählen Einrichtungen in einem Radius von ein bis drei Kilometern zum Wohn- oder Arbeitsort, um Wege im Alltag kurz zu halten. Gerade für jüngere Kinder sind kurze Anfahrtszeiten oft eine spürbare Entlastung.",
   },
   {
     question: "Gilt der Kita-Gutschein auch für Tagesmütter und Tagesväter?",
     answer:
-      "Ja, der Kita-Gutschein kann auch für Kindertagespflege in Hamburg genutzt werden. Die Förderung wird ähnlich wie in Kitas angerechnet, teilweise gelten jedoch abweichende Kostensätze. Die zuständige Stelle informiert Sie, wie der Gutschein im konkreten Fall eingesetzt wird.",
+      "Ja, der Kita-Gutschein kann auch für Kindertagespflege in Hamburg genutzt werden. Die Förderung wird ähnlich wie in Kitas angerechnet, teilweise gelten jedoch abweichende Kostensätze. Die zuständige Stelle informiert dich, wie der Gutschein im konkreten Fall eingesetzt wird.",
   },
 ];
 

@@ -69,8 +69,8 @@ const Hero = () => {
           
           {/* Body Text */}
           <p className="text-lg leading-relaxed text-muted-foreground max-w-[600px] mx-auto">
-            Mit kita-finden-hamburg.de erhalten Sie eine klare, unabhängige Übersicht über Kitas in allen Hamburger Bezirken und Stadtteilen.
-            Filtern Sie nach Standort, Konzept und Öffnungszeiten – und finden Sie Schritt für Schritt eine Betreuung, die zu Ihrem Alltag und Ihrem Kind passt.
+            Mit kita-finden-hamburg.de bekommst du eine klare, unabhängige Übersicht über Kitas in allen Hamburger Bezirken und Stadtteilen.
+            Filter nach Standort, Konzept und Öffnungszeiten – und finde Schritt für Schritt eine Betreuung, die zu deinem Alltag und deinem Kind passt.
           </p>
         </div>
       </div>

@@ -36,7 +36,7 @@ const KnowledgeSidebar = () => {
         <section>
           <h3 className="text-lg font-semibold mb-3">Vertrauenspartner & Erwähnungen</h3>
           <p className="text-sm text-muted-foreground mb-4">
-            „Kita finden Hamburg" wird von verschiedenen Familien, Fachkräften und Partnern genutzt, um sich einen transparenten Überblick über die Kitalandschaft in Hamburg zu verschaffen. In Zukunft können an dieser Stelle Logos von Medienberichten, Verbänden oder Kooperationspartnern eingebunden werden, um zusätzliche Orientierung und Vertrauen zu bieten.
+            „Kita finden Hamburg" wird von Familien, Fachkräften und Partnern genutzt, um einen transparenten Überblick über die Kitalandschaft in Hamburg zu bekommen. In Zukunft können hier Logos von Medienberichten, Verbänden oder Kooperationspartnern eingebunden werden.
           </p>
           <div className="flex flex-wrap gap-3 items-center opacity-30">
             <div className="w-20 h-8 bg-muted rounded" />

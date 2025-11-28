@@ -17,7 +17,7 @@ const InfoSection = () => {
             Viele Kitas in Hamburg bieten zusätzliche Schwerpunkte, zum Beispiel in den Bereichen Sprache, Musik, Bewegung, Naturpädagogik oder Inklusion. So finden Eltern für jedes Kind ein passendes Betreuungsangebot – vom Stadtzentrum bis in die äußeren Stadtteile.
           </p>
           <p>
-            Mit „Kita finden Hamburg" erhalten Sie einen unabhängigen Überblick über die Kindertagesstätten in der Stadt. Sie können Kitas nach Bezirk und Stadtteil filtern, sich über pädagogische Konzepte informieren und mit Hilfe von Kriterien und Bewertungen schneller eine Einrichtung finden, die wirklich zu Ihrer Familie passt.
+            Mit „Kita finden Hamburg" bekommst du einen unabhängigen Überblick über die Kindertagesstätten in der Stadt. Du kannst Kitas nach Bezirk und Stadtteil filtern, dich über pädagogische Konzepte informieren und mit Hilfe von Kriterien und Bewertungen schneller eine Einrichtung finden, die wirklich zu deiner Familie passt.
           </p>
         </div>
       </div>
