@@ -114,7 +114,7 @@ All colors MUST be HSL.
   }
 
   .section-padding {
-    @apply py-[30px] md:py-[45px] lg:py-[60px] px-5 md:px-6 lg:px-8;
+    @apply py-[45px] md:py-[60px] lg:py-[80px] px-5 md:px-6 lg:px-8;
   }
 
   .card-shadow {
@@ -132,7 +132,7 @@ All colors MUST be HSL.
   }
 
   h2 {
-    @apply text-3xl md:text-4xl font-bold mb-8;
+    @apply text-3xl md:text-4xl font-bold;
   }
 
   h3 {

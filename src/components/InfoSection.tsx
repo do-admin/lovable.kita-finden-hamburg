@@ -1,8 +1,8 @@
 const InfoSection = () => {
   return (
     <section className="section-padding">
-      <div className="content-width">
-        <h2>Kitas in Hamburg – ein Überblick</h2>
+      <div className="max-w-[880px] mx-auto">
+        <h2 className="mb-6">Kitas in Hamburg – ein Überblick</h2>
         <div className="space-y-4 text-muted-foreground leading-relaxed">
           <p>
             In Hamburg gibt es eine große Vielfalt an Kindertagesstätten – von Krippen für die Kleinsten über Kindergärten bis hin zu Horten für Schulkinder. Jede Einrichtung arbeitet mit eigenen pädagogischen Schwerpunkten und Betreuungsangeboten, die sich an den unterschiedlichen Bedürfnissen von Kindern und Familien orientieren.

@@ -50,8 +50,8 @@ const criteria = [
 
 const QualityCriteria = () => {
   return (
-    <section id="criteria" className="max-w-[1200px] mx-auto">
-      <h2>Unsere Prüfkriterien im Überblick</h2>
+    <section id="criteria" className="max-w-[1280px] mx-auto">
+      <h2 className="mb-6">Unsere Prüfkriterien im Überblick</h2>
       <h3 className="text-xl text-muted-foreground mb-8">So bewerten wir Kitas in Hamburg</h3>
       <p className="text-muted-foreground mb-8">
         Du bekommst eine objektive, transparente Einschätzung, basierend auf folgenden Kriterien:
