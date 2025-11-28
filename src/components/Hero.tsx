@@ -46,7 +46,7 @@ const Hero = () => {
         />
 
         {/* Logo */}
-        <img src={logoIcon} alt="KITAKOMPASS" className="mx-auto mb-6 h-16 relative z-10" />
+        <img src={logoIcon} alt="KITAKOMPASS" className="mx-auto mb-10 h-16 relative z-10" />
 
         {/* Headline */}
         <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground relative z-10">
@@ -54,12 +54,12 @@ const Hero = () => {
         </h1>
 
         {/* Subline */}
-        <p className="mt-3 max-w-[700px] mx-auto text-lg text-muted-foreground leading-relaxed relative z-10">
+        <p className="mt-6 max-w-[700px] mx-auto text-lg text-muted-foreground leading-relaxed relative z-10">
           Vergleiche Kitas in allen Hamburger Bezirken und finde Schritt für Schritt die Betreuung, die wirklich zu deinem Alltag und deinem Kind passt.
         </p>
 
         {/* Search Box */}
-        <form onSubmit={handleSearch} className="mt-8 max-w-[640px] mx-auto flex gap-3 relative z-10">
+        <form onSubmit={handleSearch} className="mt-12 max-w-[640px] mx-auto flex gap-3 relative z-10">
           <input
             type="text"
             value={searchQuery}
@@ -76,7 +76,7 @@ const Hero = () => {
         </form>
 
         {/* Bezirke Shortcuts */}
-        <div className="mt-5 flex flex-wrap justify-center gap-3 relative z-10">
+        <div className="mt-8 flex flex-wrap justify-center gap-3 relative z-10">
           {districts.map((district) => (
             <Badge
               key={district}
