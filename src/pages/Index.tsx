@@ -3,14 +3,11 @@ import Hero from "@/components/Hero";
 import PopularDistricts from "@/components/PopularDistricts";
 import SearchModule from "@/components/SearchModule";
 import InfoSection from "@/components/InfoSection";
-import DistrictNavigation from "@/components/DistrictNavigation";
 import KitaListing from "@/components/KitaListing";
-import KnowledgeSidebar from "@/components/KnowledgeSidebar";
 import QualityCriteria from "@/components/QualityCriteria";
 import RatgeberSection from "@/components/RatgeberSection";
 import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
-import AddKitaForm from "@/components/AddKitaForm";
 import TrustBlock from "@/components/TrustBlock";
 import Footer from "@/components/Footer";
 
@@ -24,25 +21,12 @@ const Index = () => {
       <InfoSection />
       <TrustBlock />
       
-      {/* Three-column layout */}
+      {/* Main content - full width */}
       <div className="container-custom section-padding">
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 items-start">
-          {/* Left sidebar - Districts */}
-          <aside className="hidden lg:block sticky top-4">
-            <DistrictNavigation />
-          </aside>
-          
-          {/* Center content */}
-          <div className="space-y-[80px]">
-            <KitaListing />
-            <QualityCriteria />
-            <RatgeberSection />
-          </div>
-          
-          {/* Right sidebar - Knowledge (hidden) */}
-          <div className="hidden">
-            <KnowledgeSidebar />
-          </div>
+        <div className="max-w-[1400px] mx-auto space-y-[80px]">
+          <KitaListing />
+          <QualityCriteria />
+          <RatgeberSection />
         </div>
       </div>
       
