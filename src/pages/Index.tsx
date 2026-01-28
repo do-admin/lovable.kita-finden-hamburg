@@ -4,6 +4,7 @@ import TrendingSearches from "@/components/TrendingSearches";
 import PopularDistricts from "@/components/PopularDistricts";
 import SearchModule from "@/components/SearchModule";
 import InfoSection from "@/components/InfoSection";
+import HowToUse from "@/components/HowToUse";
 import KitaListing from "@/components/KitaListing";
 import QualityCriteria from "@/components/QualityCriteria";
 import RatgeberSection from "@/components/RatgeberSection";
@@ -19,6 +20,7 @@ const Index = () => {
       <Hero />
       <TrendingSearches />
       <SearchModule />
+      <HowToUse />
       <InfoSection />
       <TrustBlock />
       
