@@ -1,4 +1,11 @@
 import KitaCard from "./KitaCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const kitas = [
   {
@@ -79,11 +86,25 @@ const KitaListing = () => {
         Hier siehst du eine erste Auswahl beliebter Kitas in Hamburg. Die Liste kannst du nach Bezirk, Stadtteil und weiteren Kriterien filtern.
       </p>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-        {kitas.map((kita) => (
-          <KitaCard key={kita.name} {...kita} />
-        ))}
-      </div>
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        className="w-full"
+      >
+        <CarouselContent className="-ml-4">
+          {kitas.map((kita) => (
+            <CarouselItem key={kita.name} className="pl-4 md:basis-1/2 lg:basis-1/3">
+              <KitaCard {...kita} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className="flex justify-center gap-4 mt-8">
+          <CarouselPrevious className="static translate-y-0" />
+          <CarouselNext className="static translate-y-0" />
+        </div>
+      </Carousel>
     </section>
   );
 };
