@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import TrendingSearches from "@/components/TrendingSearches";
 import PopularDistricts from "@/components/PopularDistricts";
 import SearchModule from "@/components/SearchModule";
 import InfoSection from "@/components/InfoSection";
@@ -16,6 +17,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
+      <TrendingSearches />
       <PopularDistricts />
       <SearchModule />
       <InfoSection />
