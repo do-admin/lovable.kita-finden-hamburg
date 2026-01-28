@@ -149,15 +149,6 @@ const InfoSection = () => {
               </div>
             </div>
 
-            {/* CTA Button under Grid */}
-            <div className="mt-16 lg:mt-20 text-center">
-              <Button 
-                onClick={() => navigate("/kitas")}
-                className="h-[56px] px-10 rounded-full text-[17px] lg:text-[18px] font-bold bg-[#1e40af] hover:bg-[#1e3a8a] text-white"
-              >
-                Jetzt Kita entdecken
-              </Button>
-            </div>
           </div>
         </div>
       </div>
