@@ -1,4 +1,4 @@
-import logoKitaFinden from "@/assets/logo-kita-finden-hamburg.webp";
+import logoKitaFinden from "@/assets/logo-kita-finden-hamburg-horizontal.webp";
 
 const Footer = () => {
   return (
