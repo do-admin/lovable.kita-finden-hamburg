@@ -43,22 +43,22 @@ const InfoSection = () => {
             </div>
             
             {/* Floating Stats Card */}
-            <div className="absolute -bottom-6 -left-4 lg:-left-8 w-[180px] lg:w-[200px] group cursor-default z-10">
+            <div className="absolute -bottom-6 -left-4 lg:-left-8 w-[160px] lg:w-[180px] group cursor-default z-10">
               <div 
-                className="relative rounded-[20px] px-5 py-4 border border-white/15 shadow-[0_12px_32px_rgba(0,0,0,0.3)] transition-all duration-200 hover:scale-[1.03]"
+                className="relative rounded-[16px] px-4 py-3 border border-white/15 shadow-[0_12px_32px_rgba(0,0,0,0.3)] transition-all duration-200 hover:scale-[1.03]"
                 style={{
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   background: 'linear-gradient(135deg, rgba(0,191,99,0.32) 0%, rgba(0,191,99,0.18) 100%)'
                 }}
               >
-                <div className="flex items-center gap-2.5">
-                  <svg className="w-6 h-6 text-[#0f172a] fill-[#0f172a]" viewBox="0 0 24 24">
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5 flex-shrink-0 text-[#0f172a] fill-[#0f172a]" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
-                  <span className="text-[24px] lg:text-[26px] font-extrabold text-[#0f172a] leading-none whitespace-nowrap">4,7 Ø</span>
+                  <span className="text-[20px] lg:text-[22px] font-extrabold text-[#0f172a] leading-none whitespace-nowrap">4,7 Ø</span>
                 </div>
-                <p className="text-[13px] lg:text-[14px] font-medium text-[#0f172a]/90 mt-1">Bewertung</p>
+                <p className="text-[12px] lg:text-[13px] font-medium text-[#0f172a]/90 mt-1">Bewertung</p>
               </div>
             </div>
           </div>
@@ -78,23 +78,23 @@ const InfoSection = () => {
             </div>
             
             {/* Floating Stats Card */}
-            <div className="absolute -bottom-6 -right-4 lg:-right-8 w-[200px] lg:w-[240px] group cursor-default z-10">
+            <div className="absolute -bottom-6 -right-4 lg:-right-8 w-[180px] lg:w-[200px] group cursor-default z-10">
               <div 
-                className="relative rounded-[20px] px-6 py-5 border border-white/15 shadow-[0_12px_32px_rgba(0,0,0,0.3)] transition-all duration-200 hover:scale-[1.03]"
+                className="relative rounded-[16px] px-4 py-3 border border-white/15 shadow-[0_12px_32px_rgba(0,0,0,0.3)] transition-all duration-200 hover:scale-[1.03]"
                 style={{
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   background: 'linear-gradient(135deg, rgba(24,0,173,0.32) 0%, rgba(24,0,173,0.18) 100%)'
                 }}
               >
-                <div className="flex items-center gap-3">
-                  <svg className="w-7 h-7 text-[#0f172a]" viewBox="0 0 24 24" fill="currentColor">
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5 flex-shrink-0 text-[#0f172a]" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 3L4 9v12h16V9l-8-6zm0 2.5L18 10v9H6v-9l6-4.5z"/>
                     <rect x="10" y="14" width="4" height="5" fill="currentColor"/>
                   </svg>
-                  <span className="text-[26px] lg:text-[30px] font-extrabold text-[#0f172a] leading-none">+1.200</span>
+                  <span className="text-[20px] lg:text-[22px] font-extrabold text-[#0f172a] leading-none whitespace-nowrap">+1.200</span>
                 </div>
-                <p className="text-[14px] lg:text-[15px] font-medium text-[#0f172a]/90 mt-1">Kitas in Hamburg</p>
+                <p className="text-[12px] lg:text-[13px] font-medium text-[#0f172a]/90 mt-1">Kitas in Hamburg</p>
               </div>
             </div>
           </div>

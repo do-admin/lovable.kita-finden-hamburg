@@ -78,14 +78,14 @@ const SmallCard = ({ criterion }: { criterion: Criterion }) => {
   const Icon = criterion.icon;
   
   return (
-    <div className="bg-white rounded-2xl p-5 shadow-sm border border-border/50 hover:shadow-md transition-shadow">
-      <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-3 ${colorStyles[criterion.color]}`}>
-        <Icon className="h-5 w-5" strokeWidth={2} />
+    <div className="bg-white rounded-2xl p-4 shadow-sm border border-border/50 hover:shadow-md transition-shadow">
+      <div className={`inline-flex items-center justify-center w-9 h-9 rounded-xl mb-2.5 ${colorStyles[criterion.color]}`}>
+        <Icon className="h-4 w-4" strokeWidth={2} />
       </div>
-      <h4 className="text-[14px] font-bold text-[#0f172a] mb-1">
+      <h4 className="text-[13px] font-bold text-[#0f172a] mb-1 leading-tight">
         {criterion.title}
       </h4>
-      <p className="text-[12px] text-[#64748b] leading-relaxed">
+      <p className="text-[11px] text-[#64748b] leading-relaxed">
         {criterion.description}
       </p>
     </div>
@@ -104,14 +104,14 @@ const LargeCard = ({ criterion }: { criterion: Criterion }) => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="p-5">
-        <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-3 ${colorStyles[criterion.color]}`}>
-          <Icon className="h-5 w-5" strokeWidth={2} />
+      <div className="p-4">
+        <div className={`inline-flex items-center justify-center w-9 h-9 rounded-xl mb-2.5 ${colorStyles[criterion.color]}`}>
+          <Icon className="h-4 w-4" strokeWidth={2} />
         </div>
-        <h4 className="text-[14px] font-bold text-[#0f172a] mb-1">
+        <h4 className="text-[13px] font-bold text-[#0f172a] mb-1 leading-tight">
           {criterion.title}
         </h4>
-        <p className="text-[12px] text-[#64748b] leading-relaxed">
+        <p className="text-[11px] text-[#64748b] leading-relaxed">
           {criterion.description}
         </p>
       </div>
