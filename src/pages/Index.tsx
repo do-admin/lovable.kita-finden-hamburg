@@ -45,39 +45,6 @@ const Index = () => {
       
       <ContactSection />
       
-      {/* Cross-project links */}
-      <section className="bg-white py-[80px]">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-2xl font-bold mb-8 text-center">Weitere hilfreiche Angebote</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <a href="https://kita-gutschein-hamburg.de" target="_blank" rel="noopener noreferrer" className="card-shadow rounded-lg p-6 bg-card hover:shadow-lg transition-shadow group">
-              <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">kita-gutschein-hamburg.de</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Rechner und Informationen rund um den Kita-Gutschein in Hamburg
-              </p>
-              <span className="text-sm text-primary inline-flex items-center gap-2">
-                Mehr erfahren
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </span>
-            </a>
-            <a href="https://beste-kita-hamburg.de" target="_blank" rel="noopener noreferrer" className="card-shadow rounded-lg p-6 bg-card hover:shadow-lg transition-shadow group">
-              <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">beste-kita-hamburg.de</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Überblick über ausgewählte, besonders gut bewertete Kitas in Hamburg
-              </p>
-              <span className="text-sm text-primary inline-flex items-center gap-2">
-                Mehr erfahren
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </span>
-            </a>
-          </div>
-        </div>
-      </section>
-      
       <PopularDistricts />
       <FAQ />
       <Footer />
