@@ -1,72 +1,25 @@
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import { Textarea } from "./ui/textarea";
-import { Checkbox } from "./ui/checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const ContactSection = () => {
   return (
-    <section className="section-padding bg-[#f1f5f9]">
-      <div className="max-w-[760px] mx-auto">
-        <h2 className="text-center mb-6">Kontakt</h2>
-        <p className="text-muted-foreground mb-8 text-center">
-          Du hast Fragen zur Kita-Suche in Hamburg, brauchst Unterstützung bei der Orientierung oder möchtest uns Feedback geben? Schreib uns – wir melden uns so schnell wie möglich bei dir.
-        </p>
-        
-        <form className="card-shadow rounded-lg p-8 bg-card space-y-6">
-          <div className="space-y-2">
-            <Label htmlFor="name">Dein Name</Label>
-            <Input id="name" placeholder="Max Mustermann" required />
+    <section className="py-12 bg-[#0f172a]">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h2 className="text-white text-[18px] md:text-[22px] mb-2">Fragen zur Kita-Suche?</h2>
+            <p className="text-[#94a3b8] text-[13px] md:text-[15px]">
+              Schreib uns – wir helfen dir gerne weiter.
+            </p>
           </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="email">Deine E-Mail-Adresse</Label>
-            <Input id="email" type="email" placeholder="max@beispiel.de" required />
-          </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="subject">Betreff</Label>
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Bitte wählen" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="allgemein">Allgemeine Frage</SelectItem>
-                <SelectItem value="kita-suche">Frage zur Kita-Suche</SelectItem>
-                <SelectItem value="technisch">Technisches Problem</SelectItem>
-                <SelectItem value="kooperation">Kooperation</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="message">Deine Nachricht</Label>
-            <Textarea 
-              id="message" 
-              placeholder="Deine Nachricht an uns..."
-              className="min-h-32"
-              required
-            />
-          </div>
-          
-          <div className="flex items-center space-x-2">
-            <Checkbox id="consent" required />
-            <Label htmlFor="consent" className="text-sm font-normal cursor-pointer">
-              Ich bin damit einverstanden, dass meine Angaben zur Beantwortung meiner Anfrage verarbeitet werden.
-            </Label>
-          </div>
-          
-          <Button type="submit" className="w-full">
-            Nachricht senden
-          </Button>
-        </form>
+          <Link 
+            to="/kontakt"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#0f172a] rounded-full font-medium text-[14px] hover:bg-[#f1f5f9] transition-colors"
+          >
+            Kontakt aufnehmen
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
     </section>
   );
