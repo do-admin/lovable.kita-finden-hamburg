@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import ratgeberHeroImage from "@/assets/ratgeber-hero.jpg";
 
 const RatgeberHero = () => {
@@ -32,15 +31,9 @@ const RatgeberHero = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
           Praxisnahe Tipps für Eltern
         </h2>
-        <p className="text-lg md:text-xl font-medium text-white/90 mb-6 max-w-xl">
+        <p className="text-lg md:text-xl font-medium text-white/90 max-w-xl">
           Artikel zu Kita-Suche, Gutschein, Eingewöhnung und mehr
         </p>
-        <Link 
-          to="#articles"
-          className="inline-flex items-center text-white underline underline-offset-4 hover:text-accent transition-colors font-medium"
-        >
-          Alle Ratgeber anzeigen →
-        </Link>
       </div>
     </div>
   );
