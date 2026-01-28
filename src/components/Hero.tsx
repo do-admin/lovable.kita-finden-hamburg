@@ -70,11 +70,11 @@ const Hero = () => {
               {/* Upper floating card - Kitas count */}
               <div className="absolute -top-4 -right-4 sm:-right-6 lg:-right-8 w-[200px] sm:w-[220px] lg:w-[240px] group cursor-default">
                 <div 
-                  className="relative rounded-[24px] px-7 py-6 border border-white/15 shadow-[0_16px_48px_rgba(0,0,0,0.4)] transition-all duration-200 hover:scale-[1.03] hover:backdrop-blur-[22px] hover:bg-[rgba(30,58,138,0.38)]"
+                  className="relative rounded-[24px] px-7 py-6 border border-white/15 shadow-[0_16px_48px_rgba(0,0,0,0.4)] transition-all duration-200 hover:scale-[1.03] hover:backdrop-blur-[22px]"
                   style={{
                     backdropFilter: 'blur(16px)',
                     WebkitBackdropFilter: 'blur(16px)',
-                    background: 'linear-gradient(135deg, rgba(30,58,138,0.28) 0%, rgba(30,58,138,0.18) 100%)'
+                    background: 'linear-gradient(135deg, rgba(24,0,173,0.32) 0%, rgba(24,0,173,0.18) 100%)'
                   }}
                 >
                   <div className="flex items-center gap-3">
@@ -91,11 +91,11 @@ const Hero = () => {
               {/* Lower floating card - Rating & Satisfaction */}
               <div className="absolute -bottom-6 -left-4 sm:-left-8 lg:-left-12 w-[88%] sm:w-[340px] lg:w-[400px] group cursor-default">
                 <div 
-                  className="relative rounded-[24px] px-7 sm:px-9 py-6 border border-white/15 shadow-[0_16px_48px_rgba(0,0,0,0.4)] transition-all duration-200 hover:scale-[1.03] hover:backdrop-blur-[22px] hover:bg-[rgba(22,78,99,0.38)]"
+                  className="relative rounded-[24px] px-7 sm:px-9 py-6 border border-white/15 shadow-[0_16px_48px_rgba(0,0,0,0.4)] transition-all duration-200 hover:scale-[1.03] hover:backdrop-blur-[22px]"
                   style={{
                     backdropFilter: 'blur(16px)',
                     WebkitBackdropFilter: 'blur(16px)',
-                    background: 'linear-gradient(135deg, rgba(22,78,99,0.28) 0%, rgba(22,78,99,0.18) 100%)'
+                    background: 'linear-gradient(135deg, rgba(0,191,99,0.32) 0%, rgba(0,191,99,0.18) 100%)'
                   }}
                 >
                   <div className="flex items-center justify-between gap-6 sm:gap-12">
