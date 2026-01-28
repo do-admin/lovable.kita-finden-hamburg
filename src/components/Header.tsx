@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logoKitaFinden from "@/assets/logo-kita-finden-hamburg.webp";
+import logoKitaFinden from "@/assets/logo-kita-finden-hamburg-horizontal.webp";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
