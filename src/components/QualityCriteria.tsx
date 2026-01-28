@@ -126,23 +126,21 @@ const QualityCriteria = () => {
   return (
     <section id="criteria" className="bg-[#f8fafc] py-[80px] lg:py-[100px]">
       <div className="max-w-[1200px] mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-10">
-          <h2 className="text-[28px] md:text-[34px] lg:text-[38px] font-extrabold text-[#0f172a] mb-2">
-            Unsere Prüfkriterien im Überblick
-          </h2>
-          <p className="text-[14px] md:text-[15px] text-[#64748b]">
-            So bewerten wir Kitas in Hamburg – objektiv, transparent und unabhängig
-          </p>
-        </div>
-
         {/* Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Left column - Cards with images */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-            {cardsWithImages.slice(0, 2).map((criterion) => (
-              <LargeCard key={criterion.title} criterion={criterion} />
-            ))}
+          {/* Left column - Header + Kununu card */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            {/* Header moved here */}
+            <div className="text-left">
+              <h2 className="text-[28px] md:text-[34px] lg:text-[38px] font-extrabold text-[#0f172a] mb-2">
+                Unsere Prüfkriterien im Überblick
+              </h2>
+              <p className="text-[14px] md:text-[15px] text-[#64748b]">
+                So bewerten wir Kitas in Hamburg – objektiv, transparent und unabhängig
+              </p>
+            </div>
+            {/* Kununu card */}
+            <LargeCard criterion={cardsWithImages[1]} />
           </div>
 
           {/* Middle column - Small cards */}
@@ -152,11 +150,10 @@ const QualityCriteria = () => {
             ))}
           </div>
 
-          {/* Right column - One more image card */}
-          <div className="lg:col-span-3">
-            {cardsWithImages[2] && (
-              <LargeCard criterion={cardsWithImages[2]} />
-            )}
+          {/* Right column - Google + Personalschlüssel cards */}
+          <div className="lg:col-span-3 flex flex-col gap-6">
+            <LargeCard criterion={cardsWithImages[0]} />
+            <LargeCard criterion={cardsWithImages[2]} />
           </div>
         </div>
       </div>
