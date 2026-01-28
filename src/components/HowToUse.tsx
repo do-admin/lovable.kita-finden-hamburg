@@ -6,16 +6,16 @@ const steps = [
     heading: "Suchen & eingrenzen",
     text: "Gib einen Stadtteil, eine Adresse oder den Namen einer Kita in die Suche ein.",
     icon: Search,
-    color: "bg-[#1800ad]/10",
-    iconColor: "text-[#1800ad]",
+    bgColor: "bg-[#1800ad]",
+    iconColor: "text-white",
   },
   {
     number: 2,
     heading: "Kitas vergleichen",
     text: "Vergleiche mehrere Kitas anhand von Lage, Größe und pädagogischen Schwerpunkten.",
     icon: GitCompare,
-    color: "bg-[#f88820]/10",
-    iconColor: "text-[#f88820]",
+    bgColor: "bg-[#f88820]",
+    iconColor: "text-white",
     highlighted: true,
   },
   {
@@ -23,8 +23,8 @@ const steps = [
     heading: "Details prüfen",
     text: "Sieh dir die Detailseiten an, informiere dich über Konzepte und Bewertungen.",
     icon: FileCheck,
-    color: "bg-[#00bf63]/10",
-    iconColor: "text-[#00bf63]",
+    bgColor: "bg-[#00bf63]",
+    iconColor: "text-white",
   },
 ];
 
@@ -70,7 +70,7 @@ const HowToUse = () => {
                       : ''
                   }`}>
                     {/* Icon circle */}
-                    <div className={`w-16 h-16 rounded-full ${step.color} flex items-center justify-center mb-5`}>
+                    <div className={`w-16 h-16 rounded-full ${step.bgColor} flex items-center justify-center mb-5`}>
                       <Icon className={`w-7 h-7 ${step.iconColor}`} />
                     </div>
                     
@@ -87,9 +87,9 @@ const HowToUse = () => {
           </div>
 
           {/* Decorative dots */}
-          <div className="hidden md:block absolute -left-8 top-1/2 w-3 h-3 rounded-full bg-[#1800ad]/20" />
-          <div className="hidden md:block absolute -right-8 top-1/3 w-4 h-4 rounded-full bg-[#00bf63]/20" />
-          <div className="hidden md:block absolute left-1/4 -bottom-4 w-2 h-2 rounded-full bg-[#f88820]/20" />
+          <div className="hidden md:block absolute -left-8 top-1/2 w-3 h-3 rounded-full bg-[#1800ad]" />
+          <div className="hidden md:block absolute -right-8 top-1/3 w-4 h-4 rounded-full bg-[#00bf63]" />
+          <div className="hidden md:block absolute left-1/4 -bottom-4 w-2 h-2 rounded-full bg-[#f88820]" />
         </div>
       </div>
     </section>
