@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { categories } from "@/data/ratgeber-articles";
@@ -52,26 +52,18 @@ const RatgeberSidebar = ({ selectedCategories, onCategoryChange, isMobile = fals
         </div>
       </div>
 
-      {/* Newsletter Teaser */}
+      {/* Kita hinzufügen CTA */}
       <div className="bg-muted/50 rounded-xl p-5 border border-border">
-        <h3 className="font-medium text-foreground mb-2">Bleiben Sie informiert</h3>
+        <h3 className="font-medium text-foreground mb-2">Kita hinzufügen</h3>
         <p className="text-sm text-muted-foreground mb-4">
-          Neue Artikel und Tipps direkt in Ihr Postfach.
+          Ihre Kita fehlt noch? Tragen Sie sie kostenlos ein.
         </p>
-        <div className="space-y-3">
-          <Input
-            type="email"
-            placeholder="Ihre E-Mail-Adresse"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="h-10 text-sm"
-          />
-          <Button 
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground hover:shadow-md transition-all"
-          >
-            Abonnieren
-          </Button>
-        </div>
+        <Button 
+          asChild
+          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground hover:shadow-md transition-all"
+        >
+          <Link to="/kita-hinzufuegen">Jetzt eintragen</Link>
+        </Button>
       </div>
     </>
   );
