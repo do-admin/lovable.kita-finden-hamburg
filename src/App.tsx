@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Lexikon from "./pages/Lexikon";
 import FAQPage from "./pages/FAQ";
 import Ratgeber from "./pages/Ratgeber";
+import RatgeberArticle from "./pages/RatgeberArticle";
 import KitaHinzufuegen from "./pages/KitaHinzufuegen";
 import Kontakt from "./pages/Kontakt";
 import NotFound from "./pages/NotFound";
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/lexikon" element={<Lexikon />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/ratgeber" element={<Ratgeber />} />
+          <Route path="/ratgeber/:slug" element={<RatgeberArticle />} />
           <Route path="/kita-hinzufuegen" element={<KitaHinzufuegen />} />
           <Route path="/kontakt" element={<Kontakt />} />
           <Route path="/kitas" element={<Index />} />
