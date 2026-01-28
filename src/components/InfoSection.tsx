@@ -56,7 +56,7 @@ const InfoSection = () => {
                   <svg className="w-6 h-6 text-[#0f172a] fill-[#0f172a]" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
-                  <span className="text-[24px] lg:text-[26px] font-extrabold text-[#0f172a] leading-none">4,7 Ø</span>
+                  <span className="text-[24px] lg:text-[26px] font-extrabold text-[#0f172a] leading-none whitespace-nowrap">4,7 Ø</span>
                 </div>
                 <p className="text-[13px] lg:text-[14px] font-medium text-[#0f172a]/90 mt-1">Bewertung</p>
               </div>
