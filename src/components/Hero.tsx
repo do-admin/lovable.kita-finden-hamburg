@@ -18,6 +18,44 @@ const Hero = () => {
 
   return (
     <section className="relative w-full min-h-[85vh] bg-[#f8fafc] overflow-hidden">
+      
+      {/* Subtle map-like background pattern */}
+      <div className="absolute inset-0 pointer-events-none">
+        <svg className="w-full h-full opacity-[0.08]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="map-pattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+              {/* Main grid lines */}
+              <path d="M0 50 L200 50" stroke="#0f172a" strokeWidth="0.5" fill="none"/>
+              <path d="M0 150 L200 150" stroke="#0f172a" strokeWidth="0.5" fill="none"/>
+              <path d="M50 0 L50 200" stroke="#0f172a" strokeWidth="0.5" fill="none"/>
+              <path d="M150 0 L150 200" stroke="#0f172a" strokeWidth="0.5" fill="none"/>
+              
+              {/* Diagonal streets */}
+              <path d="M0 0 L100 100" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+              <path d="M100 0 L200 100" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+              <path d="M0 100 L100 200" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+              <path d="M100 100 L200 200" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+              
+              {/* Smaller cross streets */}
+              <path d="M0 100 L200 100" stroke="#0f172a" strokeWidth="0.4" fill="none"/>
+              <path d="M100 0 L100 200" stroke="#0f172a" strokeWidth="0.4" fill="none"/>
+              
+              {/* Curved roads */}
+              <path d="M0 25 Q50 35, 100 25 T200 25" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+              <path d="M0 175 Q50 165, 100 175 T200 175" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+              <path d="M25 0 Q35 50, 25 100 T25 200" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+              <path d="M175 0 Q165 50, 175 100 T175 200" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+              
+              {/* Small block details */}
+              <rect x="60" y="60" width="30" height="30" stroke="#0f172a" strokeWidth="0.2" fill="none"/>
+              <rect x="110" y="110" width="30" height="30" stroke="#0f172a" strokeWidth="0.2" fill="none"/>
+              <rect x="60" y="110" width="20" height="20" stroke="#0f172a" strokeWidth="0.2" fill="none"/>
+              <rect x="120" y="60" width="20" height="20" stroke="#0f172a" strokeWidth="0.2" fill="none"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#map-pattern)" />
+        </svg>
+      </div>
 
       {/* Main content container */}
       <div className="relative z-10 max-w-[1300px] mx-auto px-[5%] pt-[100px] pb-[80px] lg:pt-[120px] lg:pb-[100px]">
