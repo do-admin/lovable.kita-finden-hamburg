@@ -21,11 +21,11 @@ const Hero = () => {
     <section className="relative w-full min-h-[85vh] bg-[#f8fafc] overflow-hidden">
       
       {/* Hamburg city map background - faded and transparent */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
         <img 
           src={hamburgMap} 
           alt="" 
-          className="w-[120%] h-[120%] object-contain opacity-[0.06]"
+          className="w-[200%] sm:w-[150%] lg:w-[120%] h-auto min-h-full object-contain opacity-[0.035] sm:opacity-[0.04]"
           aria-hidden="true"
         />
       </div>
