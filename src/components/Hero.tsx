@@ -1,106 +1,111 @@
-import { Search } from "lucide-react";
 import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
-import logoIcon from "@/assets/logo-icon.png";
+import { Star, Heart, Users } from "lucide-react";
 import heroBackground from "@/assets/hero-background.png";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
-  
-  const districts = [
-    "Altona",
-    "Hamburg-Mitte", 
-    "Eimsbüttel",
-    "Hamburg-Nord",
-    "Wandsbek",
-    "Bergedorf",
-    "Harburg"
-  ];
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/kitas?q=${encodeURIComponent(searchQuery)}`);
-    }
-  };
-
-  const handleDistrictClick = (district: string) => {
-    navigate(`/kitas?stadtteil=${encodeURIComponent(district)}`);
-  };
-
-  const handleShowAll = () => {
-    const stadtteileSection = document.getElementById("stadtteile-section");
-    if (stadtteileSection) {
-      stadtteileSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
+  const handleShowKitas = () => {
+    navigate("/kitas");
   };
 
   return (
-    <section className="w-full bg-background">
-      <div className="container mx-auto max-w-[1200px] px-6 pt-[96px] pb-[64px] text-center relative">
-        
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 opacity-[0.08] bg-cover bg-center pointer-events-none"
-          style={{ backgroundImage: `url(${heroBackground})` }}
-        />
+    <section className="relative w-full min-h-[85vh] bg-[#f8fafc] overflow-hidden">
+      {/* Subtle background watermark */}
+      <div 
+        className="absolute inset-0 opacity-[0.08] bg-cover bg-center pointer-events-none"
+        style={{ backgroundImage: `url(${heroBackground})` }}
+      />
 
-        {/* Logo */}
-        <img src={logoIcon} alt="KITAKOMPASS" className="mx-auto mb-10 h-16 relative z-10" />
-
-        {/* Headline */}
-        <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground relative z-10">
-          Finde die passende Kita in Hamburg
-        </h1>
-
-        {/* Subline */}
-        <p className="mt-6 max-w-[700px] mx-auto text-lg text-muted-foreground leading-relaxed relative z-10">
-          Vergleiche Kitas in allen Hamburger Bezirken und finde Schritt für Schritt die Betreuung, die wirklich zu deinem Alltag und deinem Kind passt.
-        </p>
-
-        {/* Search Box */}
-        <form onSubmit={handleSearch} className="mt-12 max-w-[640px] mx-auto flex gap-3 relative z-10">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Stadtteil, Adresse oder Kita-Namen eingeben …"
-            className="flex-1 border border-border rounded-full px-5 py-3 bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-          />
-          <Button 
-            type="submit"
-            className="px-6 py-3 rounded-full font-medium"
-          >
-            Kitas anzeigen
-          </Button>
-        </form>
-
-        {/* Bezirke Shortcuts */}
-        <div className="mt-8 flex flex-wrap justify-center gap-3 relative z-10">
-          {districts.map((district) => (
-            <Badge
-              key={district}
-              variant="outline"
-              onClick={() => handleDistrictClick(district)}
-              className="cursor-pointer hover:bg-muted transition-colors px-3.5 py-1.5 rounded-full text-sm"
+      {/* Main content container */}
+      <div className="relative z-10 max-w-[1300px] mx-auto px-[5%] pt-[100px] pb-[80px] lg:pt-[120px] lg:pb-[100px]">
+        <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-8 lg:gap-4 items-center">
+          
+          {/* Left column - Text content */}
+          <div className="text-center lg:text-left">
+            <h1 className="text-[36px] md:text-[48px] lg:text-[56px] font-extrabold leading-[1.08] tracking-tight text-[#0f172a]">
+              Finde die passende Kita in Hamburg
+            </h1>
+            
+            <p className="mt-6 lg:mt-8 text-[18px] md:text-[22px] lg:text-[24px] font-normal leading-[1.45] text-[#334155] max-w-[560px] mx-auto lg:mx-0">
+              Vergleiche Kitas in allen Hamburger Bezirken und finde Schritt für Schritt die Betreuung, die wirklich zu deinem Alltag und deinem Kind passt.
+            </p>
+            
+            <Button 
+              onClick={handleShowKitas}
+              className="mt-8 lg:mt-10 w-full sm:w-auto sm:min-w-[320px] h-[56px] lg:h-[60px] rounded-full text-[18px] lg:text-[20px] font-bold bg-primary hover:bg-primary/90 hover:scale-[1.02] hover:shadow-lg transition-all duration-200"
             >
-              {district}
-            </Badge>
-          ))}
-          <Badge
-            variant="secondary"
-            onClick={handleShowAll}
-            className="cursor-pointer hover:bg-secondary/80 transition-colors px-3.5 py-1.5 rounded-full text-sm font-medium"
-          >
-            Alle Stadtteile anzeigen
-          </Badge>
+              Kitas anzeigen
+            </Button>
+          </div>
+
+          {/* Right column - Visual element with overlapping cards */}
+          <div className="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
+            {/* Main image card */}
+            <div className="relative w-[85%] sm:w-[320px] lg:w-[380px] lg:-ml-[80px]">
+              <div className="aspect-[3/4] rounded-[20px] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] bg-gradient-to-br from-primary/10 to-primary/5">
+                <img 
+                  src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&q=80" 
+                  alt="Kinder in einer Kita" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
+              {/* Overlay stats card */}
+              <div className="absolute -bottom-4 -left-4 sm:-left-8 bg-card rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.12)] p-4 sm:p-5 border border-border/50">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
+                      <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
+                    </div>
+                    <div>
+                      <p className="text-xl font-bold text-foreground">4,7</p>
+                      <p className="text-xs text-muted-foreground">Ø Bewertung</p>
+                    </div>
+                  </div>
+                  <div className="w-px h-10 bg-border" />
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
+                      <Heart className="w-5 h-5 text-emerald-500 fill-emerald-500" />
+                    </div>
+                    <div>
+                      <p className="text-xl font-bold text-foreground">92%</p>
+                      <p className="text-xs text-muted-foreground">Zufriedenheit</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Secondary floating card */}
+              <div className="absolute -top-4 -right-4 sm:-right-6 bg-card rounded-xl shadow-[0_8px_30px_-8px_rgba(0,0,0,0.1)] p-3 sm:p-4 border border-border/50">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                    <Users className="w-4 h-4 text-blue-500" />
+                  </div>
+                  <div>
+                    <p className="text-lg font-bold text-foreground">+120</p>
+                    <p className="text-[10px] text-muted-foreground">Kitas gelistet</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* Bottom wave transition */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+        <svg 
+          className="relative block w-full h-[100px] lg:h-[120px]"
+          viewBox="0 0 1200 120" 
+          preserveAspectRatio="none"
+        >
+          <path 
+            d="M0,60 C200,100 400,20 600,60 C800,100 1000,40 1200,80 L1200,120 L0,120 Z" 
+            className="fill-[#e0f2fe]"
+          />
+        </svg>
       </div>
     </section>
   );
