@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container-custom py-[80px]">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-8">
           <div>
-            <img src={logoKitaFinden} alt="Kita finden Hamburg" className="h-12 md:h-16 mb-4" />
+            <img src={logoKitaFinden} alt="Kita finden Hamburg" className="h-14 md:h-[72px] mb-5" />
             <p className="text-sm text-muted-foreground leading-relaxed">
               Ihr unabhängiger Wegweiser zur passenden Kita in Hamburg.
             </p>
