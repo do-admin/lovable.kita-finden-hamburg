@@ -1,13 +1,20 @@
 import { Button } from "./ui/button";
-import { Star, Heart, Users } from "lucide-react";
+import { Star, Heart, Users, Search } from "lucide-react";
 import heroBackground from "@/assets/hero-background.png";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Hero = () => {
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleShowKitas = () => {
-    navigate("/kitas");
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/kitas?q=${encodeURIComponent(searchQuery)}`);
+    } else {
+      navigate("/kitas");
+    }
   };
 
   return (
@@ -32,12 +39,25 @@ const Hero = () => {
               Vergleiche Kitas in allen Hamburger Bezirken und finde Schritt für Schritt die Betreuung, die wirklich zu deinem Alltag und deinem Kind passt.
             </p>
             
-            <Button 
-              onClick={handleShowKitas}
-              className="mt-8 lg:mt-10 w-full sm:w-auto sm:min-w-[320px] h-[56px] lg:h-[60px] rounded-full text-[18px] lg:text-[20px] font-bold bg-primary hover:bg-primary/90 hover:scale-[1.02] hover:shadow-lg transition-all duration-200"
-            >
-              Kitas anzeigen
-            </Button>
+            {/* Search bar */}
+            <form onSubmit={handleSearch} className="mt-8 lg:mt-10 flex w-full sm:max-w-[480px] mx-auto lg:mx-0">
+              <div className="relative flex-1">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Stadtteil, Adresse oder Kita-Name …"
+                  className="w-full h-[56px] lg:h-[60px] pl-12 pr-4 rounded-l-full border border-r-0 border-border bg-background text-foreground text-base focus:outline-none focus:ring-2 focus:ring-ring"
+                />
+              </div>
+              <Button 
+                type="submit"
+                className="h-[56px] lg:h-[60px] px-6 lg:px-8 rounded-r-full text-base lg:text-lg font-bold"
+              >
+                Kitas anzeigen
+              </Button>
+            </form>
           </div>
 
           {/* Right column - Visual element with overlapping cards */}
