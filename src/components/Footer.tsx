@@ -1,4 +1,4 @@
-import logo from "@/assets/logo-kitakompass.png";
+import logoKitaFinden from "@/assets/logo-kita-finden-hamburg.webp";
 
 const Footer = () => {
   return (
@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container-custom py-[80px]">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-8">
           <div>
-            <img src={logo} alt="KITAKOMPASS HAMBURG" className="h-12 mb-4" />
+            <img src={logoKitaFinden} alt="Kita finden Hamburg" className="h-10 mb-4" />
             <p className="text-sm text-muted-foreground leading-relaxed">
               Ihr unabhängiger Wegweiser zur passenden Kita in Hamburg.
             </p>
