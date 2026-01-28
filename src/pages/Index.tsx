@@ -22,7 +22,6 @@ const Index = () => {
       <SearchModule />
       <HowToUse />
       <InfoSection />
-      <TrustBlock />
       
       {/* Main content - full width */}
       <div className="container-custom section-padding">
@@ -33,7 +32,7 @@ const Index = () => {
         </div>
       </div>
       
-      
+      <TrustBlock />
       <ContactSection />
       
       <div className="container-custom">
