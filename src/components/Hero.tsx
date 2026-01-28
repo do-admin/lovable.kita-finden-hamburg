@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import { Star, Heart, Users, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import heroBackground from "@/assets/hero-background.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -73,40 +73,62 @@ const Hero = () => {
                 />
               </div>
               
-              {/* Overlay stats card */}
-              <div className="absolute -bottom-4 -left-4 sm:-left-8 bg-card rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.12)] p-4 sm:p-5 border border-border/50">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
-                      <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
-                    </div>
-                    <div>
-                      <p className="text-xl font-bold text-foreground">4,7</p>
-                      <p className="text-xs text-muted-foreground">Ø Bewertung</p>
-                    </div>
+              {/* Upper floating card - Kitas count */}
+              <div className="absolute -top-4 -right-4 sm:-right-6 lg:-right-8 w-[200px] sm:w-[220px] lg:w-[240px] group cursor-default">
+                <div 
+                  className="relative rounded-[24px] px-7 py-6 border border-white/15 shadow-[0_16px_48px_rgba(0,0,0,0.4)] transition-all duration-200 hover:scale-[1.03] hover:backdrop-blur-[22px] hover:bg-[rgba(30,58,138,0.38)]"
+                  style={{
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    background: 'linear-gradient(135deg, rgba(30,58,138,0.28) 0%, rgba(30,58,138,0.18) 100%)'
+                  }}
+                >
+                  <div className="flex items-center gap-3">
+                    <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 3L4 9v12h16V9l-8-6zm0 2.5L18 10v9H6v-9l6-4.5z"/>
+                      <rect x="10" y="14" width="4" height="5" fill="currentColor"/>
+                    </svg>
+                    <span className="text-[44px] lg:text-[50px] font-extrabold text-white leading-none">+120</span>
                   </div>
-                  <div className="w-px h-10 bg-border" />
-                  <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
-                      <Heart className="w-5 h-5 text-emerald-500 fill-emerald-500" />
-                    </div>
-                    <div>
-                      <p className="text-xl font-bold text-foreground">92%</p>
-                      <p className="text-xs text-muted-foreground">Zufriedenheit</p>
-                    </div>
-                  </div>
+                  <p className="text-[15px] lg:text-[16px] font-medium text-white/90 mt-1">Kitas gelistet</p>
                 </div>
               </div>
 
-              {/* Secondary floating card */}
-              <div className="absolute -top-4 -right-4 sm:-right-6 bg-card rounded-xl shadow-[0_8px_30px_-8px_rgba(0,0,0,0.1)] p-3 sm:p-4 border border-border/50">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                    <Users className="w-4 h-4 text-blue-500" />
-                  </div>
-                  <div>
-                    <p className="text-lg font-bold text-foreground">+120</p>
-                    <p className="text-[10px] text-muted-foreground">Kitas gelistet</p>
+              {/* Lower floating card - Rating & Satisfaction */}
+              <div className="absolute -bottom-6 -left-4 sm:-left-8 lg:-left-12 w-[88%] sm:w-[340px] lg:w-[400px] group cursor-default">
+                <div 
+                  className="relative rounded-[24px] px-7 sm:px-9 py-6 border border-white/15 shadow-[0_16px_48px_rgba(0,0,0,0.4)] transition-all duration-200 hover:scale-[1.03] hover:backdrop-blur-[22px] hover:bg-[rgba(22,78,99,0.38)]"
+                  style={{
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    background: 'linear-gradient(135deg, rgba(22,78,99,0.28) 0%, rgba(22,78,99,0.18) 100%)'
+                  }}
+                >
+                  <div className="flex items-center justify-between gap-6 sm:gap-12">
+                    {/* Rating block */}
+                    <div className="flex items-center gap-3">
+                      <svg className="w-7 h-7 text-white fill-white" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                      <div>
+                        <p className="text-[42px] sm:text-[52px] font-extrabold text-white leading-none">4,7</p>
+                        <p className="text-[14px] sm:text-[15px] font-medium text-white/90 mt-0.5">Ø Bewertung</p>
+                      </div>
+                    </div>
+                    
+                    {/* Divider */}
+                    <div className="w-px h-16 bg-white/18" />
+                    
+                    {/* Satisfaction block */}
+                    <div className="flex items-center gap-3">
+                      <svg className="w-7 h-7 text-white fill-white" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                      </svg>
+                      <div>
+                        <p className="text-[42px] sm:text-[52px] font-extrabold text-white leading-none">92%</p>
+                        <p className="text-[14px] sm:text-[15px] font-medium text-white/90 mt-0.5">Zufriedenheit</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
