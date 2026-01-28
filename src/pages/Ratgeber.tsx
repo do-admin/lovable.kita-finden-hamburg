@@ -1,145 +1,117 @@
 import { useState, useMemo } from "react";
-import { Search, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
-import { ratgeberArticles, categories } from "@/data/ratgeber-articles";
+import RatgeberSidebar from "@/components/RatgeberSidebar";
+import RatgeberHero from "@/components/RatgeberHero";
+import RatgeberCard from "@/components/RatgeberCard";
+import { ratgeberArticles } from "@/data/ratgeber-articles";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Ratgeber = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const isMobile = useIsMobile();
 
   const filteredArticles = useMemo(() => {
-    return ratgeberArticles.filter(article => {
-      const matchesSearch = !searchTerm.trim() || 
-        article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        article.description.toLowerCase().includes(searchTerm.toLowerCase());
-      
-      const matchesCategory = !selectedCategory || article.category === selectedCategory;
-      
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchTerm, selectedCategory]);
+    if (selectedCategories.length === 0) {
+      return ratgeberArticles;
+    }
+    return ratgeberArticles.filter(article => 
+      selectedCategories.includes(article.category)
+    );
+  }, [selectedCategories]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
       
-      {/* Hero Section */}
-      <section className="bg-background border-b border-border">
-        <div className="container-custom pt-[80px] pb-[60px]">
-          <div className="max-w-[680px] mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Ratgeber
-            </h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              Praxisnahe Artikel zu Themen wie Kita-Suche, Kita-Gutschein, 
-              Eingewöhnung und Zusammenarbeit mit Trägern.
-            </p>
-            
-            {/* Search Bar */}
-            <div className="relative max-w-[540px] mx-auto">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-              <Input
-                type="text"
-                placeholder="Artikel suchen..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 h-12 text-base border-border bg-background"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Category Filter */}
-      <section className="border-b border-border bg-muted/30">
-        <div className="container-custom py-4">
-          <div className="max-w-[900px] mx-auto">
-            <div className="flex flex-wrap gap-2 justify-center">
-              <button
-                onClick={() => setSelectedCategory(null)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  !selectedCategory 
-                    ? 'bg-primary text-primary-foreground' 
-                    : 'bg-background border border-border text-foreground hover:bg-muted'
-                }`}
-              >
-                Alle Themen
-              </button>
-              {categories.map(category => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    selectedCategory === category 
-                      ? 'bg-primary text-primary-foreground' 
-                      : 'bg-background border border-border text-foreground hover:bg-muted'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Articles Content */}
-      <section className="flex-1 section-padding">
+      <main className="flex-1 section-padding">
         <div className="container-custom">
-          <div className="max-w-[900px] mx-auto">
-            {filteredArticles.length === 0 ? (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground text-lg">
-                  Keine Artikel gefunden für "{searchTerm}"
-                </p>
+          {/* Mobile Layout */}
+          {isMobile && (
+            <div className="max-w-[900px] mx-auto">
+              <RatgeberSidebar 
+                selectedCategories={selectedCategories}
+                onCategoryChange={setSelectedCategories}
+                isMobile={true}
+              />
+              
+              <RatgeberHero />
+              
+              {/* Articles Grid */}
+              <div id="articles" className="grid gap-6">
+                {filteredArticles.length === 0 ? (
+                  <div className="text-center py-12">
+                    <p className="text-muted-foreground text-lg">
+                      Keine Artikel in den ausgewählten Kategorien gefunden.
+                    </p>
+                  </div>
+                ) : (
+                  filteredArticles.map((article, index) => (
+                    <RatgeberCard 
+                      key={article.slug} 
+                      article={article}
+                      accentColor={index % 2 === 0 ? "primary" : "success"}
+                    />
+                  ))
+                )}
               </div>
-            ) : (
-              <div className="grid gap-6">
-                {filteredArticles.map((article) => (
-                  <Link key={article.slug} to={`/ratgeber/${article.slug}`}>
-                    <Card className="border-border hover:shadow-md transition-shadow duration-200 group cursor-pointer">
-                      <CardContent className="p-6">
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <div className="flex items-center gap-3 mb-3">
-                              <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-                                {article.category}
-                              </span>
-                              <span className="text-xs text-muted-foreground">
-                                {article.readTime}
-                              </span>
-                            </div>
-                            <h3 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
-                              {article.title}
-                            </h3>
-                            <p className="text-muted-foreground leading-relaxed">
-                              {article.description}
-                            </p>
-                          </div>
-                          <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors mt-1 flex-shrink-0" />
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
+              
+              {/* Entry Count */}
+              {filteredArticles.length > 0 && (
+                <div className="mt-8 text-center text-sm text-muted-foreground">
+                  {filteredArticles.length} {filteredArticles.length === 1 ? 'Artikel' : 'Artikel'}
+                  {selectedCategories.length > 0 && ` in ${selectedCategories.length} ${selectedCategories.length === 1 ? 'Kategorie' : 'Kategorien'}`}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Desktop Layout - Two Columns */}
+          {!isMobile && (
+            <div className="flex gap-10 max-w-[1200px] mx-auto">
+              {/* Left Sidebar - 25-30% */}
+              <div className="w-[280px] flex-shrink-0">
+                <RatgeberSidebar 
+                  selectedCategories={selectedCategories}
+                  onCategoryChange={setSelectedCategories}
+                />
               </div>
-            )}
-            
-            {/* Entry Count */}
-            {filteredArticles.length > 0 && (
-              <div className="mt-12 text-center text-sm text-muted-foreground">
-                {filteredArticles.length} {filteredArticles.length === 1 ? 'Artikel' : 'Artikel'} 
-                {searchTerm && ` für "${searchTerm}"`}
-                {selectedCategory && ` in "${selectedCategory}"`}
+              
+              {/* Right Content Area - 70-75% */}
+              <div className="flex-1 min-w-0">
+                <RatgeberHero />
+                
+                {/* Articles Grid - 2 columns */}
+                <div id="articles" className="grid md:grid-cols-2 gap-6">
+                  {filteredArticles.length === 0 ? (
+                    <div className="col-span-2 text-center py-12">
+                      <p className="text-muted-foreground text-lg">
+                        Keine Artikel in den ausgewählten Kategorien gefunden.
+                      </p>
+                    </div>
+                  ) : (
+                    filteredArticles.map((article, index) => (
+                      <RatgeberCard 
+                        key={article.slug} 
+                        article={article}
+                        accentColor={index % 2 === 0 ? "primary" : "success"}
+                      />
+                    ))
+                  )}
+                </div>
+                
+                {/* Entry Count */}
+                {filteredArticles.length > 0 && (
+                  <div className="mt-10 text-center text-sm text-muted-foreground">
+                    {filteredArticles.length} {filteredArticles.length === 1 ? 'Artikel' : 'Artikel'}
+                    {selectedCategories.length > 0 && ` in ${selectedCategories.length} ${selectedCategories.length === 1 ? 'Kategorie' : 'Kategorien'}`}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
-      </section>
+      </main>
 
       <Footer />
     </div>
