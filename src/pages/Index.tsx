@@ -18,7 +18,6 @@ const Index = () => {
       <Header />
       <Hero />
       <TrendingSearches />
-      <PopularDistricts />
       <SearchModule />
       <InfoSection />
       <TrustBlock />
@@ -69,6 +68,7 @@ const Index = () => {
         </section>
       </div>
       
+      <PopularDistricts />
       <Footer />
     </div>
   );
