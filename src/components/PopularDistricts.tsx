@@ -31,7 +31,7 @@ const districts = [
 
 const PopularDistricts = () => {
   return (
-    <section id="stadtteile-section" className="bg-muted/30">
+    <section id="stadtteile-section" className="bg-white">
       <div className="container-custom section-padding">
         <div className="max-w-[1280px] mx-auto">
           <h2 className="mb-4 text-center">Beliebte Stadtteile in Hamburg</h2>

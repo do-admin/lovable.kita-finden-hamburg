@@ -18,7 +18,7 @@ const steps = [
 
 const HowToUse = () => {
   return (
-    <section className="section-padding bg-muted/30">
+    <section className="section-padding bg-white">
       <div className="container-custom">
         <div className="max-w-[880px] mx-auto text-center mb-10">
           <h2 className="mb-4">So nutzt du die Kita-Übersicht</h2>

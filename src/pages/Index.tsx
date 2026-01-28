@@ -23,23 +23,33 @@ const Index = () => {
       <HowToUse />
       <InfoSection />
       
-      {/* Main content - full width */}
-      <div className="container-custom section-padding">
-        <div className="max-w-[1400px] mx-auto space-y-[80px]">
+      {/* Kita Listing Section */}
+      <section className="bg-white py-[80px]">
+        <div className="max-w-[1400px] mx-auto px-6">
           <KitaListing />
-          <TrustBlock />
-          <QualityCriteria />
+        </div>
+      </section>
+      
+      {/* Trust Block */}
+      <TrustBlock />
+      
+      {/* Quality Criteria */}
+      <QualityCriteria />
+      
+      {/* Ratgeber Section */}
+      <section className="bg-[#f1f5f9] py-[80px]">
+        <div className="max-w-[1400px] mx-auto px-6">
           <RatgeberSection />
         </div>
-      </div>
+      </section>
       
       <ContactSection />
       
-      <div className="container-custom">
-        {/* Cross-project links */}
-        <section className="section-padding max-w-5xl mx-auto">
+      {/* Cross-project links */}
+      <section className="bg-white py-[80px]">
+        <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-2xl font-bold mb-8 text-center">Weitere hilfreiche Angebote</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <a href="https://kita-gutschein-hamburg.de" target="_blank" rel="noopener noreferrer" className="card-shadow rounded-lg p-6 bg-card hover:shadow-lg transition-shadow group">
               <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">kita-gutschein-hamburg.de</h3>
               <p className="text-sm text-muted-foreground mb-4">
@@ -65,8 +75,8 @@ const Index = () => {
               </span>
             </a>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
       
       <PopularDistricts />
       <FAQ />

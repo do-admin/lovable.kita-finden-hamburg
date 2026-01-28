@@ -50,7 +50,7 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <section id="faq" className="section-padding">
+    <section id="faq" className="section-padding bg-[#f1f5f9]">
       <div className="max-w-[880px] mx-auto">
         <h2 className="text-center mb-6">Häufig gestellte Fragen zur Kita-Suche in Hamburg</h2>
         <p className="text-muted-foreground mb-8 text-center">Antworten auf die wichtigsten Fragen rund um die Kita-Suche in Hamburg.</p>
