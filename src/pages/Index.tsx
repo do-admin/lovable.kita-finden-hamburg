@@ -31,8 +31,7 @@ const Index = () => {
         </div>
       </div>
       
-      {/* Full-width sections */}
-      <FAQ />
+      
       <ContactSection />
       
       <div className="container-custom">
@@ -69,6 +68,7 @@ const Index = () => {
       </div>
       
       <PopularDistricts />
+      <FAQ />
       <Footer />
     </div>
   );

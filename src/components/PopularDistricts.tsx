@@ -1,5 +1,3 @@
-import { Badge } from "@/components/ui/badge";
-
 const districts = [
   {
     name: "Hamburg-Mitte",
@@ -32,32 +30,34 @@ const districts = [
 ];
 
 const PopularDistricts = () => {
-  // Extract all neighborhoods from all districts
-  const allNeighborhoods = districts.flatMap(district => district.neighborhoods);
-
   return (
     <section id="stadtteile-section" className="bg-muted/30">
       <div className="container-custom section-padding">
         <div className="max-w-[1280px] mx-auto">
-          <h2 className="mb-6 text-center">Beliebte Stadtteile in Hamburg</h2>
-          <p className="text-muted-foreground text-center mb-8 max-w-[600px] mx-auto">
+          <h2 className="mb-4 text-center">Beliebte Stadtteile in Hamburg</h2>
+          <p className="text-muted-foreground text-center mb-10 max-w-[600px] mx-auto">
             Wähle einen Stadtteil, um Kitas in deiner Nähe zu finden
           </p>
           
-          <div className="flex flex-wrap gap-2 justify-center">
-            {allNeighborhoods.map((neighborhood) => (
-              <a
-                key={neighborhood}
-                href={`/kitas?stadtteil=${encodeURIComponent(neighborhood)}`}
-                className="inline-block"
-              >
-                <Badge 
-                  variant="outline"
-                  className="cursor-pointer hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors px-4 py-2 text-sm"
-                >
-                  {neighborhood}
-                </Badge>
-              </a>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-x-6 gap-y-2">
+            {districts.map((district) => (
+              <div key={district.name} className="mb-6">
+                <h3 className="text-[15px] font-semibold text-foreground mb-3">
+                  {district.name}
+                </h3>
+                <ul className="space-y-1.5">
+                  {district.neighborhoods.map((neighborhood) => (
+                    <li key={neighborhood}>
+                      <a
+                        href={`/kitas?stadtteil=${encodeURIComponent(neighborhood)}`}
+                        className="text-[14px] text-muted-foreground hover:text-primary hover:underline transition-colors"
+                      >
+                        {neighborhood}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </div>
