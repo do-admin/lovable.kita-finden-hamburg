@@ -86,10 +86,6 @@ const HowToUse = () => {
             })}
           </div>
 
-          {/* Decorative dots */}
-          <div className="hidden md:block absolute -left-8 top-1/2 w-3 h-3 rounded-full bg-[#1800ad]" />
-          <div className="hidden md:block absolute -right-8 top-1/3 w-4 h-4 rounded-full bg-[#00bf63]" />
-          <div className="hidden md:block absolute left-1/4 -bottom-4 w-2 h-2 rounded-full bg-[#f88820]" />
         </div>
       </div>
     </section>
