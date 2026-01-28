@@ -2,7 +2,6 @@ import { Button } from "./ui/button";
 import { Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import hamburgMap from "@/assets/hamburg-map-background.webp";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -20,14 +19,86 @@ const Hero = () => {
   return (
     <section className="relative w-full min-h-[85vh] bg-[#f8fafc] overflow-hidden">
       
-      {/* Hamburg city map background - faded and transparent */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
-        <img 
-          src={hamburgMap} 
-          alt="" 
-          className="w-[200%] sm:w-[150%] lg:w-[120%] h-auto min-h-full object-contain opacity-[0.25]"
+      {/* Abstract Hamburg city map - fine lines */}
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+        <svg 
+          viewBox="0 0 800 800" 
+          className="w-[140%] sm:w-[120%] lg:w-[100%] h-auto opacity-[0.08]"
+          xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
-        />
+        >
+          {/* Alster lakes - center of Hamburg */}
+          <ellipse cx="400" cy="320" rx="35" ry="50" stroke="#0f172a" strokeWidth="0.8" fill="none"/>
+          <ellipse cx="400" cy="240" rx="25" ry="35" stroke="#0f172a" strokeWidth="0.8" fill="none"/>
+          
+          {/* Elbe river - flowing through south */}
+          <path d="M0 520 Q100 500, 200 520 Q300 540, 400 520 Q500 500, 600 530 Q700 550, 800 520" stroke="#0f172a" strokeWidth="1.2" fill="none"/>
+          <path d="M0 540 Q100 520, 200 540 Q300 560, 400 540 Q500 520, 600 550 Q700 570, 800 540" stroke="#0f172a" strokeWidth="0.6" fill="none"/>
+          
+          {/* Main ring roads around center */}
+          <circle cx="400" cy="350" r="120" stroke="#0f172a" strokeWidth="0.7" fill="none" strokeDasharray="none"/>
+          <circle cx="400" cy="350" r="200" stroke="#0f172a" strokeWidth="0.5" fill="none"/>
+          
+          {/* Major radial streets from center */}
+          <path d="M400 230 L400 80" stroke="#0f172a" strokeWidth="0.6" fill="none"/>
+          <path d="M400 470 L400 500" stroke="#0f172a" strokeWidth="0.6" fill="none"/>
+          <path d="M280 350 L100 350" stroke="#0f172a" strokeWidth="0.6" fill="none"/>
+          <path d="M520 350 L700 350" stroke="#0f172a" strokeWidth="0.6" fill="none"/>
+          <path d="M320 270 L180 130" stroke="#0f172a" strokeWidth="0.5" fill="none"/>
+          <path d="M480 270 L620 130" stroke="#0f172a" strokeWidth="0.5" fill="none"/>
+          <path d="M320 430 L180 570" stroke="#0f172a" strokeWidth="0.5" fill="none"/>
+          <path d="M480 430 L620 570" stroke="#0f172a" strokeWidth="0.5" fill="none"/>
+          
+          {/* Diagonal major roads */}
+          <path d="M300 250 L100 50" stroke="#0f172a" strokeWidth="0.4" fill="none"/>
+          <path d="M500 250 L700 50" stroke="#0f172a" strokeWidth="0.4" fill="none"/>
+          <path d="M300 450 L50 700" stroke="#0f172a" strokeWidth="0.4" fill="none"/>
+          <path d="M500 450 L750 700" stroke="#0f172a" strokeWidth="0.4" fill="none"/>
+          
+          {/* Harbor area - south of Elbe */}
+          <rect x="250" y="580" width="80" height="40" stroke="#0f172a" strokeWidth="0.4" fill="none"/>
+          <rect x="340" y="590" width="60" height="30" stroke="#0f172a" strokeWidth="0.4" fill="none"/>
+          <rect x="420" y="580" width="90" height="45" stroke="#0f172a" strokeWidth="0.4" fill="none"/>
+          <rect x="280" y="630" width="50" height="25" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+          <rect x="450" y="635" width="40" height="20" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+          
+          {/* Secondary streets - grid pattern areas */}
+          <path d="M150 200 L250 200" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+          <path d="M150 250 L230 250" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+          <path d="M550 200 L680 200" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+          <path d="M570 250 L700 250" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+          <path d="M180 180 L180 280" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+          <path d="M220 170 L220 290" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+          <path d="M600 180 L600 280" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+          <path d="M650 170 L650 290" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
+          
+          {/* Curved connecting roads */}
+          <path d="M100 400 Q150 380, 200 420 Q250 460, 280 440" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
+          <path d="M700 400 Q650 380, 600 420 Q550 460, 520 440" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
+          <path d="M350 150 Q380 120, 420 150" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
+          
+          {/* Small neighborhood streets */}
+          <path d="M120 300 L160 340" stroke="#0f172a" strokeWidth="0.25" fill="none"/>
+          <path d="M140 280 L180 320" stroke="#0f172a" strokeWidth="0.25" fill="none"/>
+          <path d="M680 300 L640 340" stroke="#0f172a" strokeWidth="0.25" fill="none"/>
+          <path d="M660 280 L620 320" stroke="#0f172a" strokeWidth="0.25" fill="none"/>
+          <path d="M200 450 L250 480" stroke="#0f172a" strokeWidth="0.25" fill="none"/>
+          <path d="M600 450 L550 480" stroke="#0f172a" strokeWidth="0.25" fill="none"/>
+          
+          {/* Parks/green spaces as subtle shapes */}
+          <ellipse cx="200" cy="380" rx="20" ry="15" stroke="#0f172a" strokeWidth="0.25" fill="none"/>
+          <ellipse cx="600" cy="380" rx="25" ry="18" stroke="#0f172a" strokeWidth="0.25" fill="none"/>
+          <ellipse cx="350" cy="450" rx="18" ry="12" stroke="#0f172a" strokeWidth="0.25" fill="none"/>
+          <ellipse cx="450" cy="450" rx="22" ry="14" stroke="#0f172a" strokeWidth="0.25" fill="none"/>
+          
+          {/* Additional fine detail streets */}
+          <path d="M300 180 L340 200" stroke="#0f172a" strokeWidth="0.2" fill="none"/>
+          <path d="M460 180 L500 200" stroke="#0f172a" strokeWidth="0.2" fill="none"/>
+          <path d="M250 320 L280 300" stroke="#0f172a" strokeWidth="0.2" fill="none"/>
+          <path d="M550 320 L520 300" stroke="#0f172a" strokeWidth="0.2" fill="none"/>
+          <path d="M360 480 L380 500" stroke="#0f172a" strokeWidth="0.2" fill="none"/>
+          <path d="M420 480 L440 500" stroke="#0f172a" strokeWidth="0.2" fill="none"/>
+        </svg>
       </div>
 
       {/* Main content container */}
