@@ -22,16 +22,16 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="font-semibold mb-4">Ressourcen</h3>
+            <h3 className="font-semibold mb-4">Weitere hilfreiche Angebote</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <a href="https://kita-gutschein-hamburg.de" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
-                  Kita-Gutschein Hamburg
+                  kita-gutschein-hamburg.de
                 </a>
               </li>
               <li>
                 <a href="https://beste-kita-hamburg.de" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
-                  Beste Kita Hamburg
+                  beste-kita-hamburg.de
                 </a>
               </li>
             </ul>
