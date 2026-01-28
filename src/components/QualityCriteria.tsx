@@ -160,30 +160,10 @@ const QualityCriteria = () => {
         </div>
 
         {/* Masonry Grid */}
-        <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[180px]">
-            {criteria.map((criterion) => (
-              <CriteriaCard key={criterion.title} criterion={criterion} />
-            ))}
-          </div>
-
-          {/* Floating Badge */}
-          <div 
-            className="
-              absolute -bottom-8 right-4 md:right-12 lg:right-20
-              w-[110px] h-[110px] rounded-full
-              flex flex-col items-center justify-center
-              backdrop-blur-[18px] border border-white/30
-              shadow-[0_16px_48px_rgba(0,0,0,0.2)]
-              z-10
-            "
-            style={{ background: "rgba(22, 78, 99, 0.35)" }}
-          >
-            <span className="text-4xl md:text-5xl font-bold text-foreground">4.9</span>
-            <span className="text-xs text-foreground/80 text-center leading-tight px-2">
-              Ø Eltern-Bewertung
-            </span>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[180px]">
+          {criteria.map((criterion) => (
+            <CriteriaCard key={criterion.title} criterion={criterion} />
+          ))}
         </div>
       </div>
     </section>
