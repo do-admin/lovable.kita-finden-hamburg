@@ -17,16 +17,16 @@ const Header = () => {
   
   return (
     <header className="w-full bg-background sticky top-0 z-50 border-b border-[#e5e7eb]">
-      <div className="max-w-[1200px] mx-auto px-6 py-2">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-1.5">
         <div className="flex items-center justify-between">
           <Link 
             to="/" 
-            className="cursor-pointer"
+            className="cursor-pointer flex-shrink-0"
           >
             <img 
               src={logoKitaFinden} 
               alt="Kita finden Hamburg" 
-              className="h-12 md:h-16 w-auto"
+              className="h-14 sm:h-16 md:h-[72px] w-auto"
             />
           </Link>
           
