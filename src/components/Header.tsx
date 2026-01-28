@@ -26,7 +26,7 @@ const Header = () => {
             <img 
               src={logoKitaFinden} 
               alt="Kita finden Hamburg" 
-              className="h-14 w-auto"
+              className="h-12 md:h-16 w-auto"
             />
           </Link>
           
