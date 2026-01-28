@@ -49,7 +49,7 @@ const InfoSection = () => {
                 style={{
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
-                  background: 'linear-gradient(135deg, rgba(22,78,99,0.28) 0%, rgba(22,78,99,0.18) 100%)'
+                  background: 'linear-gradient(135deg, rgba(0,191,99,0.32) 0%, rgba(0,191,99,0.18) 100%)'
                 }}
               >
                 <div className="flex items-center gap-2.5">
@@ -84,7 +84,7 @@ const InfoSection = () => {
                 style={{
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
-                  background: 'linear-gradient(135deg, rgba(30,58,138,0.28) 0%, rgba(30,58,138,0.18) 100%)'
+                  background: 'linear-gradient(135deg, rgba(24,0,173,0.32) 0%, rgba(24,0,173,0.18) 100%)'
                 }}
               >
                 <div className="flex items-center gap-3">
@@ -106,7 +106,7 @@ const InfoSection = () => {
                 Viele Kitas in Hamburg bieten zusätzliche Schwerpunkte, zum Beispiel in den Bereichen Sprache, Musik, Bewegung, Naturpädagogik oder Inklusion. So finden Eltern für jedes Kind ein passendes Betreuungsangebot – vom Stadtzentrum bis in die äußeren Stadtteile.
               </p>
               
-              <p className="text-[15px] lg:text-[16px] font-medium leading-[1.7] text-[#1e40af]">
+              <p className="text-[15px] lg:text-[16px] font-medium leading-[1.7] text-primary">
                 Mit „Kita finden Hamburg" bekommst du einen unabhängigen Überblick über die Kindertagesstätten in der Stadt. Du kannst Kitas nach Bezirk und Stadtteil filtern, dich über pädagogische Konzepte informieren und mit Hilfe von Kriterien und Bewertungen schneller eine Einrichtung finden, die wirklich zu deiner Familie passt.
               </p>
             </div>
@@ -115,14 +115,14 @@ const InfoSection = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               <Button 
                 onClick={() => navigate("/kitas")}
-                className="h-[48px] lg:h-[52px] px-6 rounded-full text-[14px] font-bold bg-[#1e40af] hover:bg-[#1e3a8a] text-white"
+                className="h-[48px] lg:h-[52px] px-6 rounded-full text-[14px] font-bold"
               >
                 Kitas in Hamburg finden
               </Button>
               <Button 
                 variant="outline"
                 onClick={() => navigate("/bezirke")}
-                className="h-[48px] lg:h-[52px] px-6 rounded-full text-[14px] font-bold border-2 border-[#1e40af] text-[#1e40af] hover:bg-[#1e40af]/5"
+                className="h-[48px] lg:h-[52px] px-6 rounded-full text-[14px] font-bold border-2 border-primary text-primary hover:bg-primary/5"
               >
                 Alle Bezirke anzeigen
               </Button>

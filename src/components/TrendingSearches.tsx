@@ -15,7 +15,7 @@ const TrendingSearches = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="w-full bg-[#e0f2fe] py-10 lg:py-12">
+    <section className="w-full bg-primary/5 py-10 lg:py-12">
       <div className="max-w-[1400px] mx-auto px-6">
         <h3 className="text-[16px] lg:text-[18px] font-bold text-foreground mb-4">
           Beliebte Suchen
