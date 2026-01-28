@@ -15,18 +15,18 @@ const TrendingSearches = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="w-full bg-[#e0f2fe] py-12 lg:py-16">
+    <section className="w-full bg-[#e0f2fe] py-10 lg:py-12">
       <div className="max-w-[1400px] mx-auto px-6">
-        <h3 className="text-[20px] lg:text-[22px] font-semibold text-foreground mb-5">
+        <h3 className="text-[16px] lg:text-[18px] font-bold text-foreground mb-4">
           Beliebte Suchen
         </h3>
-        <div className="flex flex-wrap gap-3 lg:gap-4">
+        <div className="flex flex-wrap gap-2 lg:gap-3">
           {trendingTerms.map((term) => (
             <button
               key={term}
               type="button"
               onClick={() => navigate(`/kitas?q=${encodeURIComponent(term)}`)}
-              className="px-4 py-2.5 rounded-full border border-border bg-background hover:bg-muted text-[16px] font-medium text-foreground transition-colors"
+              className="px-3 py-2 rounded-full border border-border bg-background hover:bg-muted text-[13px] font-medium text-foreground transition-colors"
             >
               {term}
             </button>
