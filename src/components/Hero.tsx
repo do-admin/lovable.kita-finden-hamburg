@@ -2,6 +2,7 @@ import { Button } from "./ui/button";
 import { Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import hamburgMap from "@/assets/hamburg-map-background.webp";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -19,57 +20,14 @@ const Hero = () => {
   return (
     <section className="relative w-full min-h-[85vh] bg-[#f8fafc] overflow-hidden">
       
-      {/* Abstract minimalist city map pattern */}
-      <div className="absolute inset-0 pointer-events-none">
-        <svg className="w-full h-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="city-map" x="0" y="0" width="300" height="300" patternUnits="userSpaceOnUse">
-              {/* Main horizontal streets */}
-              <path d="M0 75 L300 75" stroke="#0f172a" strokeWidth="0.6" fill="none"/>
-              <path d="M0 180 L300 180" stroke="#0f172a" strokeWidth="0.6" fill="none"/>
-              
-              {/* Main vertical streets */}
-              <path d="M90 0 L90 300" stroke="#0f172a" strokeWidth="0.6" fill="none"/>
-              <path d="M210 0 L210 300" stroke="#0f172a" strokeWidth="0.6" fill="none"/>
-              
-              {/* Gently curved boulevard */}
-              <path d="M0 130 Q75 115, 150 130 Q225 145, 300 130" stroke="#0f172a" strokeWidth="0.5" fill="none"/>
-              <path d="M140 0 Q155 75, 140 150 Q125 225, 140 300" stroke="#0f172a" strokeWidth="0.5" fill="none"/>
-              
-              {/* Small side streets */}
-              <path d="M0 40 L60 40" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
-              <path d="M240 40 L300 40" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
-              <path d="M0 240 L120 240" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
-              <path d="M180 240 L300 240" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
-              <path d="M45 0 L45 50" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
-              <path d="M255 0 L255 50" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
-              <path d="M45 250 L45 300" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
-              <path d="M255 250 L255 300" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
-              
-              {/* Intersection plaza - small square */}
-              <rect x="82" y="67" width="16" height="16" stroke="#0f172a" strokeWidth="0.4" fill="none" rx="2"/>
-              
-              {/* Another small plaza */}
-              <rect x="202" y="172" width="16" height="16" stroke="#0f172a" strokeWidth="0.4" fill="none" rx="2"/>
-              
-              {/* Circular plaza */}
-              <circle cx="150" cy="130" r="8" stroke="#0f172a" strokeWidth="0.4" fill="none"/>
-              
-              {/* Small roundabout */}
-              <circle cx="90" cy="180" r="5" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
-              <circle cx="210" cy="75" r="5" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
-              
-              {/* Diagonal connecting street */}
-              <path d="M100 85 L130 120" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
-              <path d="M170 140 L200 170" stroke="#0f172a" strokeWidth="0.35" fill="none"/>
-              
-              {/* Curved side road */}
-              <path d="M0 260 Q30 250, 45 280 L45 300" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
-              <path d="M300 260 Q270 250, 255 280 L255 300" stroke="#0f172a" strokeWidth="0.3" fill="none"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#city-map)" />
-        </svg>
+      {/* Hamburg city map background - faded and transparent */}
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+        <img 
+          src={hamburgMap} 
+          alt="" 
+          className="w-[120%] h-[120%] object-contain opacity-[0.06]"
+          aria-hidden="true"
+        />
       </div>
 
       {/* Main content container */}
