@@ -8,24 +8,59 @@ const InfoSection = () => {
     <section className="relative w-full bg-gradient-to-b from-white to-[#f1f5f9]">
       <div className="max-w-[1400px] mx-auto px-[5%] lg:px-[6%] pt-[80px] lg:pt-[120px] pb-[140px] lg:pb-[180px]">
         
-        {/* Top Section - Headline + First 3 Paragraphs */}
-        <div className="max-w-[880px] mb-16 lg:mb-24">
-          <h2 className="text-[36px] md:text-[48px] lg:text-[56px] font-extrabold leading-[1.1] tracking-tight text-[#0f172a] mb-8 lg:mb-12">
-            Kitas in Hamburg – ein Überblick
-          </h2>
+        {/* Top Section - Headline + First 3 Paragraphs with Image */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16 lg:mb-24">
           
-          <div className="space-y-6 lg:space-y-8">
-            <p className="text-[18px] lg:text-[20px] font-normal leading-[1.7] text-[#475569]">
-              In Hamburg gibt es eine große Vielfalt an Kindertagesstätten – von Krippen für die Kleinsten über Kindergärten bis hin zu Horten für Schulkinder. Jede Einrichtung arbeitet mit eigenen pädagogischen Schwerpunkten und Betreuungsangeboten, die sich an den unterschiedlichen Bedürfnissen von Kindern und Familien orientieren.
-            </p>
+          {/* Left - Text */}
+          <div>
+            <h2 className="text-[36px] md:text-[48px] lg:text-[56px] font-extrabold leading-[1.1] tracking-tight text-[#0f172a] mb-8 lg:mb-10">
+              Kitas in Hamburg – ein Überblick
+            </h2>
             
-            <p className="text-[18px] lg:text-[20px] font-normal leading-[1.7] text-[#475569]">
-              Die Organisation und Aufsicht der Kindertagesbetreuung liegt in Hamburg in der Verantwortung der Stadt. Dadurch unterscheiden sich Betreuungsangebote, Platzverfügbarkeit und Verwaltungsstrukturen teils deutlich von anderen Regionen Deutschlands.
-            </p>
+            <div className="space-y-6 lg:space-y-8">
+              <p className="text-[18px] lg:text-[20px] font-normal leading-[1.7] text-[#475569]">
+                In Hamburg gibt es eine große Vielfalt an Kindertagesstätten – von Krippen für die Kleinsten über Kindergärten bis hin zu Horten für Schulkinder. Jede Einrichtung arbeitet mit eigenen pädagogischen Schwerpunkten und Betreuungsangeboten, die sich an den unterschiedlichen Bedürfnissen von Kindern und Familien orientieren.
+              </p>
+              
+              <p className="text-[18px] lg:text-[20px] font-normal leading-[1.7] text-[#475569]">
+                Die Organisation und Aufsicht der Kindertagesbetreuung liegt in Hamburg in der Verantwortung der Stadt. Dadurch unterscheiden sich Betreuungsangebote, Platzverfügbarkeit und Verwaltungsstrukturen teils deutlich von anderen Regionen Deutschlands.
+              </p>
+              
+              <p className="text-[18px] lg:text-[20px] font-normal leading-[1.7] text-[#475569]">
+                Hamburger Kitas werden überwiegend von öffentlichen, freien und kirchlichen Trägern betrieben. Diese Träger gestalten die pädagogische Ausrichtung, stellen Räume und Personal zur Verfügung und tragen die Verantwortung für die Qualität der Betreuung. Die Teams in den Einrichtungen setzen diese Konzepte im Alltag um und sorgen für eine liebevolle, sichere und fördernde Umgebung.
+              </p>
+            </div>
+          </div>
+
+          {/* Right - Image */}
+          <div className="relative">
+            <div className="aspect-[4/3] rounded-[24px] overflow-hidden shadow-xl">
+              <img 
+                src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80" 
+                alt="Kinder in einer Hamburger Kita"
+                className="w-full h-full object-cover"
+              />
+            </div>
             
-            <p className="text-[18px] lg:text-[20px] font-normal leading-[1.7] text-[#475569]">
-              Hamburger Kitas werden überwiegend von öffentlichen, freien und kirchlichen Trägern betrieben. Diese Träger gestalten die pädagogische Ausrichtung, stellen Räume und Personal zur Verfügung und tragen die Verantwortung für die Qualität der Betreuung. Die Teams in den Einrichtungen setzen diese Konzepte im Alltag um und sorgen für eine liebevolle, sichere und fördernde Umgebung.
-            </p>
+            {/* Floating Stats Card */}
+            <div className="absolute -bottom-6 -left-4 lg:-left-8 w-[180px] lg:w-[200px] group cursor-default z-10">
+              <div 
+                className="relative rounded-[20px] px-5 py-4 border border-white/15 shadow-[0_12px_32px_rgba(0,0,0,0.3)] transition-all duration-200 hover:scale-[1.03]"
+                style={{
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  background: 'linear-gradient(135deg, rgba(22,78,99,0.28) 0%, rgba(22,78,99,0.18) 100%)'
+                }}
+              >
+                <div className="flex items-center gap-2.5">
+                  <svg className="w-6 h-6 text-white fill-white" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span className="text-[24px] lg:text-[26px] font-extrabold text-white leading-none">4,7</span>
+                </div>
+                <p className="text-[13px] lg:text-[14px] font-medium text-white/90 mt-1">Ø Bewertung</p>
+              </div>
+            </div>
           </div>
         </div>
 
