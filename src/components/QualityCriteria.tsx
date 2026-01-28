@@ -1,169 +1,163 @@
 import { Star, Phone, Clock, Users, Globe, DollarSign, UserCheck, ThumbsUp, Key } from "lucide-react";
 
-type CardSize = "large" | "medium" | "small";
-type CardColor = "blue" | "green";
-
 interface Criterion {
   icon: typeof Star;
   title: string;
   description: string;
-  size: CardSize;
-  color: CardColor;
+  hasImage?: boolean;
+  color: "blue" | "green" | "teal";
 }
 
 const criteria: Criterion[] = [
   {
     icon: Star,
     title: "Google-Bewertungen",
-    description: "Authentische Erfahrungsberichte von Eltern und Familien, die bereits Erfahrung mit der Einrichtung haben.",
-    size: "large",
-    color: "blue",
+    description: "Authentische Erfahrungsberichte von Eltern und Familien.",
+    hasImage: true,
+    color: "green",
   },
   {
     icon: Phone,
     title: "Testanrufe",
-    description: "Professionelle Bewertung der telefonischen Erreichbarkeit und Freundlichkeit des Personals.",
-    size: "medium",
-    color: "green",
+    description: "Bewertung der telefonischen Erreichbarkeit und Freundlichkeit.",
+    color: "blue",
   },
   {
     icon: Clock,
     title: "Reaktionszeiten",
-    description: "Wie schnell antwortet die Kita auf Anfragen per E-Mail oder Telefon?",
-    size: "small",
-    color: "blue",
+    description: "Wie schnell antwortet die Kita auf Anfragen?",
+    color: "teal",
   },
   {
     icon: UserCheck,
     title: "Kununu-Bewertungen",
-    description: "Einblicke in die Arbeitgeberqualität und Zufriedenheit der Mitarbeitenden.",
-    size: "medium",
-    color: "green",
+    description: "Einblicke in die Arbeitgeberqualität und Mitarbeiterzufriedenheit.",
+    hasImage: true,
+    color: "blue",
   },
   {
     icon: Globe,
     title: "Transparenz der Website",
-    description: "Vollständigkeit und Aktualität der Online-Informationen zur Einrichtung.",
-    size: "large",
-    color: "blue",
+    description: "Vollständigkeit und Aktualität der Online-Informationen.",
+    color: "green",
   },
   {
     icon: Users,
     title: "Gruppengrößen",
-    description: "Verhältnis der Kinder pro Gruppe für eine angemessene Betreuungsintensität.",
-    size: "small",
-    color: "green",
+    description: "Verhältnis der Kinder pro Gruppe.",
+    color: "teal",
   },
   {
     icon: Key,
     title: "Personalschlüssel",
-    description: "Anzahl der Betreuungspersonen pro Kind für optimale Förderung.",
-    size: "medium",
-    color: "blue",
+    description: "Anzahl der Betreuungspersonen pro Kind.",
+    hasImage: true,
+    color: "green",
   },
   {
     icon: DollarSign,
     title: "Kostenstruktur",
-    description: "Transparente Information über Elternbeiträge und zusätzliche Kosten.",
-    size: "small",
-    color: "green",
+    description: "Transparente Information über Elternbeiträge.",
+    color: "blue",
   },
   {
     icon: ThumbsUp,
     title: "User Votes",
-    description: "Community-Bewertungen von Nutzern unserer Plattform.",
-    size: "large",
-    color: "blue",
+    description: "Community-Bewertungen von Plattform-Nutzern.",
+    color: "teal",
   },
 ];
 
-const sizeClasses: Record<CardSize, string> = {
-  large: "md:col-span-2 md:row-span-2",
-  medium: "md:col-span-1 md:row-span-2",
-  small: "md:col-span-1 md:row-span-1",
+const colorStyles = {
+  blue: "bg-blue-100 text-blue-700",
+  green: "bg-emerald-100 text-emerald-700", 
+  teal: "bg-teal-100 text-teal-700",
 };
 
-const CriteriaCard = ({ criterion }: { criterion: Criterion }) => {
+const SmallCard = ({ criterion }: { criterion: Criterion }) => {
   const Icon = criterion.icon;
-  const isBlue = criterion.color === "blue";
   
-  const bgColor = isBlue 
-    ? "rgba(30, 58, 138, 0.22)" 
-    : "rgba(22, 78, 99, 0.22)";
-  const bgColorHover = isBlue 
-    ? "rgba(30, 58, 138, 0.30)" 
-    : "rgba(22, 78, 99, 0.30)";
-
   return (
-    <div
-      className={`
-        group relative overflow-hidden rounded-[24px] p-7
-        backdrop-blur-[18px] border border-white/25
-        shadow-[0_16px_48px_rgba(0,0,0,0.14)]
-        transition-all duration-300 ease-out
-        hover:backdrop-blur-[24px] hover:scale-[1.03] hover:shadow-[0_20px_56px_rgba(0,0,0,0.18)]
-        ${sizeClasses[criterion.size]}
-        flex flex-col
-      `}
-      style={{ 
-        background: bgColor,
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.background = bgColorHover;
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.background = bgColor;
-      }}
-    >
-      {/* Icon */}
-      <div className="mb-2">
-        <Icon className="h-7 w-7 text-foreground" strokeWidth={1.8} />
+    <div className="bg-white rounded-2xl p-5 shadow-sm border border-border/50 hover:shadow-md transition-shadow">
+      <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-3 ${colorStyles[criterion.color]}`}>
+        <Icon className="h-5 w-5" strokeWidth={2} />
       </div>
-      
-      {/* Title */}
-      <h4 className="text-[15px] md:text-[16px] font-bold text-foreground mb-1.5">
+      <h4 className="text-[14px] font-bold text-[#0f172a] mb-1">
         {criterion.title}
       </h4>
-      
-      {/* Description */}
-      <p className="text-[13px] text-foreground/70 leading-relaxed mb-3 flex-grow">
+      <p className="text-[12px] text-[#64748b] leading-relaxed">
         {criterion.description}
       </p>
-      
-      {/* Placeholder Image */}
-      <div className="mt-auto">
+    </div>
+  );
+};
+
+const LargeCard = ({ criterion }: { criterion: Criterion }) => {
+  const Icon = criterion.icon;
+  
+  return (
+    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-border/50 hover:shadow-md transition-shadow">
+      <div className="aspect-[4/3] bg-muted">
         <img
           src="/placeholder.svg"
           alt={criterion.title}
-          className="w-full rounded-xl object-cover bg-muted"
-          style={{ 
-            height: criterion.size === "large" ? "200px" : criterion.size === "medium" ? "140px" : "100px" 
-          }}
+          className="w-full h-full object-cover"
         />
+      </div>
+      <div className="p-5">
+        <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-3 ${colorStyles[criterion.color]}`}>
+          <Icon className="h-5 w-5" strokeWidth={2} />
+        </div>
+        <h4 className="text-[14px] font-bold text-[#0f172a] mb-1">
+          {criterion.title}
+        </h4>
+        <p className="text-[12px] text-[#64748b] leading-relaxed">
+          {criterion.description}
+        </p>
       </div>
     </div>
   );
 };
 
 const QualityCriteria = () => {
+  const cardsWithImages = criteria.filter(c => c.hasImage);
+  const cardsWithoutImages = criteria.filter(c => !c.hasImage);
+
   return (
-    <section id="criteria" className="relative bg-white pt-[120px] pb-[140px]">
-      <div className="max-w-[1360px] mx-auto px-6 md:px-12 lg:px-16">
+    <section id="criteria" className="bg-[#f8fafc] py-[80px] lg:py-[100px]">
+      <div className="max-w-[1200px] mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-[28px] md:text-[34px] lg:text-[38px] font-extrabold text-[#0f172a] mb-3">
+        <div className="text-center mb-10">
+          <h2 className="text-[28px] md:text-[34px] lg:text-[38px] font-extrabold text-[#0f172a] mb-2">
             Unsere Prüfkriterien im Überblick
           </h2>
-          <p className="text-[14px] md:text-[15px] font-medium text-[#475569]">
+          <p className="text-[14px] md:text-[15px] text-[#64748b]">
             So bewerten wir Kitas in Hamburg – objektiv, transparent und unabhängig
           </p>
         </div>
 
-        {/* Masonry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[180px]">
-          {criteria.map((criterion) => (
-            <CriteriaCard key={criterion.title} criterion={criterion} />
-          ))}
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Left column - Cards with images */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+            {cardsWithImages.slice(0, 2).map((criterion) => (
+              <LargeCard key={criterion.title} criterion={criterion} />
+            ))}
+          </div>
+
+          {/* Middle column - Small cards */}
+          <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-4">
+            {cardsWithoutImages.map((criterion) => (
+              <SmallCard key={criterion.title} criterion={criterion} />
+            ))}
+          </div>
+
+          {/* Right column - One more image card */}
+          <div className="lg:col-span-3">
+            {cardsWithImages[2] && (
+              <LargeCard criterion={cardsWithImages[2]} />
+            )}
+          </div>
         </div>
       </div>
     </section>
