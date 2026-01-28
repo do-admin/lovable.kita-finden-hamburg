@@ -34,9 +34,9 @@ const InfoSection = () => {
 
           {/* Right - Image */}
           <div className="relative">
-            <div className="aspect-[4/3] rounded-[24px] overflow-hidden shadow-xl">
+            <div className="aspect-[4/3] rounded-[24px] overflow-hidden shadow-xl bg-muted">
               <img 
-                src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80" 
+                src="/placeholder.svg" 
                 alt="Kinder in einer Hamburger Kita"
                 className="w-full h-full object-cover"
               />
@@ -69,9 +69,9 @@ const InfoSection = () => {
           
           {/* Left - Image */}
           <div className="relative order-2 lg:order-1">
-            <div className="aspect-[4/3] rounded-[24px] overflow-hidden shadow-xl">
+            <div className="aspect-[4/3] rounded-[24px] overflow-hidden shadow-xl bg-muted">
               <img 
-                src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&q=80" 
+                src="/placeholder.svg" 
                 alt="Kinder spielen in einer Hamburger Kita"
                 className="w-full h-full object-cover"
               />
