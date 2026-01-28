@@ -41,20 +41,28 @@ const Header = () => {
               Kitas
             </a>
             <a 
+              href="/#faq" 
+              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
+                isActive("/#faq") ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
+              }`}
+            >
+              FAQ
+            </a>
+            <Link 
+              to="/lexikon"
+              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
+                location.pathname === "/lexikon" ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
+              }`}
+            >
+              Lexikon
+            </Link>
+            <a 
               href="/#ratgeber" 
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
                 isActive("/#ratgeber") ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
               }`}
             >
               Ratgeber
-            </a>
-            <a 
-              href="/#wissen" 
-              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
-                isActive("/#wissen") ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
-              }`}
-            >
-              Wissen
             </a>
             <Link 
               to="/kita-hinzufuegen"
@@ -89,6 +97,24 @@ const Header = () => {
               Kitas
             </a>
             <a 
+              href="/#faq" 
+              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
+                isActive("/#faq") ? "font-semibold text-[#0f172a]" : ""
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              FAQ
+            </a>
+            <Link 
+              to="/lexikon"
+              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
+                location.pathname === "/lexikon" ? "font-semibold text-[#0f172a]" : ""
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Lexikon
+            </Link>
+            <a 
               href="/#ratgeber" 
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
                 isActive("/#ratgeber") ? "font-semibold text-[#0f172a]" : ""
@@ -96,15 +122,6 @@ const Header = () => {
               onClick={() => setMobileMenuOpen(false)}
             >
               Ratgeber
-            </a>
-            <a 
-              href="/#wissen" 
-              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
-                isActive("/#wissen") ? "font-semibold text-[#0f172a]" : ""
-              }`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Wissen
             </a>
             <Link 
               to="/kita-hinzufuegen"
