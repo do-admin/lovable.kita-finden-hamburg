@@ -131,19 +131,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Bottom wave transition */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-        <svg 
-          className="relative block w-full h-[100px] lg:h-[120px]"
-          viewBox="0 0 1200 120" 
-          preserveAspectRatio="none"
-        >
-          <path 
-            d="M0,60 C200,100 400,20 600,60 C800,100 1000,40 1200,80 L1200,120 L0,120 Z" 
-            className="fill-[#e0f2fe]"
-          />
-        </svg>
-      </div>
     </section>
   );
 };

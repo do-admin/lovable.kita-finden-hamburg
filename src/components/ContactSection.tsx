@@ -13,7 +13,7 @@ import {
 
 const ContactSection = () => {
   return (
-    <section className="section-padding">
+    <section className="section-padding bg-[#f1f5f9]">
       <div className="max-w-[760px] mx-auto">
         <h2 className="text-center mb-6">Kontakt</h2>
         <p className="text-muted-foreground mb-8 text-center">

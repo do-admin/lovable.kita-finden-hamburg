@@ -23,7 +23,7 @@ const TrustBlock = () => {
   ];
 
   return (
-    <section className="py-12 border-t border-border bg-muted/20">
+    <section className="py-12 bg-white">
       <div className="container-custom">
         <p className="text-center text-sm text-muted-foreground mb-8">
           Daten basieren auf offiziellen Quellen

@@ -147,7 +147,7 @@ const CriteriaCard = ({ criterion }: { criterion: Criterion }) => {
 
 const QualityCriteria = () => {
   return (
-    <section id="criteria" className="relative bg-[#f9fafb] pt-[120px] pb-[140px]">
+    <section id="criteria" className="relative bg-white pt-[120px] pb-[140px]">
       <div className="max-w-[1360px] mx-auto px-6 md:px-12 lg:px-16">
         {/* Header */}
         <div className="text-center mb-16">

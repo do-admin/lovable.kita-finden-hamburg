@@ -5,8 +5,8 @@ const InfoSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-white to-[#f1f5f9]">
-      <div className="max-w-[1400px] mx-auto px-[5%] lg:px-[6%] pt-[80px] lg:pt-[120px] pb-[140px] lg:pb-[180px]">
+    <section className="relative w-full bg-[#f1f5f9]">
+      <div className="max-w-[1400px] mx-auto px-[5%] lg:px-[6%] py-[80px] lg:py-[120px]">
         
         {/* Top Section - Headline + First 3 Paragraphs with Image */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16 lg:mb-24">
@@ -129,20 +129,6 @@ const InfoSection = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Bottom Wave Transition */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-        <svg 
-          className="relative block w-full h-[100px] lg:h-[120px]"
-          viewBox="0 0 1200 120" 
-          preserveAspectRatio="none"
-        >
-          <path 
-            d="M0,40 C300,100 600,0 900,60 C1050,90 1150,70 1200,50 L1200,120 L0,120 Z" 
-            className="fill-[#d1fae5]"
-          />
-        </svg>
       </div>
     </section>
   );
