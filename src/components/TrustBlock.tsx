@@ -1,33 +1,24 @@
-import logoBMFSFJ from "@/assets/logo-bmfsfj.svg";
-import logoHamburg from "@/assets/logo-hamburg.png";
-import logoAWO from "@/assets/logo-awo.png";
-import logoDiakonie from "@/assets/logo-diakonie.svg";
-
 const TrustBlock = () => {
   const partners = [
     {
       name: "BMFSFJ",
       description: "Offizieller Partner",
       url: "https://www.bmfsfj.de",
-      logo: logoBMFSFJ
     },
     {
       name: "hamburg.de",
       description: "Hamburgs Kita-Behörde",
       url: "https://www.hamburg.de/bsb/",
-      logo: logoHamburg
     },
     {
       name: "AWO Hamburg",
       description: "Kooperationspartner",
       url: "https://www.awo-hamburg.de",
-      logo: logoAWO
     },
     {
       name: "Diakonie Hamburg",
       description: "Soziale Verantwortung",
       url: "https://www.diakonie-hamburg.de",
-      logo: logoDiakonie
     }
   ];
 
@@ -48,9 +39,9 @@ const TrustBlock = () => {
               className="group w-[140px] h-[50px] flex items-center justify-center"
               title={partner.description}
             >
-              <div className="w-full h-full flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
+              <div className="w-full h-full flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300 bg-muted rounded">
                 <img 
-                  src={partner.logo} 
+                  src="/placeholder.svg" 
                   alt={partner.name}
                   className="max-h-[45px] max-w-[130px] object-contain"
                 />

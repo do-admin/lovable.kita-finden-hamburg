@@ -1,6 +1,5 @@
 import { Button } from "./ui/button";
 import { Search } from "lucide-react";
-import heroBackground from "@/assets/hero-background.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -19,11 +18,6 @@ const Hero = () => {
 
   return (
     <section className="relative w-full min-h-[85vh] bg-[#f8fafc] overflow-hidden">
-      {/* Subtle background watermark */}
-      <div 
-        className="absolute inset-0 opacity-[0.08] bg-cover bg-center pointer-events-none"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      />
 
       {/* Main content container */}
       <div className="relative z-10 max-w-[1300px] mx-auto px-[5%] pt-[100px] pb-[80px] lg:pt-[120px] lg:pb-[100px]">
@@ -65,9 +59,9 @@ const Hero = () => {
           <div className="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
             {/* Main image card */}
             <div className="relative w-[85%] sm:w-[320px] lg:w-[380px] lg:-ml-[80px]">
-              <div className="aspect-[3/4] rounded-[20px] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] bg-gradient-to-br from-primary/10 to-primary/5">
+              <div className="aspect-[3/4] rounded-[20px] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] bg-muted">
                 <img 
-                  src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&q=80" 
+                  src="/placeholder.svg" 
                   alt="Kinder in einer Kita" 
                   className="w-full h-full object-cover"
                 />
