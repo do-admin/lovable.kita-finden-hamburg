@@ -40,14 +40,14 @@ const Header = () => {
             >
               Kitas
             </a>
-            <a 
-              href="/#faq" 
+            <Link 
+              to="/faq"
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
-                isActive("/#faq") ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
+                location.pathname === "/faq" ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
               }`}
             >
               FAQ
-            </a>
+            </Link>
             <Link 
               to="/lexikon"
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
@@ -56,14 +56,14 @@ const Header = () => {
             >
               Lexikon
             </Link>
-            <a 
-              href="/#ratgeber" 
+            <Link 
+              to="/ratgeber"
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
-                isActive("/#ratgeber") ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
+                location.pathname === "/ratgeber" || location.pathname.startsWith("/ratgeber/") ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
               }`}
             >
               Ratgeber
-            </a>
+            </Link>
             <Link 
               to="/kita-hinzufuegen"
               className={`px-4 py-2 rounded-full border border-[#0f172a] text-base font-medium text-[#020617] hover:bg-[#0f172a] hover:text-white transition-all ${
@@ -96,15 +96,15 @@ const Header = () => {
             >
               Kitas
             </a>
-            <a 
-              href="/#faq" 
+            <Link 
+              to="/faq"
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
-                isActive("/#faq") ? "font-semibold text-[#0f172a]" : ""
+                location.pathname === "/faq" ? "font-semibold text-[#0f172a]" : ""
               }`}
               onClick={() => setMobileMenuOpen(false)}
             >
               FAQ
-            </a>
+            </Link>
             <Link 
               to="/lexikon"
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
@@ -114,15 +114,15 @@ const Header = () => {
             >
               Lexikon
             </Link>
-            <a 
-              href="/#ratgeber" 
+            <Link 
+              to="/ratgeber"
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
-                isActive("/#ratgeber") ? "font-semibold text-[#0f172a]" : ""
+                location.pathname === "/ratgeber" || location.pathname.startsWith("/ratgeber/") ? "font-semibold text-[#0f172a]" : ""
               }`}
               onClick={() => setMobileMenuOpen(false)}
             >
               Ratgeber
-            </a>
+            </Link>
             <Link 
               to="/kita-hinzufuegen"
               className={`px-4 py-2 rounded-full border border-[#0f172a] text-base font-medium text-[#020617] hover:bg-[#0f172a] hover:text-white transition-all text-center ${

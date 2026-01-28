@@ -1,19 +1,10 @@
-const articles = [
-  {
-    title: "Kita-Suche in Hamburg: So finden Sie die passende Einrichtung",
-    description: "Welche Schritte bei der Suche wichtig sind, wie Sie Prioritäten setzen und worauf Sie bei Besichtigungsterminen achten sollten."
-  },
-  {
-    title: "Kita-Gutschein Hamburg: Voraussetzungen, Antrag & Fristen",
-    description: "Ein verständlicher Überblick über Anspruch, Berechnung und den Online-Antrag für den Kita-Gutschein."
-  },
-  {
-    title: "Eingewöhnung: Wie Ihr Kind gut in der Kita ankommt",
-    description: "Tipps zur Vorbereitung, typische Phasen der Eingewöhnung und sinnvolle Absprachen mit der Kita."
-  }
-];
+import { Link } from "react-router-dom";
+import { ratgeberArticles } from "@/data/ratgeber-articles";
 
 const RatgeberSection = () => {
+  // Show first 3 articles on the homepage
+  const displayedArticles = ratgeberArticles.slice(0, 3);
+
   return (
     <section id="ratgeber" className="max-w-[880px] mx-auto">
       <h2 className="mb-6">Ratgeber für Praxis & Kita-Alltag</h2>
@@ -22,15 +13,24 @@ const RatgeberSection = () => {
       </p>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {articles.map((article) => (
-          <article key={article.title} className="card-shadow rounded-lg p-6 bg-card hover:shadow-lg transition-shadow">
+        {displayedArticles.map((article) => (
+          <article key={article.slug} className="card-shadow rounded-lg p-6 bg-card hover:shadow-lg transition-shadow">
             <h3 className="text-lg font-semibold mb-3">{article.title}</h3>
             <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{article.description}</p>
-            <a href="#artikel" className="text-sm text-primary hover:underline">
+            <Link to={`/ratgeber/${article.slug}`} className="text-sm text-primary hover:underline">
               Zum Artikel →
-            </a>
+            </Link>
           </article>
         ))}
+      </div>
+      
+      <div className="mt-8 text-center">
+        <Link 
+          to="/ratgeber" 
+          className="text-primary hover:underline font-medium"
+        >
+          Alle Ratgeber-Artikel anzeigen →
+        </Link>
       </div>
     </section>
   );
