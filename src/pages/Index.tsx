@@ -27,12 +27,12 @@ const Index = () => {
       <div className="container-custom section-padding">
         <div className="max-w-[1400px] mx-auto space-y-[80px]">
           <KitaListing />
+          <TrustBlock />
           <QualityCriteria />
           <RatgeberSection />
         </div>
       </div>
       
-      <TrustBlock />
       <ContactSection />
       
       <div className="container-custom">
