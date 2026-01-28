@@ -116,17 +116,17 @@ const CriteriaCard = ({ criterion }: { criterion: Criterion }) => {
       }}
     >
       {/* Icon */}
-      <div className="mb-3">
-        <Icon className="h-9 w-9 text-foreground" strokeWidth={1.8} />
+      <div className="mb-2">
+        <Icon className="h-7 w-7 text-foreground" strokeWidth={1.8} />
       </div>
       
       {/* Title */}
-      <h4 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+      <h4 className="text-[15px] md:text-[16px] font-bold text-foreground mb-1.5">
         {criterion.title}
       </h4>
       
       {/* Description */}
-      <p className="text-base text-foreground/80 leading-relaxed mb-4 flex-grow">
+      <p className="text-[13px] text-foreground/70 leading-relaxed mb-3 flex-grow">
         {criterion.description}
       </p>
       
@@ -150,11 +150,11 @@ const QualityCriteria = () => {
     <section id="criteria" className="relative bg-white pt-[120px] pb-[140px]">
       <div className="max-w-[1360px] mx-auto px-6 md:px-12 lg:px-16">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-[28px] md:text-[34px] lg:text-[38px] font-extrabold text-[#0f172a] mb-3">
             Unsere Prüfkriterien im Überblick
           </h2>
-          <p className="text-xl md:text-2xl font-medium text-muted-foreground">
+          <p className="text-[14px] md:text-[15px] font-medium text-[#475569]">
             So bewerten wir Kitas in Hamburg – objektiv, transparent und unabhängig
           </p>
         </div>

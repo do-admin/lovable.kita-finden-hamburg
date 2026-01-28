@@ -25,29 +25,29 @@ const Hero = () => {
           
           {/* Left column - Text content */}
           <div className="text-center lg:text-left">
-            <h1 className="text-[36px] md:text-[48px] lg:text-[56px] font-extrabold leading-[1.08] tracking-tight text-[#0f172a]">
+            <h1 className="text-[32px] md:text-[38px] lg:text-[42px] font-extrabold leading-[1.1] tracking-tight text-[#0f172a] lg:text-left">
               Finde die passende Kita in Hamburg
             </h1>
             
-            <p className="mt-6 lg:mt-8 text-[18px] md:text-[22px] lg:text-[24px] font-normal leading-[1.45] text-[#334155] max-w-[560px] mx-auto lg:mx-0">
+            <p className="mt-5 lg:mt-6 text-[14px] md:text-[15px] font-normal leading-[1.6] text-[#475569] max-w-[480px] mx-auto lg:mx-0">
               Vergleiche Kitas in allen Hamburger Bezirken und finde Schritt für Schritt die Betreuung, die wirklich zu deinem Alltag und deinem Kind passt.
             </p>
             
             {/* Search bar */}
-            <form onSubmit={handleSearch} className="mt-8 lg:mt-10 flex w-full sm:max-w-[480px] mx-auto lg:mx-0">
+            <form onSubmit={handleSearch} className="mt-6 lg:mt-8 flex w-full sm:max-w-[420px] mx-auto lg:mx-0">
               <div className="relative flex-1">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Stadtteil, Adresse oder Kita-Name …"
-                  className="w-full h-[56px] lg:h-[60px] pl-12 pr-4 rounded-l-full border border-r-0 border-border bg-background text-foreground text-base focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full h-[48px] lg:h-[52px] pl-10 pr-4 rounded-l-full border border-r-0 border-border bg-background text-foreground text-[14px] focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
               <Button 
                 type="submit"
-                className="h-[56px] lg:h-[60px] px-6 lg:px-8 rounded-r-full text-base lg:text-lg font-bold"
+                className="h-[48px] lg:h-[52px] px-5 lg:px-6 rounded-r-full text-[14px] font-bold"
               >
                 Kitas anzeigen
               </Button>

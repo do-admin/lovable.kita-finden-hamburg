@@ -13,20 +13,20 @@ const InfoSection = () => {
           
           {/* Left - Text */}
           <div>
-            <h2 className="text-[36px] md:text-[48px] lg:text-[56px] font-extrabold leading-[1.1] tracking-tight text-[#0f172a] mb-8 lg:mb-10">
+            <h2 className="text-[28px] md:text-[34px] lg:text-[38px] font-extrabold leading-[1.15] tracking-tight text-[#0f172a] mb-6 lg:mb-8">
               Kitas in Hamburg – ein Überblick
             </h2>
             
-            <div className="space-y-6 lg:space-y-8">
-              <p className="text-[18px] lg:text-[20px] font-normal leading-[1.7] text-[#475569]">
+            <div className="space-y-4 lg:space-y-5">
+              <p className="text-[14px] lg:text-[15px] font-normal leading-[1.7] text-[#475569]">
                 In Hamburg gibt es eine große Vielfalt an Kindertagesstätten – von Krippen für die Kleinsten über Kindergärten bis hin zu Horten für Schulkinder. Jede Einrichtung arbeitet mit eigenen pädagogischen Schwerpunkten und Betreuungsangeboten, die sich an den unterschiedlichen Bedürfnissen von Kindern und Familien orientieren.
               </p>
               
-              <p className="text-[18px] lg:text-[20px] font-normal leading-[1.7] text-[#475569]">
+              <p className="text-[14px] lg:text-[15px] font-normal leading-[1.7] text-[#475569]">
                 Die Organisation und Aufsicht der Kindertagesbetreuung liegt in Hamburg in der Verantwortung der Stadt. Dadurch unterscheiden sich Betreuungsangebote, Platzverfügbarkeit und Verwaltungsstrukturen teils deutlich von anderen Regionen Deutschlands.
               </p>
               
-              <p className="text-[18px] lg:text-[20px] font-normal leading-[1.7] text-[#475569]">
+              <p className="text-[14px] lg:text-[15px] font-normal leading-[1.7] text-[#475569]">
                 Hamburger Kitas werden überwiegend von öffentlichen, freien und kirchlichen Trägern betrieben. Diese Träger gestalten die pädagogische Ausrichtung, stellen Räume und Personal zur Verfügung und tragen die Verantwortung für die Qualität der Betreuung. Die Teams in den Einrichtungen setzen diese Konzepte im Alltag um und sorgen für eine liebevolle, sichere und fördernde Umgebung.
               </p>
             </div>
@@ -101,28 +101,28 @@ const InfoSection = () => {
 
           {/* Right - Text + CTAs */}
           <div className="order-1 lg:order-2">
-            <div className="space-y-6 lg:space-y-8 mb-10 lg:mb-12">
-              <p className="text-[18px] lg:text-[20px] font-normal leading-[1.7] text-[#475569]">
+            <div className="space-y-4 lg:space-y-5 mb-8 lg:mb-10">
+              <p className="text-[14px] lg:text-[15px] font-normal leading-[1.7] text-[#475569]">
                 Viele Kitas in Hamburg bieten zusätzliche Schwerpunkte, zum Beispiel in den Bereichen Sprache, Musik, Bewegung, Naturpädagogik oder Inklusion. So finden Eltern für jedes Kind ein passendes Betreuungsangebot – vom Stadtzentrum bis in die äußeren Stadtteile.
               </p>
               
-              <p className="text-[20px] lg:text-[22px] font-medium leading-[1.7] text-[#1e40af]">
+              <p className="text-[15px] lg:text-[16px] font-medium leading-[1.7] text-[#1e40af]">
                 Mit „Kita finden Hamburg" bekommst du einen unabhängigen Überblick über die Kindertagesstätten in der Stadt. Du kannst Kitas nach Bezirk und Stadtteil filtern, dich über pädagogische Konzepte informieren und mit Hilfe von Kriterien und Bewertungen schneller eine Einrichtung finden, die wirklich zu deiner Familie passt.
               </p>
             </div>
             
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Button 
                 onClick={() => navigate("/kitas")}
-                className="h-[56px] lg:h-[60px] px-8 rounded-full text-[17px] lg:text-[18px] font-bold bg-[#1e40af] hover:bg-[#1e3a8a] text-white"
+                className="h-[48px] lg:h-[52px] px-6 rounded-full text-[14px] font-bold bg-[#1e40af] hover:bg-[#1e3a8a] text-white"
               >
                 Kitas in Hamburg finden
               </Button>
               <Button 
                 variant="outline"
                 onClick={() => navigate("/bezirke")}
-                className="h-[56px] lg:h-[60px] px-8 rounded-full text-[17px] lg:text-[18px] font-bold border-2 border-[#1e40af] text-[#1e40af] hover:bg-[#1e40af]/5"
+                className="h-[48px] lg:h-[52px] px-6 rounded-full text-[14px] font-bold border-2 border-[#1e40af] text-[#1e40af] hover:bg-[#1e40af]/5"
               >
                 Alle Bezirke anzeigen
               </Button>
