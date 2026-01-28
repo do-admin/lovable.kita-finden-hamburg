@@ -77,14 +77,14 @@ const Hero = () => {
                     background: 'linear-gradient(135deg, rgba(24,0,173,0.32) 0%, rgba(24,0,173,0.18) 100%)'
                   }}
                 >
-                  <div className="flex items-center gap-3">
-                    <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <div className="flex items-center gap-3">
+                    <svg className="w-8 h-8 text-[#0f172a]" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 3L4 9v12h16V9l-8-6zm0 2.5L18 10v9H6v-9l6-4.5z"/>
                       <rect x="10" y="14" width="4" height="5" fill="currentColor"/>
                     </svg>
-                    <span className="text-[28px] lg:text-[32px] font-extrabold text-white leading-none">+120</span>
+                    <span className="text-[28px] lg:text-[32px] font-extrabold text-[#0f172a] leading-none">+120</span>
                   </div>
-                  <p className="text-[15px] lg:text-[16px] font-medium text-white/90 mt-1">Kitas gelistet</p>
+                  <p className="text-[15px] lg:text-[16px] font-medium text-[#0f172a]/90 mt-1">Kitas gelistet</p>
                 </div>
               </div>
 
@@ -101,26 +101,26 @@ const Hero = () => {
                   <div className="flex items-center justify-between gap-6 sm:gap-12">
                     {/* Rating block */}
                     <div className="flex items-center gap-3">
-                      <svg className="w-7 h-7 text-white fill-white" viewBox="0 0 24 24">
+                      <svg className="w-7 h-7 text-[#0f172a] fill-[#0f172a]" viewBox="0 0 24 24">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                       </svg>
                       <div>
-                        <p className="text-[28px] sm:text-[32px] font-extrabold text-white leading-none">4,7</p>
-                        <p className="text-[14px] sm:text-[15px] font-medium text-white/90 mt-0.5">Ø Bewertung</p>
+                        <p className="text-[28px] sm:text-[32px] font-extrabold text-[#0f172a] leading-none">4,7</p>
+                        <p className="text-[14px] sm:text-[15px] font-medium text-[#0f172a]/90 mt-0.5">Ø Bewertung</p>
                       </div>
                     </div>
                     
                     {/* Divider */}
-                    <div className="w-px h-16 bg-white/18" />
+                    <div className="w-px h-16 bg-[#0f172a]/18" />
                     
                     {/* Satisfaction block */}
                     <div className="flex items-center gap-3">
-                      <svg className="w-7 h-7 text-white fill-white" viewBox="0 0 24 24">
+                      <svg className="w-7 h-7 text-[#0f172a] fill-[#0f172a]" viewBox="0 0 24 24">
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                       </svg>
                       <div>
-                        <p className="text-[28px] sm:text-[32px] font-extrabold text-white leading-none">92%</p>
-                        <p className="text-[14px] sm:text-[15px] font-medium text-white/90 mt-0.5">Zufriedenheit</p>
+                        <p className="text-[28px] sm:text-[32px] font-extrabold text-[#0f172a] leading-none">92%</p>
+                        <p className="text-[14px] sm:text-[15px] font-medium text-[#0f172a]/90 mt-0.5">Zufriedenheit</p>
                       </div>
                     </div>
                   </div>
