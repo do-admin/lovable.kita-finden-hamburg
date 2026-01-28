@@ -6,16 +6,16 @@ const steps = [
     heading: "Suchen & eingrenzen",
     text: "Gib einen Stadtteil, eine Adresse oder den Namen einer Kita in die Suche ein.",
     icon: Search,
-    color: "bg-[#e0f2fe]",
-    iconColor: "text-[#0284c7]",
+    color: "bg-[#1800ad]/10",
+    iconColor: "text-[#1800ad]",
   },
   {
     number: 2,
     heading: "Kitas vergleichen",
     text: "Vergleiche mehrere Kitas anhand von Lage, Größe und pädagogischen Schwerpunkten.",
     icon: GitCompare,
-    color: "bg-[#fce7f3]",
-    iconColor: "text-[#db2777]",
+    color: "bg-[#f88820]/10",
+    iconColor: "text-[#f88820]",
     highlighted: true,
   },
   {
@@ -23,8 +23,8 @@ const steps = [
     heading: "Details prüfen",
     text: "Sieh dir die Detailseiten an, informiere dich über Konzepte und Bewertungen.",
     icon: FileCheck,
-    color: "bg-[#fef3c7]",
-    iconColor: "text-[#d97706]",
+    color: "bg-[#00bf63]/10",
+    iconColor: "text-[#00bf63]",
   },
 ];
 
@@ -87,9 +87,9 @@ const HowToUse = () => {
           </div>
 
           {/* Decorative dots */}
-          <div className="hidden md:block absolute -left-8 top-1/2 w-3 h-3 rounded-full bg-[#e0f2fe]" />
-          <div className="hidden md:block absolute -right-8 top-1/3 w-4 h-4 rounded-full bg-[#fef3c7]" />
-          <div className="hidden md:block absolute left-1/4 -bottom-4 w-2 h-2 rounded-full bg-[#fce7f3]" />
+          <div className="hidden md:block absolute -left-8 top-1/2 w-3 h-3 rounded-full bg-[#1800ad]/20" />
+          <div className="hidden md:block absolute -right-8 top-1/3 w-4 h-4 rounded-full bg-[#00bf63]/20" />
+          <div className="hidden md:block absolute left-1/4 -bottom-4 w-2 h-2 rounded-full bg-[#f88820]/20" />
         </div>
       </div>
     </section>
