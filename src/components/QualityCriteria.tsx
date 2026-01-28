@@ -69,9 +69,9 @@ const criteria: Criterion[] = [
 ];
 
 const colorStyles = {
-  blue: "bg-primary/10 text-primary",
-  green: "bg-success/10 text-success", 
-  teal: "bg-accent/10 text-accent",
+  blue: "bg-[#1800ad] text-white",
+  green: "bg-[#00bf63] text-white", 
+  teal: "bg-[#f88820] text-white",
 };
 
 const SmallCard = ({ criterion }: { criterion: Criterion }) => {
