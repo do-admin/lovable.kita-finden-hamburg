@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import logoKitaFinden from "@/assets/logo-kita-finden-hamburg.webp";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,13 +17,17 @@ const Header = () => {
   
   return (
     <header className="w-full bg-background sticky top-0 z-50 border-b border-[#e5e7eb]">
-      <div className="max-w-[1200px] mx-auto px-6 py-4">
+      <div className="max-w-[1200px] mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
           <Link 
             to="/" 
-            className="text-[20px] font-bold tracking-[-0.02em] cursor-pointer text-[#020617] hover:text-[#0f172a]"
+            className="cursor-pointer"
           >
-            kita-finden-hamburg.de
+            <img 
+              src={logoKitaFinden} 
+              alt="Kita finden Hamburg" 
+              className="h-10 w-auto"
+            />
           </Link>
           
           {/* Desktop Navigation */}
