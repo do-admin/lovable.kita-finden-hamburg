@@ -25,7 +25,7 @@ const Hero = () => {
         <img 
           src={hamburgMap} 
           alt="" 
-          className="w-[200%] sm:w-[150%] lg:w-[120%] h-auto min-h-full object-contain opacity-30"
+          className="w-[200%] sm:w-[150%] lg:w-[120%] h-auto min-h-full object-contain opacity-[0.25]"
           aria-hidden="true"
         />
       </div>
