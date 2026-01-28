@@ -1,75 +1,18 @@
 import { useState, useMemo } from "react";
 import { Search, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-
-const articles = [
-  {
-    category: "Kita-Suche",
-    title: "Kita-Suche in Hamburg: So finden Sie die passende Einrichtung",
-    description: "Welche Schritte bei der Suche wichtig sind, wie Sie Prioritäten setzen und worauf Sie bei Besichtigungsterminen achten sollten.",
-    readTime: "8 Min. Lesezeit"
-  },
-  {
-    category: "Kita-Gutschein",
-    title: "Kita-Gutschein Hamburg: Voraussetzungen, Antrag & Fristen",
-    description: "Ein verständlicher Überblick über Anspruch, Berechnung und den Online-Antrag für den Kita-Gutschein.",
-    readTime: "10 Min. Lesezeit"
-  },
-  {
-    category: "Eingewöhnung",
-    title: "Eingewöhnung: Wie Ihr Kind gut in der Kita ankommt",
-    description: "Tipps zur Vorbereitung, typische Phasen der Eingewöhnung und sinnvolle Absprachen mit der Kita.",
-    readTime: "7 Min. Lesezeit"
-  },
-  {
-    category: "Kita-Träger",
-    title: "Kita-Träger in Hamburg: Wer steckt hinter den Einrichtungen?",
-    description: "Überblick über öffentliche, freie und kirchliche Träger in der Hansestadt und ihre Besonderheiten.",
-    readTime: "6 Min. Lesezeit"
-  },
-  {
-    category: "Betreuungszeiten",
-    title: "Betreuungszeiten & Modelle: Von Halbtags bis Ganztag",
-    description: "Welche Betreuungsmodelle es in Hamburg gibt und wie sie sich unterscheiden.",
-    readTime: "5 Min. Lesezeit"
-  },
-  {
-    category: "Pädagogik",
-    title: "Pädagogische Konzepte: Montessori, Reggio & mehr",
-    description: "Ein Überblick über verschiedene pädagogische Ansätze und was sie für den Kita-Alltag bedeuten.",
-    readTime: "9 Min. Lesezeit"
-  },
-  {
-    category: "Inklusion",
-    title: "Inklusion & besondere Bedarfe in der Kita",
-    description: "Wie Hamburger Kitas Kinder mit zusätzlichem Unterstützungsbedarf begleiten.",
-    readTime: "7 Min. Lesezeit"
-  },
-  {
-    category: "Kosten",
-    title: "Kosten & Elternbeiträge: Was Familien einplanen sollten",
-    description: "Ein Überblick über die Kostenstruktur und was Eltern in Hamburg finanziell erwartet.",
-    readTime: "6 Min. Lesezeit"
-  },
-  {
-    category: "Recht",
-    title: "Rechte & Pflichten von Eltern in der Kita",
-    description: "Wichtige rechtliche Grundlagen für Eltern verständlich erklärt.",
-    readTime: "8 Min. Lesezeit"
-  }
-];
-
-const categories = [...new Set(articles.map(a => a.category))];
+import { ratgeberArticles, categories } from "@/data/ratgeber-articles";
 
 const Ratgeber = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const filteredArticles = useMemo(() => {
-    return articles.filter(article => {
+    return ratgeberArticles.filter(article => {
       const matchesSearch = !searchTerm.trim() || 
         article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         article.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -156,33 +99,32 @@ const Ratgeber = () => {
               </div>
             ) : (
               <div className="grid gap-6">
-                {filteredArticles.map((article, index) => (
-                  <Card 
-                    key={index} 
-                    className="border-border hover:shadow-md transition-shadow duration-200 group cursor-pointer"
-                  >
-                    <CardContent className="p-6">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-3">
-                            <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-                              {article.category}
-                            </span>
-                            <span className="text-xs text-muted-foreground">
-                              {article.readTime}
-                            </span>
+                {filteredArticles.map((article) => (
+                  <Link key={article.slug} to={`/ratgeber/${article.slug}`}>
+                    <Card className="border-border hover:shadow-md transition-shadow duration-200 group cursor-pointer">
+                      <CardContent className="p-6">
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-3 mb-3">
+                              <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                                {article.category}
+                              </span>
+                              <span className="text-xs text-muted-foreground">
+                                {article.readTime}
+                              </span>
+                            </div>
+                            <h3 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
+                              {article.title}
+                            </h3>
+                            <p className="text-muted-foreground leading-relaxed">
+                              {article.description}
+                            </p>
                           </div>
-                          <h3 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
-                            {article.title}
-                          </h3>
-                          <p className="text-muted-foreground leading-relaxed">
-                            {article.description}
-                          </p>
+                          <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors mt-1 flex-shrink-0" />
                         </div>
-                        <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors mt-1 flex-shrink-0" />
-                      </div>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 ))}
               </div>
             )}
