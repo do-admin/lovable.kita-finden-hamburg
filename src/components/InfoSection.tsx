@@ -53,12 +53,12 @@ const InfoSection = () => {
                 }}
               >
                 <div className="flex items-center gap-2.5">
-                  <svg className="w-6 h-6 text-white fill-white" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-[#0f172a] fill-[#0f172a]" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
-                  <span className="text-[24px] lg:text-[26px] font-extrabold text-white leading-none">4,7</span>
+                  <span className="text-[24px] lg:text-[26px] font-extrabold text-[#0f172a] leading-none">4,7</span>
                 </div>
-                <p className="text-[13px] lg:text-[14px] font-medium text-white/90 mt-1">Ø Bewertung</p>
+                <p className="text-[13px] lg:text-[14px] font-medium text-[#0f172a]/90 mt-1">Ø Bewertung</p>
               </div>
             </div>
           </div>
@@ -88,13 +88,13 @@ const InfoSection = () => {
                 }}
               >
                 <div className="flex items-center gap-3">
-                  <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+                  <svg className="w-7 h-7 text-[#0f172a]" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 3L4 9v12h16V9l-8-6zm0 2.5L18 10v9H6v-9l6-4.5z"/>
                     <rect x="10" y="14" width="4" height="5" fill="currentColor"/>
                   </svg>
-                  <span className="text-[26px] lg:text-[30px] font-extrabold text-white leading-none">+1.200</span>
+                  <span className="text-[26px] lg:text-[30px] font-extrabold text-[#0f172a] leading-none">+1.200</span>
                 </div>
-                <p className="text-[14px] lg:text-[15px] font-medium text-white/90 mt-1">Kitas in Hamburg</p>
+                <p className="text-[14px] lg:text-[15px] font-medium text-[#0f172a]/90 mt-1">Kitas in Hamburg</p>
               </div>
             </div>
           </div>
