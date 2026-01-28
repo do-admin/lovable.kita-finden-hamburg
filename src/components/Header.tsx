@@ -17,7 +17,7 @@ const Header = () => {
   
   return (
     <header className="w-full bg-background sticky top-0 z-50 border-b border-[#e5e7eb]">
-      <div className="max-w-[1200px] mx-auto px-6 py-3">
+      <div className="max-w-[1200px] mx-auto px-6 py-2">
         <div className="flex items-center justify-between">
           <Link 
             to="/" 
@@ -26,7 +26,7 @@ const Header = () => {
             <img 
               src={logoKitaFinden} 
               alt="Kita finden Hamburg" 
-              className="h-10 w-auto"
+              className="h-14 w-auto"
             />
           </Link>
           
