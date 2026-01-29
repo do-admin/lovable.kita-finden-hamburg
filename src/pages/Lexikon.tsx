@@ -1,13 +1,15 @@
 import { useState, useMemo } from "react";
-import { Search } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
+import LexikonSidebar from "@/components/LexikonSidebar";
+import LexikonHero from "@/components/LexikonHero";
+import LexikonCard from "@/components/LexikonCard";
 import lexikonData from "@/data/lexikon.json";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Lexikon = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const isMobile = useIsMobile();
 
   // Convert lexikon data to array and sort alphabetically
   const lexikonEntries = useMemo(() => {
@@ -44,90 +46,143 @@ const Lexikon = () => {
   }, [filteredEntries]);
 
   const sortedLetters = Object.keys(groupedEntries).sort();
+  
+  // Get all available letters from unfiltered data
+  const availableLetters = useMemo(() => {
+    const letters = new Set<string>();
+    lexikonEntries.forEach(entry => {
+      letters.add(entry.term[0].toUpperCase());
+    });
+    return Array.from(letters).sort();
+  }, [lexikonEntries]);
+
+  const handleLetterClick = (letter: string) => {
+    const element = document.getElementById(`letter-${letter}`);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
       
-      {/* Hero Section */}
-      <section className="bg-background border-b border-border">
-        <div className="container-custom pt-[80px] pb-[60px]">
-          <div className="max-w-[680px] mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Kita-Lexikon
-            </h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              Alle wichtigen Begriffe rund um Kita-Suche, Anmeldung und Betreuung in Hamburg – 
-              verständlich erklärt.
-            </p>
-            
-            {/* Search Bar */}
-            <div className="relative max-w-[540px] mx-auto">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-              <Input
-                type="text"
-                placeholder="Begriff suchen..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 h-12 text-base border-border bg-background"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Lexikon Content */}
-      <section className="flex-1 section-padding">
+      <main className="flex-1 section-padding">
         <div className="container-custom">
-          <div className="max-w-[900px] mx-auto">
-            {filteredEntries.length === 0 ? (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground text-lg">
-                  Keine Einträge gefunden für "{searchTerm}"
-                </p>
-              </div>
-            ) : (
-              <div className="space-y-12">
-                {sortedLetters.map(letter => (
-                  <div key={letter} id={letter}>
-                    <div className="mb-6 pb-2 border-b border-border">
-                      <h2 className="text-3xl font-bold text-foreground">
-                        {letter}
-                      </h2>
-                    </div>
-                    
-                    <div className="space-y-4">
-                      {groupedEntries[letter].map((entry, index) => (
-                        <Card 
-                          key={index} 
-                          className="border-border hover:shadow-md transition-shadow duration-200"
-                        >
-                          <CardContent className="p-6">
-                            <h3 className="text-xl font-semibold mb-3 text-foreground">
-                              {entry.term}
-                            </h3>
-                            <p className="text-muted-foreground leading-relaxed">
-                              {entry.definition}
-                            </p>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
+          {/* Mobile Layout */}
+          {isMobile && (
+            <div className="max-w-[900px] mx-auto">
+              <LexikonSidebar 
+                searchTerm={searchTerm}
+                onSearchChange={setSearchTerm}
+                availableLetters={availableLetters}
+                onLetterClick={handleLetterClick}
+                isMobile={true}
+              />
+              
+              <LexikonHero />
+              
+              {/* Entries */}
+              <div id="entries" className="space-y-10">
+                {filteredEntries.length === 0 ? (
+                  <div className="text-center py-12">
+                    <p className="text-muted-foreground text-lg">
+                      Keine Einträge gefunden für "{searchTerm}"
+                    </p>
                   </div>
-                ))}
+                ) : (
+                  sortedLetters.map(letter => (
+                    <div key={letter} id={`letter-${letter}`}>
+                      <div className="mb-4 pb-2 border-b border-border">
+                        <h2 className="text-2xl font-bold text-foreground">
+                          {letter}
+                        </h2>
+                      </div>
+                      <div className="grid gap-4">
+                        {groupedEntries[letter].map((entry, index) => (
+                          <LexikonCard 
+                            key={entry.term}
+                            term={entry.term}
+                            definition={entry.definition}
+                            accentColor={index % 2 === 0 ? "primary" : "success"}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
-            )}
-            
-            {/* Entry Count */}
-            {filteredEntries.length > 0 && (
-              <div className="mt-12 text-center text-sm text-muted-foreground">
-                {filteredEntries.length} {filteredEntries.length === 1 ? 'Begriff' : 'Begriffe'} 
-                {searchTerm && ` für "${searchTerm}"`}
+              
+              {/* Entry Count */}
+              {filteredEntries.length > 0 && (
+                <div className="mt-8 text-center text-sm text-muted-foreground">
+                  {filteredEntries.length} {filteredEntries.length === 1 ? 'Begriff' : 'Begriffe'}
+                  {searchTerm && ` für "${searchTerm}"`}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Desktop Layout - Two Columns */}
+          {!isMobile && (
+            <div className="flex gap-10 max-w-[1200px] mx-auto">
+              {/* Left Sidebar - 25-30% */}
+              <div className="w-[280px] flex-shrink-0">
+                <LexikonSidebar 
+                  searchTerm={searchTerm}
+                  onSearchChange={setSearchTerm}
+                  availableLetters={availableLetters}
+                  onLetterClick={handleLetterClick}
+                />
               </div>
-            )}
-          </div>
+              
+              {/* Right Content Area - 70-75% */}
+              <div className="flex-1 min-w-0">
+                <LexikonHero />
+                
+                {/* Entries - 2 columns */}
+                <div id="entries" className="space-y-10">
+                  {filteredEntries.length === 0 ? (
+                    <div className="text-center py-12">
+                      <p className="text-muted-foreground text-lg">
+                        Keine Einträge gefunden für "{searchTerm}"
+                      </p>
+                    </div>
+                  ) : (
+                    sortedLetters.map(letter => (
+                      <div key={letter} id={`letter-${letter}`}>
+                        <div className="mb-4 pb-2 border-b border-border">
+                          <h2 className="text-2xl font-bold text-foreground">
+                            {letter}
+                          </h2>
+                        </div>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          {groupedEntries[letter].map((entry, index) => (
+                            <LexikonCard 
+                              key={entry.term}
+                              term={entry.term}
+                              definition={entry.definition}
+                              accentColor={index % 2 === 0 ? "primary" : "success"}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+                
+                {/* Entry Count */}
+                {filteredEntries.length > 0 && (
+                  <div className="mt-10 text-center text-sm text-muted-foreground">
+                    {filteredEntries.length} {filteredEntries.length === 1 ? 'Begriff' : 'Begriffe'}
+                    {searchTerm && ` für "${searchTerm}"`}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
-      </section>
+      </main>
 
       <Footer />
     </div>
