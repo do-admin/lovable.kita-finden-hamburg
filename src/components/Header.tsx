@@ -55,15 +55,14 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a 
-              href="/#kitas"
-              onClick={handleKitasClick}
-              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all cursor-pointer ${
-                isActive("/#kitas") ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
+            <Link 
+              to="/suche"
+              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
+                location.pathname === "/suche" || location.pathname === "/kitas" ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
               }`}
             >
               Kitas
-            </a>
+            </Link>
             <Link 
               to="/faq"
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
@@ -111,15 +110,15 @@ const Header = () => {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 flex flex-col gap-4 border-t border-[#e5e7eb] pt-4">
-            <a 
-              href="/#kitas"
-              onClick={handleKitasClick}
-              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 cursor-pointer ${
-                isActive("/#kitas") ? "font-semibold text-[#0f172a]" : ""
+            <Link 
+              to="/suche"
+              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
+                location.pathname === "/suche" || location.pathname === "/kitas" ? "font-semibold text-[#0f172a]" : ""
               }`}
+              onClick={() => setMobileMenuOpen(false)}
             >
               Kitas
-            </a>
+            </Link>
             <Link 
               to="/faq"
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
