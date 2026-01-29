@@ -121,7 +121,12 @@ const InfoSection = () => {
               </Button>
               <Button 
                 variant="outline"
-                onClick={() => navigate("/#beliebte-stadtteile")}
+                onClick={() => {
+                  navigate("/#beliebte-stadtteile");
+                  setTimeout(() => {
+                    document.getElementById("beliebte-stadtteile")?.scrollIntoView({ behavior: "smooth" });
+                  }, 100);
+                }}
                 className="h-[48px] lg:h-[52px] px-6 rounded-full text-[14px] font-bold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
               >
                 Alle Bezirke anzeigen
