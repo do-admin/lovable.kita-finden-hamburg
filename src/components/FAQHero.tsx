@@ -22,12 +22,12 @@ const FAQHero = () => {
           {/* Left Text & CTA Area */}
           <div className="lg:col-span-6 order-2 lg:order-1 text-left">
             {/* Main Headline */}
-            <h1 className="text-[32px] md:text-[40px] lg:text-[48px] font-extrabold leading-[1.1] tracking-tight text-primary mb-5">
+            <h1 className="text-[32px] md:text-[40px] lg:text-[52px] font-extrabold leading-[1.15] tracking-tight text-primary mb-5 md:mb-6">
               Häufige Fragen – schnell beantwortet
             </h1>
             
             {/* Subheadline */}
-            <p className="text-[16px] md:text-[18px] lg:text-[20px] font-medium leading-[1.5] text-[#475569] max-w-[520px] mx-auto lg:mx-0 mb-8">
+            <p className="text-[15px] md:text-[16px] lg:text-[18px] font-normal leading-[1.6] text-[#475569] max-w-[480px] mb-8">
               Alles Wichtige zur Kita-Suche, Gutschein, Eingewöhnung & mehr – klar und verständlich erklärt.
             </p>
             
@@ -42,21 +42,21 @@ const FAQHero = () => {
             </div>
             
             {/* Trust Statistics Pills */}
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-              <div className="flex items-center gap-2 px-4 py-2.5 bg-success/10 border border-success/20 rounded-full">
+            <div className="flex flex-wrap gap-3 justify-start">
+              <div className="flex items-center gap-2 px-5 py-3 bg-success/10 border border-success/20 rounded-full">
                 <FileText className="w-4 h-4 text-success" />
-                <span className="text-[14px] font-bold text-[#0f172a]">30+</span>
-                <span className="text-[13px] text-[#475569]">Artikel & Antworten</span>
+                <span className="text-[14px] md:text-[15px] font-bold leading-[1.5] text-[#0f172a]">30+</span>
+                <span className="text-[13px] md:text-[14px] font-normal leading-[1.5] text-[#475569]">Artikel & Antworten</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2.5 bg-accent/10 border border-accent/20 rounded-full">
+              <div className="flex items-center gap-2 px-5 py-3 bg-accent/10 border border-accent/20 rounded-full">
                 <Star className="w-4 h-4 text-accent fill-accent" />
-                <span className="text-[14px] font-bold text-[#0f172a]">4,8 Ø</span>
-                <span className="text-[13px] text-[#475569]">Bewertung</span>
+                <span className="text-[14px] md:text-[15px] font-bold leading-[1.5] text-[#0f172a] whitespace-nowrap">4,8 Ø</span>
+                <span className="text-[13px] md:text-[14px] font-normal leading-[1.5] text-[#475569]">Bewertung</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2.5 bg-success/10 border border-success/20 rounded-full">
+              <div className="flex items-center gap-2 px-5 py-3 bg-success/10 border border-success/20 rounded-full">
                 <Heart className="w-4 h-4 text-success fill-success" />
-                <span className="text-[14px] font-bold text-[#0f172a]">92%</span>
-                <span className="text-[13px] text-[#475569]">Zufriedenheit</span>
+                <span className="text-[14px] md:text-[15px] font-bold leading-[1.5] text-[#0f172a]">92%</span>
+                <span className="text-[13px] md:text-[14px] font-normal leading-[1.5] text-[#475569]">Zufriedenheit</span>
               </div>
             </div>
           </div>
@@ -91,34 +91,34 @@ const FAQHero = () => {
               {/* Overlapping Trust Cards */}
               
               {/* Card 1 - Top Right */}
-              <div className="absolute -top-4 -right-4 lg:top-4 lg:-right-8 bg-primary text-white px-5 py-3 rounded-2xl shadow-xl backdrop-blur-sm transform rotate-3 hover:rotate-0 transition-transform">
+              <div className="absolute -top-4 -right-4 lg:top-4 lg:-right-8 bg-primary text-white px-6 py-4 rounded-2xl shadow-xl backdrop-blur-sm transform rotate-3 hover:rotate-0 transition-transform">
                 <div className="flex items-center gap-3">
                   <Check className="w-6 h-6" />
                   <div>
-                    <p className="text-[17px] font-extrabold whitespace-nowrap">+30 Fragen</p>
-                    <p className="text-[13px] text-white/90">beantwortet</p>
+                    <p className="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.5] whitespace-nowrap">+30 Fragen</p>
+                    <p className="text-[13px] md:text-[14px] font-normal leading-[1.5] text-[#e2e8f0]">beantwortet</p>
                   </div>
                 </div>
               </div>
               
               {/* Card 2 - Bottom Left */}
-              <div className="absolute -bottom-4 -left-4 lg:bottom-8 lg:-left-8 bg-white/95 backdrop-blur-md border border-accent/20 px-5 py-3 rounded-2xl shadow-xl transform -rotate-2 hover:rotate-0 transition-transform">
+              <div className="absolute -bottom-4 -left-4 lg:bottom-8 lg:-left-8 bg-white/95 backdrop-blur-md border border-accent/20 px-6 py-4 rounded-2xl shadow-xl transform -rotate-2 hover:rotate-0 transition-transform">
                 <div className="flex items-center gap-3">
                   <Star className="w-6 h-6 text-accent fill-accent" />
                   <div>
-                    <p className="text-[17px] font-extrabold text-foreground whitespace-nowrap">Ø 4,8 Bewertung</p>
-                    <p className="text-[13px] text-muted-foreground">von Eltern</p>
+                    <p className="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.5] text-[#0f172a] whitespace-nowrap">Ø 4,8 Bewertung</p>
+                    <p className="text-[13px] md:text-[14px] font-normal leading-[1.5] text-[#475569]">von Eltern</p>
                   </div>
                 </div>
               </div>
               
               {/* Card 3 - Bottom Right */}
-              <div className="hidden lg:block absolute -bottom-8 right-8 bg-success text-white px-5 py-3 rounded-2xl shadow-xl transform rotate-2 hover:rotate-0 transition-transform">
+              <div className="hidden lg:block absolute -bottom-8 right-8 bg-success text-white px-6 py-4 rounded-2xl shadow-xl transform rotate-2 hover:rotate-0 transition-transform">
                 <div className="flex items-center gap-3">
                   <Heart className="w-6 h-6 fill-white" />
                   <div>
-                    <p className="text-[17px] font-extrabold whitespace-nowrap">100% kostenlos</p>
-                    <p className="text-[13px] text-white/90">& unabhängig</p>
+                    <p className="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.5] whitespace-nowrap">100% kostenlos</p>
+                    <p className="text-[13px] md:text-[14px] font-normal leading-[1.5] text-[#e2e8f0]">& unabhängig</p>
                   </div>
                 </div>
               </div>
