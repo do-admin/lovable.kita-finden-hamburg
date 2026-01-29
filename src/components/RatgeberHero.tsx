@@ -2,7 +2,9 @@ import ratgeberHeroImage from "@/assets/ratgeber-hero.jpg";
 
 const RatgeberHero = () => {
   return (
-    <div className="relative rounded-2xl overflow-hidden mb-8">
+    <div className="mb-8">
+      <h1 className="text-[28px] font-extrabold text-primary leading-none mb-4">Ratgeber</h1>
+      <div className="relative rounded-2xl overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
@@ -34,6 +36,7 @@ const RatgeberHero = () => {
         <p className="text-lg md:text-xl font-medium text-white/90 max-w-xl">
           Artikel zu Kita-Suche, Gutschein, Eingewöhnung und mehr
         </p>
+      </div>
       </div>
     </div>
   );

@@ -32,8 +32,7 @@ const RatgeberSidebar = ({ selectedCategories, onCategoryChange, isMobile = fals
     <>
       {/* Filter Section */}
       <div className="mb-8">
-        <h1 className="text-[28px] font-extrabold text-primary leading-none">Ratgeber</h1>
-        <h2 className="text-lg font-bold text-foreground leading-none mb-4">Alle Themen</h2>
+        <h2 className="text-lg font-bold text-foreground mb-4">Alle Themen</h2>
         <div className="space-y-3">
           {categories.map((category) => (
             <label 
