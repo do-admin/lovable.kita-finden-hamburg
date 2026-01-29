@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoKitaFinden from "@/assets/logo-kita-finden-hamburg-horizontal.webp";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   
   const isActive = (path: string) => {
     if (path === "/#kitas") return location.pathname === "/" && location.hash === "#kitas";
@@ -13,6 +14,28 @@ const Header = () => {
     if (path === "/#wissen") return location.pathname === "/" && location.hash === "#wissen";
     if (path === "/kita-hinzufuegen") return location.pathname === "/kita-hinzufuegen";
     return false;
+  };
+
+  const handleKitasClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    
+    if (location.pathname === "/") {
+      // Already on homepage, just scroll
+      const element = document.getElementById("kitas");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Navigate to homepage first, then scroll after delay
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById("kitas");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
   };
   
   return (
@@ -33,8 +56,9 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <a 
-              href="/#kitas" 
-              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
+              href="/#kitas"
+              onClick={handleKitasClick}
+              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all cursor-pointer ${
                 isActive("/#kitas") ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
               }`}
             >
@@ -88,11 +112,11 @@ const Header = () => {
         {mobileMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 flex flex-col gap-4 border-t border-[#e5e7eb] pt-4">
             <a 
-              href="/#kitas" 
-              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
+              href="/#kitas"
+              onClick={handleKitasClick}
+              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 cursor-pointer ${
                 isActive("/#kitas") ? "font-semibold text-[#0f172a]" : ""
               }`}
-              onClick={() => setMobileMenuOpen(false)}
             >
               Kitas
             </a>
