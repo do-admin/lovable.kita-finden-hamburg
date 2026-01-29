@@ -98,7 +98,7 @@ const StatCardComponent = ({
                  flex flex-col items-center justify-center text-center"
     >
       {/* Animated Number */}
-      <div className="text-[32px] md:text-[38px] lg:text-[42px] font-extrabold text-primary leading-none mb-2">
+      <div className="text-[26px] md:text-[30px] lg:text-[34px] font-extrabold text-primary leading-none mb-2">
         {stat.prefix}
         {formatNumber(count)}
         {stat.suffix}
