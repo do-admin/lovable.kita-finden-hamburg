@@ -65,14 +65,14 @@ const SearchResults = ({
     <div>
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold text-primary mb-2">
+        <h1 className="text-2xl md:text-3xl font-bold text-primary">
           {results.length} Kitas gefunden
-          {searchQuery && <span className="font-normal text-muted-foreground"> für: „{searchQuery}"</span>}
-          {filters.bezirke.length === 1 && <span className="font-normal text-muted-foreground"> in {filters.bezirke[0]}</span>}
         </h1>
         
-        <p className="text-base text-muted-foreground">
+        <p className="text-base text-muted-foreground mt-1">
           Zeige {startIndex + 1}–{Math.min(startIndex + ITEMS_PER_PAGE, results.length)} von {results.length} Kitas
+          {searchQuery && <span> für: „{searchQuery}"</span>}
+          {filters.bezirke.length === 1 && <span> in {filters.bezirke[0]}</span>}
         </p>
 
         {/* Active Filter Chips */}
