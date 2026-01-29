@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FAQHero from "@/components/FAQHero";
 import {
   Accordion,
   AccordionContent,
@@ -56,22 +57,10 @@ const FAQPage = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative w-full bg-white overflow-hidden">
-        <div className="max-w-[1300px] mx-auto px-[5%] pt-[100px] pb-[60px] lg:pt-[120px] lg:pb-[80px]">
-          <div className="max-w-[680px]">
-            <h1 className="text-[32px] md:text-[38px] lg:text-[42px] font-extrabold leading-[1.1] tracking-tight text-[#0f172a]">
-              Häufig gestellte Fragen
-            </h1>
-            <p className="mt-5 lg:mt-6 text-[14px] md:text-[15px] font-normal leading-[1.6] text-[#475569] max-w-[520px]">
-              Antworten auf die wichtigsten Fragen rund um die Kita-Suche, 
-              den Kita-Gutschein und die Anmeldung in Hamburg.
-            </p>
-          </div>
-        </div>
-      </section>
+      <FAQHero />
 
       {/* FAQ Content */}
-      <section className="flex-1 section-padding">
+      <section id="faq-content" className="flex-1 section-padding bg-muted/30">
         <div className="container-custom">
           <div className="max-w-[900px] mx-auto">
             <Accordion type="single" collapsible className="w-full space-y-3">
