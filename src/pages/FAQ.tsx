@@ -56,13 +56,13 @@ const FAQPage = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-background border-b border-border">
-        <div className="container-custom pt-[80px] pb-[60px]">
-          <div className="max-w-[680px] mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+      <section className="relative w-full bg-white overflow-hidden">
+        <div className="max-w-[1300px] mx-auto px-[5%] pt-[100px] pb-[60px] lg:pt-[120px] lg:pb-[80px]">
+          <div className="max-w-[680px]">
+            <h1 className="text-[32px] md:text-[38px] lg:text-[42px] font-extrabold leading-[1.1] tracking-tight text-[#0f172a]">
               Häufig gestellte Fragen
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="mt-5 lg:mt-6 text-[14px] md:text-[15px] font-normal leading-[1.6] text-[#475569] max-w-[520px]">
               Antworten auf die wichtigsten Fragen rund um die Kita-Suche, 
               den Kita-Gutschein und die Anmeldung in Hamburg.
             </p>
