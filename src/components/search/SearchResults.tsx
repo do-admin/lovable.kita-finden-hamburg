@@ -152,61 +152,72 @@ const SearchResults = ({
 
 const KitaCard = ({ kita }: { kita: Kita }) => {
   return (
-    <article className="bg-white rounded-2xl border border-border p-5 hover:shadow-lg transition-shadow duration-200">
-      {/* Name */}
-      <h3 className="text-lg font-bold text-primary mb-1">{kita.name}</h3>
+    <article className="bg-white rounded-2xl border border-border overflow-hidden hover:shadow-lg transition-shadow duration-200">
+      {/* Placeholder Image */}
+      <div className="aspect-[4/3] bg-muted">
+        <img
+          src="/placeholder.svg"
+          alt={kita.name}
+          className="w-full h-full object-cover"
+        />
+      </div>
       
-      {/* Address */}
-      <p className="text-sm text-muted-foreground mb-3">
-        {kita.adresse}, {kita.stadtteil} · {kita.bezirk}
-      </p>
-      
-      {/* Info Row */}
-      <div className="flex flex-wrap items-center gap-2 mb-4">
-        <span className="text-sm text-foreground">{kita.alter}</span>
-        <span className="text-muted-foreground">·</span>
+      <div className="p-5">
+        {/* Name */}
+        <h3 className="text-lg font-bold text-primary mb-1">{kita.name}</h3>
         
-        {/* Availability Badge */}
-        {kita.plaetzeFrei ? (
-          <Badge className="bg-success text-success-foreground text-xs">
-            Plätze frei
-          </Badge>
-        ) : kita.warteliste ? (
-          <Badge className="bg-accent text-accent-foreground text-xs">
-            Warteliste
-          </Badge>
-        ) : (
-          <Badge variant="secondary" className="text-xs">
-            Keine Plätze
-          </Badge>
-        )}
-      </div>
-      
-      {/* Tags */}
-      <div className="flex flex-wrap gap-1.5 mb-4">
-        <Badge variant="outline" className="text-xs font-normal">
-          {kita.betreuungszeit}
-        </Badge>
-        {kita.konzepte.slice(0, 2).map((konzept) => (
-          <Badge key={konzept} variant="outline" className="text-xs font-normal">
-            {konzept}
-          </Badge>
-        ))}
-        {kita.konzepte.length > 2 && (
+        {/* Address */}
+        <p className="text-sm text-muted-foreground mb-3">
+          {kita.adresse}, {kita.stadtteil} · {kita.bezirk}
+        </p>
+        
+        {/* Info Row */}
+        <div className="flex flex-wrap items-center gap-2 mb-4">
+          <span className="text-sm text-foreground">{kita.alter}</span>
+          <span className="text-muted-foreground">·</span>
+          
+          {/* Availability Badge */}
+          {kita.plaetzeFrei ? (
+            <Badge className="bg-success text-success-foreground text-xs">
+              Plätze frei
+            </Badge>
+          ) : kita.warteliste ? (
+            <Badge className="bg-accent text-accent-foreground text-xs">
+              Warteliste
+            </Badge>
+          ) : (
+            <Badge variant="secondary" className="text-xs">
+              Keine Plätze
+            </Badge>
+          )}
+        </div>
+        
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-4">
           <Badge variant="outline" className="text-xs font-normal">
-            +{kita.konzepte.length - 2}
+            {kita.betreuungszeit}
           </Badge>
-        )}
+          {kita.konzepte.slice(0, 2).map((konzept) => (
+            <Badge key={konzept} variant="outline" className="text-xs font-normal">
+              {konzept}
+            </Badge>
+          ))}
+          {kita.konzepte.length > 2 && (
+            <Badge variant="outline" className="text-xs font-normal">
+              +{kita.konzepte.length - 2}
+            </Badge>
+          )}
+        </div>
+        
+        {/* CTA */}
+        <Link
+          to={`/kita/${kita.id}`}
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+        >
+          Details ansehen
+          <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
-      
-      {/* CTA */}
-      <Link
-        to={`/kita/${kita.id}`}
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
-      >
-        Details ansehen
-        <ArrowRight className="h-4 w-4" />
-      </Link>
     </article>
   );
 };
