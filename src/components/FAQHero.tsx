@@ -22,20 +22,20 @@ const FAQHero = () => {
           {/* Left Text & CTA Area */}
           <div className="lg:col-span-6 order-2 lg:order-1 text-left">
             {/* Main Headline */}
-            <h1 className="text-[32px] md:text-[40px] lg:text-[52px] font-extrabold leading-[1.15] tracking-tight text-primary mb-5 md:mb-6">
+            <h1 className="text-[32px] md:text-[38px] lg:text-[42px] font-extrabold leading-[1.1] tracking-tight text-[#0f172a] lg:text-left">
               Häufige Fragen – schnell beantwortet
             </h1>
             
             {/* Subheadline */}
-            <p className="text-[15px] md:text-[16px] lg:text-[18px] font-normal leading-[1.6] text-[#475569] max-w-[480px] mb-8">
+            <p className="mt-5 lg:mt-6 text-[14px] md:text-[15px] font-normal leading-[1.6] text-[#475569] max-w-[480px]">
               Alles Wichtige zur Kita-Suche, Gutschein, Eingewöhnung & mehr – klar und verständlich erklärt.
             </p>
             
             {/* CTA Button */}
-            <div className="flex justify-center lg:justify-start mb-10">
+            <div className="flex justify-start mt-6 lg:mt-8 mb-8">
               <Button 
                 onClick={goToRatgeber}
-                className="h-14 px-8 text-[16px] font-semibold bg-primary hover:bg-primary/90 text-white rounded-xl shadow-lg shadow-primary/20"
+                className="h-[48px] lg:h-[52px] px-6 lg:px-8 text-[14px] font-bold bg-primary hover:bg-primary/90 text-white rounded-xl shadow-lg shadow-primary/20"
               >
                 Lese unsere Artikel →
               </Button>
