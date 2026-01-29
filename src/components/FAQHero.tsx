@@ -92,33 +92,33 @@ const FAQHero = () => {
               
               {/* Card 1 - Top Right */}
               <div className="absolute -top-4 -right-4 lg:top-4 lg:-right-8 bg-primary text-white px-5 py-3 rounded-2xl shadow-xl backdrop-blur-sm transform rotate-3 hover:rotate-0 transition-transform">
-                <div className="flex items-center gap-2">
-                  <Check className="w-5 h-5" />
+                <div className="flex items-center gap-3">
+                  <Check className="w-6 h-6" />
                   <div>
-                    <p className="text-[15px] font-bold whitespace-nowrap">+30 Fragen</p>
-                    <p className="text-[12px] text-white/80">beantwortet</p>
+                    <p className="text-[17px] font-extrabold whitespace-nowrap">+30 Fragen</p>
+                    <p className="text-[13px] text-white/90">beantwortet</p>
                   </div>
                 </div>
               </div>
               
               {/* Card 2 - Bottom Left */}
-              <div className="absolute -bottom-4 -left-4 lg:bottom-8 lg:-left-8 bg-white/90 backdrop-blur-md border border-accent/20 px-5 py-3 rounded-2xl shadow-xl transform -rotate-2 hover:rotate-0 transition-transform">
-                <div className="flex items-center gap-2">
-                  <Star className="w-5 h-5 text-accent fill-accent" />
+              <div className="absolute -bottom-4 -left-4 lg:bottom-8 lg:-left-8 bg-white/95 backdrop-blur-md border border-accent/20 px-5 py-3 rounded-2xl shadow-xl transform -rotate-2 hover:rotate-0 transition-transform">
+                <div className="flex items-center gap-3">
+                  <Star className="w-6 h-6 text-accent fill-accent" />
                   <div>
-                    <p className="text-[15px] font-bold text-[#0f172a] whitespace-nowrap">Ø 4,8 Bewertung</p>
-                    <p className="text-[12px] text-[#475569]">von Eltern</p>
+                    <p className="text-[17px] font-extrabold text-foreground whitespace-nowrap">Ø 4,8 Bewertung</p>
+                    <p className="text-[13px] text-muted-foreground">von Eltern</p>
                   </div>
                 </div>
               </div>
               
               {/* Card 3 - Bottom Right */}
               <div className="hidden lg:block absolute -bottom-8 right-8 bg-success text-white px-5 py-3 rounded-2xl shadow-xl transform rotate-2 hover:rotate-0 transition-transform">
-                <div className="flex items-center gap-2">
-                  <Heart className="w-5 h-5 fill-white" />
+                <div className="flex items-center gap-3">
+                  <Heart className="w-6 h-6 fill-white" />
                   <div>
-                    <p className="text-[15px] font-bold whitespace-nowrap">100% kostenlos</p>
-                    <p className="text-[12px] text-white/80">& unabhängig</p>
+                    <p className="text-[17px] font-extrabold whitespace-nowrap">100% kostenlos</p>
+                    <p className="text-[13px] text-white/90">& unabhängig</p>
                   </div>
                 </div>
               </div>
