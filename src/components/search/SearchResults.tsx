@@ -64,7 +64,7 @@ const SearchResults = ({
   return (
     <div>
       {/* Header */}
-      <div className="mb-6">
+      <div className="mb-10">
         <h1 className="text-2xl md:text-3xl font-bold text-primary">
           {results.length} Kitas gefunden
         </h1>
