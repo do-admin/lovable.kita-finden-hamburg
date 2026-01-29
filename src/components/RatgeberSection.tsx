@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ratgeberArticles } from "@/data/ratgeber-articles";
 
 const RatgeberSection = () => {
+  const navigate = useNavigate();
   // Show first 3 articles on the homepage
   const displayedArticles = ratgeberArticles.slice(0, 3);
 
@@ -25,12 +26,15 @@ const RatgeberSection = () => {
       </div>
       
       <div className="mt-8 text-center">
-        <Link 
-          to="/ratgeber" 
+        <button 
+          onClick={() => {
+            navigate("/ratgeber");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
           className="text-primary hover:underline font-medium"
         >
           Alle Ratgeber-Artikel anzeigen →
-        </Link>
+        </button>
       </div>
     </section>
   );
