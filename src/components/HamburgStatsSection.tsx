@@ -92,25 +92,25 @@ const StatCardComponent = ({
 
   return (
     <div
-      className="bg-white rounded-[24px] shadow-lg p-7 md:p-8 w-[90%] md:w-[320px] lg:w-[360px] 
+      className="bg-white rounded-[24px] shadow-lg p-6 md:p-7 w-[90%] md:w-[280px] lg:w-[300px] h-[140px] md:h-[150px]
                  hover:scale-[1.04] hover:shadow-xl hover:border-accent/50 
                  transition-all duration-300 border border-transparent
-                 flex flex-col items-center text-center"
+                 flex flex-col items-center justify-center text-center"
     >
       {/* Animated Number */}
-      <div className="text-[42px] md:text-[52px] lg:text-[58px] font-extrabold text-primary leading-none mb-3">
+      <div className="text-[32px] md:text-[38px] lg:text-[42px] font-extrabold text-primary leading-none mb-2">
         {stat.prefix}
         {formatNumber(count)}
         {stat.suffix}
       </div>
 
       {/* Label */}
-      <div className="text-[17px] md:text-[19px] font-medium text-foreground mb-2">
+      <div className="text-[15px] md:text-[16px] font-medium text-foreground mb-1">
         {stat.label}
       </div>
 
       {/* Subtext */}
-      <div className="text-[14px] md:text-[15px] text-muted-foreground">
+      <div className="text-[13px] md:text-[14px] text-muted-foreground">
         {stat.subtext}
       </div>
     </div>
