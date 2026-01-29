@@ -152,9 +152,9 @@ const SearchResults = ({
 
 const KitaCard = ({ kita }: { kita: Kita }) => {
   return (
-    <article className="bg-white rounded-2xl border border-border overflow-hidden hover:shadow-lg transition-shadow duration-200">
+    <article className="bg-white rounded-2xl border border-border overflow-hidden hover:shadow-lg transition-shadow duration-200 flex flex-col h-full">
       {/* Placeholder Image */}
-      <div className="aspect-[4/3] bg-muted">
+      <div className="aspect-[4/3] bg-muted flex-shrink-0">
         <img
           src="/placeholder.svg"
           alt={kita.name}
@@ -162,7 +162,7 @@ const KitaCard = ({ kita }: { kita: Kita }) => {
         />
       </div>
       
-      <div className="p-5">
+      <div className="p-5 flex flex-col flex-1">
         {/* Name */}
         <h3 className="text-lg font-bold text-primary mb-1">{kita.name}</h3>
         
@@ -208,6 +208,9 @@ const KitaCard = ({ kita }: { kita: Kita }) => {
             </Badge>
           )}
         </div>
+        
+        {/* Spacer to push CTA to bottom */}
+        <div className="flex-1" />
         
         {/* CTA */}
         <Link
