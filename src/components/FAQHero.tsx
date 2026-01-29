@@ -1,12 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Star, Heart, FileText, Check, Plus, Sparkles } from "lucide-react";
 
 const FAQHero = () => {
-  const scrollToFAQ = () => {
-    const faqSection = document.getElementById("faq-content");
-    if (faqSection) {
-      faqSection.scrollIntoView({ behavior: "smooth" });
-    }
+  const navigate = useNavigate();
+
+  const goToRatgeber = () => {
+    navigate("/ratgeber");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -33,10 +34,10 @@ const FAQHero = () => {
             {/* CTA Button */}
             <div className="flex justify-center lg:justify-start mb-10">
               <Button 
-                onClick={scrollToFAQ}
+                onClick={goToRatgeber}
                 className="h-14 px-8 text-[16px] font-semibold bg-primary hover:bg-primary/90 text-white rounded-xl shadow-lg shadow-primary/20"
               >
-                Zur vollständigen FAQ →
+                Lese unsere Artikel →
               </Button>
             </div>
             
