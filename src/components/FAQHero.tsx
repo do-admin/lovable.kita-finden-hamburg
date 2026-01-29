@@ -30,19 +30,13 @@ const FAQHero = () => {
               Alles Wichtige zur Kita-Suche, Gutschein, Eingewöhnung & mehr – klar und verständlich erklärt.
             </p>
             
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
+            {/* CTA Button */}
+            <div className="flex justify-center lg:justify-start mb-10">
               <Button 
                 onClick={scrollToFAQ}
                 className="h-14 px-8 text-[16px] font-semibold bg-primary hover:bg-primary/90 text-white rounded-xl shadow-lg shadow-primary/20"
               >
                 Zur vollständigen FAQ →
-              </Button>
-              <Button 
-                variant="outline"
-                className="h-14 px-8 text-[16px] font-semibold border-2 border-accent text-accent hover:bg-accent hover:text-white rounded-xl"
-              >
-                Chat starten
               </Button>
             </div>
             
