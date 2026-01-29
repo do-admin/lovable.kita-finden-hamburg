@@ -20,7 +20,7 @@ const FAQHero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Text & CTA Area */}
-          <div className="lg:col-span-6 order-2 lg:order-1 text-center lg:text-left">
+          <div className="lg:col-span-6 order-2 lg:order-1 text-left">
             {/* Main Headline */}
             <h1 className="text-[32px] md:text-[40px] lg:text-[48px] font-extrabold leading-[1.1] tracking-tight text-primary mb-5">
               Häufige Fragen – schnell beantwortet
