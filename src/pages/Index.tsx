@@ -7,7 +7,6 @@ import InfoSection from "@/components/InfoSection";
 import HowToUse from "@/components/HowToUse";
 import HamburgStatsSection from "@/components/HamburgStatsSection";
 import KitaListing from "@/components/KitaListing";
-import QualityCriteria from "@/components/QualityCriteria";
 import RatgeberSection from "@/components/RatgeberSection";
 import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
@@ -22,7 +21,6 @@ const Index = () => {
       <TrendingSearches />
       <SearchModule />
       <HowToUse />
-      <HamburgStatsSection />
       <InfoSection />
       
       {/* Kita Listing Section */}
@@ -35,8 +33,8 @@ const Index = () => {
       {/* Trust Block */}
       <TrustBlock />
       
-      {/* Quality Criteria */}
-      <QualityCriteria />
+      {/* Hamburg Stats Section */}
+      <HamburgStatsSection />
       
       {/* Ratgeber Section */}
       <section className="bg-[#f1f5f9] py-[80px]">
