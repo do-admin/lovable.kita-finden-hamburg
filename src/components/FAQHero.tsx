@@ -77,9 +77,9 @@ const FAQHero = () => {
             
             {/* Hero Image Container */}
             <div className="relative z-10 mx-auto max-w-[400px] lg:max-w-none">
-              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-primary/10">
+              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 bg-muted">
                 <img 
-                  src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=800&q=80" 
+                  src="/placeholder.svg" 
                   alt="Glückliche Familie mit Kind und Erzieherin"
                   className="w-full h-full object-cover"
                 />
