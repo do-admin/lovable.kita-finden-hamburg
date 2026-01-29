@@ -10,6 +10,7 @@ import Ratgeber from "./pages/Ratgeber";
 import RatgeberArticle from "./pages/RatgeberArticle";
 import KitaHinzufuegen from "./pages/KitaHinzufuegen";
 import Kontakt from "./pages/Kontakt";
+import Suche from "./pages/Suche";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,7 +29,8 @@ const App = () => (
           <Route path="/ratgeber/:slug" element={<RatgeberArticle />} />
           <Route path="/kita-hinzufuegen" element={<KitaHinzufuegen />} />
           <Route path="/kontakt" element={<Kontakt />} />
-          <Route path="/kitas" element={<Index />} />
+          <Route path="/suche" element={<Suche />} />
+          <Route path="/kitas" element={<Suche />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
