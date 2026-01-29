@@ -5,6 +5,7 @@ import PopularDistricts from "@/components/PopularDistricts";
 import SearchModule from "@/components/SearchModule";
 import InfoSection from "@/components/InfoSection";
 import HowToUse from "@/components/HowToUse";
+import HamburgStatsSection from "@/components/HamburgStatsSection";
 import KitaListing from "@/components/KitaListing";
 import QualityCriteria from "@/components/QualityCriteria";
 import RatgeberSection from "@/components/RatgeberSection";
@@ -21,6 +22,7 @@ const Index = () => {
       <TrendingSearches />
       <SearchModule />
       <HowToUse />
+      <HamburgStatsSection />
       <InfoSection />
       
       {/* Kita Listing Section */}
