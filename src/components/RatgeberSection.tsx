@@ -29,9 +29,15 @@ const RatgeberSection = () => {
             <div className="p-6">
               <h3 className="text-lg font-semibold mb-3">{article.title}</h3>
               <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{article.description}</p>
-              <Link to={`/ratgeber/${article.slug}`} className="text-sm text-primary hover:underline">
+              <button 
+                onClick={() => {
+                  navigate(`/ratgeber/${article.slug}`);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="text-sm text-primary hover:underline"
+              >
                 Zum Artikel →
-              </Link>
+              </button>
             </div>
           </article>
         ))}
