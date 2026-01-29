@@ -114,7 +114,12 @@ const InfoSection = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3">
               <Button 
-                onClick={() => navigate("/kitas")}
+                onClick={() => {
+                  document.getElementById("hero-search")?.scrollIntoView({ behavior: "smooth", block: "center" });
+                  setTimeout(() => {
+                    document.querySelector<HTMLInputElement>("#hero-search input")?.focus();
+                  }, 500);
+                }}
                 className="h-[48px] lg:h-[52px] px-6 rounded-full text-[14px] font-bold"
               >
                 Kitas in Hamburg finden
