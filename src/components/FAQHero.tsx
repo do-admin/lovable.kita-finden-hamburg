@@ -93,10 +93,10 @@ const FAQHero = () => {
               {/* Card 1 - Top Right */}
               <div className="absolute -top-4 -right-4 lg:top-4 lg:-right-8 bg-primary text-white px-6 py-4 rounded-2xl shadow-xl backdrop-blur-sm transform rotate-3 hover:rotate-0 transition-transform">
                 <div className="flex items-center gap-3">
-                  <Check className="w-6 h-6" />
+                  <Check className="w-6 h-6 text-white" />
                   <div>
-                    <p className="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.5] whitespace-nowrap">+30 Fragen</p>
-                    <p className="text-[13px] md:text-[14px] font-normal leading-[1.5] text-[#e2e8f0]">beantwortet</p>
+                    <p className="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.5] text-white whitespace-nowrap">+30 Fragen</p>
+                    <p className="text-[13px] md:text-[14px] font-normal leading-[1.5] text-white/90">beantwortet</p>
                   </div>
                 </div>
               </div>
@@ -115,10 +115,10 @@ const FAQHero = () => {
               {/* Card 3 - Bottom Right */}
               <div className="hidden lg:block absolute -bottom-8 right-8 bg-success text-white px-6 py-4 rounded-2xl shadow-xl transform rotate-2 hover:rotate-0 transition-transform">
                 <div className="flex items-center gap-3">
-                  <Heart className="w-6 h-6 fill-white" />
+                  <Heart className="w-6 h-6 text-white fill-white" />
                   <div>
-                    <p className="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.5] whitespace-nowrap">100% kostenlos</p>
-                    <p className="text-[13px] md:text-[14px] font-normal leading-[1.5] text-[#e2e8f0]">& unabhängig</p>
+                    <p className="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.5] text-white whitespace-nowrap">100% kostenlos</p>
+                    <p className="text-[13px] md:text-[14px] font-normal leading-[1.5] text-white/90">& unabhängig</p>
                   </div>
                 </div>
               </div>
