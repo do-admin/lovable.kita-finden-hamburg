@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import type { RatgeberArticle } from "@/data/ratgeber-articles";
 
@@ -8,6 +8,7 @@ interface RatgeberCardProps {
 }
 
 const RatgeberCard = ({ article, accentColor = "primary" }: RatgeberCardProps) => {
+  const navigate = useNavigate();
   const accentClass = accentColor === "success" ? "bg-success" : "bg-primary";
   const cardRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -30,8 +31,13 @@ const RatgeberCard = ({ article, accentColor = "primary" }: RatgeberCardProps) =
     return () => observer.disconnect();
   }, []);
 
+  const handleClick = () => {
+    navigate(`/ratgeber/${article.slug}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <Link to={`/ratgeber/${article.slug}`} className="block group">
+    <button onClick={handleClick} className="block group text-left w-full">
       <article 
         ref={cardRef}
         className={`relative bg-card hover:bg-muted/30 rounded-2xl border border-border shadow-sm hover:shadow-lg transition-all duration-200 overflow-hidden h-full
@@ -77,7 +83,7 @@ const RatgeberCard = ({ article, accentColor = "primary" }: RatgeberCardProps) =
           </span>
         </div>
       </article>
-    </Link>
+    </button>
   );
 };
 
