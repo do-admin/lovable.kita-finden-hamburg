@@ -34,7 +34,7 @@ const HowToUse = () => {
       <div className="container-custom">
         <div className="max-w-[880px] mx-auto text-center mb-12">
           <h2 className="mb-4">So nutzt du die Kita-Übersicht</h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-foreground text-lg">
             In drei einfachen Schritten findest du die passende Kita in Hamburg.
           </p>
         </div>

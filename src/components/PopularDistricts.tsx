@@ -35,7 +35,7 @@ const PopularDistricts = () => {
       <div className="container-custom section-padding">
         <div className="max-w-[1280px] mx-auto">
           <h2 className="mb-4 text-center">Beliebte Stadtteile in Hamburg</h2>
-          <p className="text-muted-foreground text-center mb-10 max-w-[600px] mx-auto">
+          <p className="text-foreground text-center mb-10 max-w-[600px] mx-auto">
             Wähle einen Stadtteil, um Kitas in deiner Nähe zu finden
           </p>
           
