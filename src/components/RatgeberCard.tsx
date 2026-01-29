@@ -39,9 +39,18 @@ const RatgeberCard = ({ article, accentColor = "primary" }: RatgeberCardProps) =
           transition-all duration-500 ease-out`}
       >
         {/* Accent Bar */}
-        <div className={`absolute top-0 left-0 right-0 h-1 ${accentClass}`} />
+        <div className={`absolute top-0 left-0 right-0 h-1 ${accentClass} z-10`} />
         
-        <div className="p-6 pt-7">
+        {/* Placeholder Image */}
+        <div className="aspect-[16/9] w-full">
+          <img 
+            src="/placeholder.svg" 
+            alt={article.title}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        <div className="p-6">
           {/* Read Time Badge */}
           <div className="flex justify-between items-start mb-4">
             <span className="text-xs font-medium text-muted-foreground">

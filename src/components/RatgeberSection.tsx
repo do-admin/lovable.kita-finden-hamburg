@@ -15,12 +15,24 @@ const RatgeberSection = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {displayedArticles.map((article) => (
-          <article key={article.slug} className="card-shadow rounded-lg p-6 bg-card hover:shadow-lg transition-shadow">
-            <h3 className="text-lg font-semibold mb-3">{article.title}</h3>
-            <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{article.description}</p>
-            <Link to={`/ratgeber/${article.slug}`} className="text-sm text-primary hover:underline">
-              Zum Artikel →
-            </Link>
+          <article key={article.slug} className="card-shadow rounded-lg bg-card hover:shadow-lg transition-shadow overflow-hidden">
+            {/* Placeholder Image */}
+            <div className="aspect-[4/3] w-full">
+              <img 
+                src="/placeholder.svg" 
+                alt={article.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
+            {/* Content */}
+            <div className="p-6">
+              <h3 className="text-lg font-semibold mb-3">{article.title}</h3>
+              <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{article.description}</p>
+              <Link to={`/ratgeber/${article.slug}`} className="text-sm text-primary hover:underline">
+                Zum Artikel →
+              </Link>
+            </div>
           </article>
         ))}
       </div>
