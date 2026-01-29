@@ -1,7 +1,14 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const ContactSection = () => {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/kontakt");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <section className="py-12 bg-primary">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -12,13 +19,13 @@ const ContactSection = () => {
               Schreib uns – wir helfen dir gerne weiter.
             </p>
           </div>
-          <Link 
-            to="/kontakt"
+          <button 
+            onClick={handleContactClick}
             className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary rounded-full font-medium text-[14px] hover:bg-white/90 transition-colors"
           >
             Kontakt aufnehmen
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </button>
         </div>
       </div>
     </section>
