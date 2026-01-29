@@ -135,7 +135,7 @@ const QualityCriteria = () => {
               <h2 className="text-[28px] md:text-[34px] lg:text-[38px] font-extrabold text-[#0f172a] mb-2">
                 Unsere Prüfkriterien im Überblick
               </h2>
-              <p className="text-[14px] md:text-[15px] text-[#64748b]">
+              <p className="text-[14px] md:text-[15px] text-foreground">
                 So bewerten wir Kitas in Hamburg – objektiv, transparent und unabhängig
               </p>
             </div>
