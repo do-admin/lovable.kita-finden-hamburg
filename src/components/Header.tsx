@@ -1,42 +1,43 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logoKitaFinden from "@/assets/logo-kita-finden-hamburg-horizontal.webp";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { hamburgerBezirke, kategorien } from "@/data/kitas";
+
+// Helper to create URL-friendly slugs
+const slugify = (text: string): string => {
+  return text
+    .toLowerCase()
+    .replace(/ä/g, "ae")
+    .replace(/ö/g, "oe")
+    .replace(/ü/g, "ue")
+    .replace(/ß/g, "ss")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+};
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
   
   const isActive = (path: string) => {
-    if (path === "/#kitas") return location.pathname === "/" && location.hash === "#kitas";
-    if (path === "/#ratgeber") return location.pathname === "/" && location.hash === "#ratgeber";
-    if (path === "/#wissen") return location.pathname === "/" && location.hash === "#wissen";
     if (path === "/kita-hinzufuegen") return location.pathname === "/kita-hinzufuegen";
     return false;
   };
 
-  const handleKitasClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-    
-    if (location.pathname === "/") {
-      // Already on homepage, just scroll
-      const element = document.getElementById("kitas");
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      // Navigate to homepage first, then scroll after delay
-      navigate("/");
-      setTimeout(() => {
-        const element = document.getElementById("kitas");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    }
-  };
+  const isKitasActive = location.pathname === "/suche" || 
+    location.pathname === "/kitas" || 
+    location.pathname.startsWith("/kita/hamburg");
   
   return (
     <header className="w-full bg-background sticky top-0 z-50 border-b border-[#e5e7eb]">
@@ -54,15 +55,77 @@ const Header = () => {
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link 
-              to="/suche"
-              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
-                location.pathname === "/suche" || location.pathname === "/kitas" ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
-              }`}
-            >
-              Kitas
-            </Link>
+          <nav className="hidden md:flex items-center gap-6">
+            <NavigationMenu>
+              <NavigationMenuList className="gap-2">
+                {/* Kitas Dropdown */}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger 
+                    className={`text-base font-medium bg-transparent hover:bg-transparent data-[state=open]:bg-transparent ${
+                      isKitasActive ? "font-semibold" : ""
+                    }`}
+                  >
+                    Kitas
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="w-[500px] p-4">
+                      <div className="grid grid-cols-2 gap-4">
+                        {/* Bezirke */}
+                        <div>
+                          <h3 className="font-semibold text-sm text-primary mb-3">Nach Bezirk</h3>
+                          <ul className="space-y-1">
+                            {Object.keys(hamburgerBezirke).map((bezirk) => (
+                              <li key={bezirk}>
+                                <NavigationMenuLink asChild>
+                                  <Link
+                                    to={`/kita/hamburg/${slugify(bezirk)}`}
+                                    className="block py-1.5 px-2 text-sm text-foreground hover:bg-secondary rounded-md transition-colors"
+                                  >
+                                    {bezirk}
+                                  </Link>
+                                </NavigationMenuLink>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        
+                        {/* Kategorien */}
+                        <div>
+                          <h3 className="font-semibold text-sm text-primary mb-3">Nach Kategorie</h3>
+                          <ul className="space-y-1">
+                            {kategorien.slice(0, 8).map((kat) => (
+                              <li key={kat.slug}>
+                                <NavigationMenuLink asChild>
+                                  <Link
+                                    to={`/kita/hamburg/kategorie/${kat.slug}`}
+                                    className="block py-1.5 px-2 text-sm text-foreground hover:bg-secondary rounded-md transition-colors"
+                                  >
+                                    {kat.name}
+                                  </Link>
+                                </NavigationMenuLink>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      {/* All Kitas Link */}
+                      <div className="mt-4 pt-4 border-t">
+                        <NavigationMenuLink asChild>
+                          <Link
+                            to="/suche"
+                            className="block py-2 px-3 text-sm font-medium text-primary bg-secondary/50 hover:bg-secondary rounded-md transition-colors text-center"
+                          >
+                            Alle Kitas durchsuchen →
+                          </Link>
+                        </NavigationMenuLink>
+                      </div>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
             <Link 
               to="/faq"
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
@@ -109,16 +172,67 @@ const Header = () => {
         
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-4 border-t border-[#e5e7eb] pt-4">
-            <Link 
-              to="/suche"
-              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
-                location.pathname === "/suche" || location.pathname === "/kitas" ? "font-semibold text-[#0f172a]" : ""
-              }`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Kitas
-            </Link>
+          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-2 border-t border-[#e5e7eb] pt-4">
+            {/* Kitas with submenu */}
+            <div>
+              <button
+                onClick={() => setMobileSubmenuOpen(mobileSubmenuOpen === "kitas" ? null : "kitas")}
+                className={`w-full flex items-center justify-between text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
+                  isKitasActive ? "font-semibold text-[#0f172a]" : ""
+                }`}
+              >
+                Kitas
+                <ChevronDown className={`h-4 w-4 transition-transform ${mobileSubmenuOpen === "kitas" ? "rotate-180" : ""}`} />
+              </button>
+              
+              {mobileSubmenuOpen === "kitas" && (
+                <div className="pl-4 mt-2 space-y-4 border-l-2 border-secondary">
+                  {/* All Kitas */}
+                  <Link
+                    to="/suche"
+                    className="block py-1.5 text-sm font-medium text-primary"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Alle Kitas durchsuchen
+                  </Link>
+                  
+                  {/* Bezirke */}
+                  <div>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Bezirke</p>
+                    <div className="grid grid-cols-2 gap-1">
+                      {Object.keys(hamburgerBezirke).map((bezirk) => (
+                        <Link
+                          key={bezirk}
+                          to={`/kita/hamburg/${slugify(bezirk)}`}
+                          className="py-1.5 text-sm text-foreground hover:text-primary"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {bezirk}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Kategorien */}
+                  <div>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Kategorien</p>
+                    <div className="grid grid-cols-2 gap-1">
+                      {kategorien.slice(0, 6).map((kat) => (
+                        <Link
+                          key={kat.slug}
+                          to={`/kita/hamburg/kategorie/${kat.slug}`}
+                          className="py-1.5 text-sm text-foreground hover:text-primary"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {kat.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <Link 
               to="/faq"
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
@@ -148,7 +262,7 @@ const Header = () => {
             </Link>
             <Link 
               to="/kita-hinzufuegen"
-              className={`px-4 py-2 rounded-full border border-[#0f172a] text-base font-medium text-[#020617] hover:bg-[#0f172a] hover:text-white transition-all text-center ${
+              className={`px-4 py-2 rounded-full border border-[#0f172a] text-base font-medium text-[#020617] hover:bg-[#0f172a] hover:text-white transition-all text-center mt-2 ${
                 isActive("/kita-hinzufuegen") ? "bg-[#0f172a] text-white" : ""
               }`}
               onClick={() => setMobileMenuOpen(false)}
