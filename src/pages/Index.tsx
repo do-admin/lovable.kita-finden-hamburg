@@ -4,7 +4,7 @@ import TrendingSearches from "@/components/TrendingSearches";
 import MarketplaceSection from "@/components/MarketplaceSection";
 import PopularDistricts from "@/components/PopularDistricts";
 import SearchModule from "@/components/SearchModule";
-import InfoSection from "@/components/InfoSection";
+
 import HowToUse from "@/components/HowToUse";
 import HamburgStatsSection from "@/components/HamburgStatsSection";
 import RatgeberSection from "@/components/RatgeberSection";
@@ -22,7 +22,7 @@ const Index = () => {
       <MarketplaceSection />
       <SearchModule />
       <HowToUse />
-      <InfoSection />
+      
       
       {/* Trust Block */}
       <TrustBlock />
