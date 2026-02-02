@@ -30,6 +30,12 @@ const Index = () => {
       {/* Hamburg Stats Section */}
       <HamburgStatsSection />
       
+      {/* Ratgeber Section */}
+      <section className="bg-[#f1f5f9] py-[80px]">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <RatgeberSection />
+        </div>
+      </section>
       
       <ContactSection />
       
