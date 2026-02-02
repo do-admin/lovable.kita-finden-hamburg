@@ -224,21 +224,6 @@ const StadtteilPage = () => {
 
       <main className="pt-8 pb-16">
         <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-            <Link to="/" className="hover:text-primary">Startseite</Link>
-            {breadcrumb.map((item, i) => (
-              <span key={i} className="flex items-center gap-2">
-                <ChevronRight className="h-4 w-4" />
-                {item.path ? (
-                  <Link to={item.path} className="hover:text-primary">{item.name}</Link>
-                ) : (
-                  <span className="text-foreground">{item.name}</span>
-                )}
-              </span>
-            ))}
-          </nav>
-
           {/* Hero */}
           <div className="mb-10">
             <h1 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
