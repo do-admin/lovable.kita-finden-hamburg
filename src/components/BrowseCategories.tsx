@@ -118,7 +118,7 @@ const BrowseCategories = ({
             Kitas nach Kategorien entdecken
           </h2>
           <p className="mt-2 text-muted-foreground">
-            Finden Sie die passende Kita in {city.name} – nach Betreuungsform,
+            Finde die passende Kita in {city.name} – nach Betreuungsform,
             Pädagogik oder Stadtteil
           </p>
         </div>
