@@ -1,8 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TrendingSearches from "@/components/TrendingSearches";
-import BrowseCategories from "@/components/BrowseCategories";
-import FeaturedListings from "@/components/FeaturedListings";
+import MarketplaceSection from "@/components/MarketplaceSection";
 import PopularDistricts from "@/components/PopularDistricts";
 import SearchModule from "@/components/SearchModule";
 import InfoSection from "@/components/InfoSection";
@@ -20,8 +19,7 @@ const Index = () => {
       <Header />
       <Hero />
       <TrendingSearches />
-      <BrowseCategories />
-      <FeaturedListings />
+      <MarketplaceSection />
       <SearchModule />
       <HowToUse />
       <InfoSection />
