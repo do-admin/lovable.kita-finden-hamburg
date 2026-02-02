@@ -1,48 +1,21 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import TrendingSearches from "@/components/TrendingSearches";
-import BrowseCategories from "@/components/BrowseCategories";
-import FeaturedListings from "@/components/FeaturedListings";
-import PopularDistricts from "@/components/PopularDistricts";
-import SearchModule from "@/components/SearchModule";
-import InfoSection from "@/components/InfoSection";
-import HowToUse from "@/components/HowToUse";
-import HamburgStatsSection from "@/components/HamburgStatsSection";
-import RatgeberSection from "@/components/RatgeberSection";
-import FAQ from "@/components/FAQ";
-import ContactSection from "@/components/ContactSection";
-import TrustBlock from "@/components/TrustBlock";
 import Footer from "@/components/Footer";
+import HeroCompact from "@/components/directory/HeroCompact";
+import TrendingSearchesCompact from "@/components/directory/TrendingSearchesCompact";
+import DirectorySection from "@/components/directory/DirectorySection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Header />
-      <Hero />
-      <TrendingSearches />
-      <BrowseCategories />
-      <FeaturedListings />
-      <SearchModule />
-      <HowToUse />
-      <InfoSection />
       
-      {/* Trust Block */}
-      <TrustBlock />
+      {/* Compact Hero + Trending Searches */}
+      <HeroCompact />
+      <TrendingSearchesCompact />
       
-      {/* Hamburg Stats Section */}
-      <HamburgStatsSection />
+      {/* Main Directory Section (Filter Sidebar + Listings Feed) */}
+      <DirectorySection />
       
-      {/* Ratgeber Section */}
-      <section className="bg-[#f1f5f9] py-[80px]">
-        <div className="max-w-[1400px] mx-auto px-6">
-          <RatgeberSection />
-        </div>
-      </section>
-      
-      <ContactSection />
-      
-      <PopularDistricts />
-      <FAQ />
       <Footer />
     </div>
   );
