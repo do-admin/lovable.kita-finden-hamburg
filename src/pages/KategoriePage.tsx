@@ -160,11 +160,11 @@ const KategoriePage = () => {
       <main className="pt-8 pb-16">
         <div className="max-w-[1200px] mx-auto px-4 md:px-6">
           {/* Hero */}
-          <div className="mb-10">
+          <div className="mb-10 text-center">
             <h1 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
               {kategorie.name} in Hamburg
             </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               {kategorie.description}. Finden Sie die passende Kita mit transparenten Informationen zu Konzept, Bewertungen und freien Plätzen.
             </p>
           </div>
