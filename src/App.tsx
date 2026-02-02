@@ -13,6 +13,8 @@ import KitaHinzufuegen from "./pages/KitaHinzufuegen";
 import Kontakt from "./pages/Kontakt";
 import Suche from "./pages/Suche";
 import KitaDetail from "./pages/KitaDetail";
+import StadtteilPage from "./pages/StadtteilPage";
+import KategoriePage from "./pages/KategoriePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +37,15 @@ const App = () => (
           <Route path="/suche" element={<Suche />} />
           <Route path="/kitas" element={<Suche />} />
           <Route path="/kita/:id" element={<KitaDetail />} />
+          
+          {/* SEO Pages: Categories - use /kategorie prefix */}
+          <Route path="/kita/hamburg/kategorie/:kategorie" element={<KategoriePage />} />
+          
+          {/* SEO Pages: District/Stadtteil */}
+          <Route path="/kita/hamburg" element={<StadtteilPage />} />
+          <Route path="/kita/hamburg/:bezirk" element={<StadtteilPage />} />
+          <Route path="/kita/hamburg/:bezirk/:stadtteil" element={<StadtteilPage />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,172 +7,184 @@ import SearchResults from "@/components/search/SearchResults";
 import MobileFilterSheet from "@/components/search/MobileFilterSheet";
 import { Button } from "@/components/ui/button";
 import { Filter } from "lucide-react";
+import { kitas, KitaDetail } from "@/data/kitas";
+import { FilterState, initialFilters } from "@/types/filters";
+import { useGeolocation, calculateDistance } from "@/hooks/useGeolocation";
 
-export interface FilterState {
-  bezirke: string[];
-  alter: string[];
-  konzepte: string[];
-  betreuungszeiten: string[];
-  plaetzeFrei: "alle" | "ja" | "nein" | "warteliste";
-  sortierung: string;
+interface KitaWithDistance extends KitaDetail {
+  distance?: number;
 }
-
-const initialFilters: FilterState = {
-  bezirke: [],
-  alter: [],
-  konzepte: [],
-  betreuungszeiten: [],
-  plaetzeFrei: "alle",
-  sortierung: "entfernung",
-};
-
-// Mock data for demonstration - IDs match the detailed kitas in src/data/kitas.ts
-const mockKitas = [
-  {
-    id: 1,
-    name: "Montessori-Kita Altona",
-    adresse: "Bahrenfelder Straße 125",
-    bezirk: "Altona",
-    stadtteil: "Ottensen",
-    alter: "1-6 Jahre",
-    plaetzeFrei: true,
-    konzepte: ["Montessori", "Naturmaterialien"],
-    betreuungszeit: "Ganztags",
-  },
-  {
-    id: 2,
-    name: "Städtische Kita Eimsbüttel",
-    adresse: "Osterstraße 88",
-    bezirk: "Eimsbüttel",
-    stadtteil: "Eimsbüttel",
-    alter: "0-6 Jahre",
-    plaetzeFrei: false,
-    warteliste: true,
-    konzepte: ["Situationsansatz", "Sprachförderung"],
-    betreuungszeit: "Ganztags",
-  },
-  {
-    id: 3,
-    name: "Natur-Kita Winterhude",
-    adresse: "Stadthallenbrücke 1",
-    bezirk: "Hamburg-Nord",
-    stadtteil: "Winterhude",
-    alter: "3-6 Jahre",
-    plaetzeFrei: true,
-    konzepte: ["Naturpädagogik", "Waldtage"],
-    betreuungszeit: "Halbtags",
-  },
-  {
-    id: 4,
-    name: "Inklusions-Kita Hamburg-Nord",
-    adresse: "Hamburger Straße 200",
-    bezirk: "Hamburg-Nord",
-    stadtteil: "Barmbek-Süd",
-    alter: "0-6 Jahre",
-    plaetzeFrei: true,
-    konzepte: ["Inklusion", "Heilpädagogik"],
-    betreuungszeit: "Ganztags",
-  },
-  {
-    id: 5,
-    name: "Elterninitiative Kinderladen St. Pauli",
-    adresse: "Wohlwillstraße 12",
-    bezirk: "Hamburg-Mitte",
-    stadtteil: "St. Pauli",
-    alter: "1-6 Jahre",
-    plaetzeFrei: false,
-    warteliste: true,
-    konzepte: ["Elternmitarbeit", "Freispiel"],
-    betreuungszeit: "Ganztags",
-  },
-];
 
 const Suche = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
-  
+  const { latitude, longitude, requestLocation, loading: locationLoading } = useGeolocation();
+
+  const hasLocation = latitude !== null && longitude !== null;
+
   // Initialize filters from URL params
   const [filters, setFilters] = useState<FilterState>(() => {
     const bezirke = searchParams.get("bezirk")?.split(",").filter(Boolean) || [];
-    const alter = searchParams.get("alter")?.split(",").filter(Boolean) || [];
+    const stadtteile = searchParams.get("stadtteil")?.split(",").filter(Boolean) || [];
+    const betreuungsart = (searchParams.get("betreuung")?.split(",").filter(Boolean) || []) as FilterState["betreuungsart"];
+    const oeffnungszeiten = (searchParams.get("zeit")?.split(",").filter(Boolean) || []) as FilterState["oeffnungszeiten"];
+    const besonderheiten = searchParams.get("besonderheit")?.split(",").filter(Boolean) || [];
     const konzepte = searchParams.get("konzept")?.split(",").filter(Boolean) || [];
-    const betreuungszeiten = searchParams.get("zeit")?.split(",").filter(Boolean) || [];
     const plaetzeFrei = (searchParams.get("frei") as FilterState["plaetzeFrei"]) || "alle";
-    const sortierung = searchParams.get("sort") || "entfernung";
-    
-    return { bezirke, alter, konzepte, betreuungszeiten, plaetzeFrei, sortierung };
+    const radiusParam = searchParams.get("radius");
+    const radius = radiusParam ? Number(radiusParam) : null;
+    const sortierung = (searchParams.get("sort") as FilterState["sortierung"]) || "relevanz";
+
+    return {
+      bezirke,
+      stadtteile,
+      betreuungsart,
+      oeffnungszeiten,
+      besonderheiten,
+      konzepte,
+      plaetzeFrei,
+      radius,
+      sortierung,
+    };
   });
 
   const searchQuery = searchParams.get("q") || "";
 
   // Update URL when filters change
-  const updateFilters = (newFilters: FilterState) => {
+  const updateFilters = useCallback((newFilters: FilterState) => {
     setFilters(newFilters);
-    
+
     const params = new URLSearchParams();
     if (searchQuery) params.set("q", searchQuery);
     if (newFilters.bezirke.length) params.set("bezirk", newFilters.bezirke.join(","));
-    if (newFilters.alter.length) params.set("alter", newFilters.alter.join(","));
+    if (newFilters.stadtteile.length) params.set("stadtteil", newFilters.stadtteile.join(","));
+    if (newFilters.betreuungsart.length) params.set("betreuung", newFilters.betreuungsart.join(","));
+    if (newFilters.oeffnungszeiten.length) params.set("zeit", newFilters.oeffnungszeiten.join(","));
+    if (newFilters.besonderheiten.length) params.set("besonderheit", newFilters.besonderheiten.join(","));
     if (newFilters.konzepte.length) params.set("konzept", newFilters.konzepte.join(","));
-    if (newFilters.betreuungszeiten.length) params.set("zeit", newFilters.betreuungszeiten.join(","));
     if (newFilters.plaetzeFrei !== "alle") params.set("frei", newFilters.plaetzeFrei);
-    if (newFilters.sortierung !== "entfernung") params.set("sort", newFilters.sortierung);
-    
-    setSearchParams(params);
-  };
+    if (newFilters.radius) params.set("radius", newFilters.radius.toString());
+    if (newFilters.sortierung !== "relevanz") params.set("sort", newFilters.sortierung);
 
-  const resetFilters = () => {
+    setSearchParams(params);
+  }, [searchQuery, setSearchParams]);
+
+  const resetFilters = useCallback(() => {
     updateFilters(initialFilters);
-  };
+  }, [updateFilters]);
+
+  // Remove a single filter value
+  const handleRemoveFilter = useCallback((key: keyof FilterState, value?: string) => {
+    const newFilters = { ...filters };
+
+    if (key === "bezirke" || key === "stadtteile" || key === "besonderheiten" || key === "konzepte") {
+      newFilters[key] = filters[key].filter(v => v !== value);
+    } else if (key === "betreuungsart") {
+      newFilters.betreuungsart = filters.betreuungsart.filter(v => v !== value) as FilterState["betreuungsart"];
+    } else if (key === "oeffnungszeiten") {
+      newFilters.oeffnungszeiten = filters.oeffnungszeiten.filter(v => v !== value) as FilterState["oeffnungszeiten"];
+    } else if (key === "plaetzeFrei") {
+      newFilters.plaetzeFrei = "alle";
+    } else if (key === "radius") {
+      newFilters.radius = null;
+    }
+
+    updateFilters(newFilters);
+  }, [filters, updateFilters]);
 
   // Filter and sort results
   const filteredResults = useMemo(() => {
-    let results = [...mockKitas];
-    
-    // Apply filters
+    let results: KitaWithDistance[] = kitas.map(kita => ({
+      ...kita,
+      distance: hasLocation
+        ? calculateDistance(latitude!, longitude!, kita.coordinates.lat, kita.coordinates.lng)
+        : undefined,
+    }));
+
+    // Filter by search query
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      results = results.filter(k =>
+        k.name.toLowerCase().includes(query) ||
+        k.stadtteil.toLowerCase().includes(query) ||
+        k.bezirk.toLowerCase().includes(query) ||
+        k.adresse.toLowerCase().includes(query)
+      );
+    }
+
+    // Filter by bezirke
     if (filters.bezirke.length > 0) {
       results = results.filter(k => filters.bezirke.includes(k.bezirk));
     }
-    if (filters.konzepte.length > 0) {
-      results = results.filter(k => k.konzepte.some(c => filters.konzepte.includes(c)));
+
+    // Filter by stadtteile
+    if (filters.stadtteile.length > 0) {
+      results = results.filter(k => filters.stadtteile.includes(k.stadtteil));
     }
-    if (filters.plaetzeFrei === "ja") {
-      results = results.filter(k => k.plaetzeFrei);
-    } else if (filters.plaetzeFrei === "nein") {
-      results = results.filter(k => !k.plaetzeFrei && !k.warteliste);
-    } else if (filters.plaetzeFrei === "warteliste") {
-      results = results.filter(k => k.warteliste);
-    }
-    
-    // Apply search query
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      results = results.filter(k => 
-        k.name.toLowerCase().includes(query) ||
-        k.stadtteil.toLowerCase().includes(query) ||
-        k.bezirk.toLowerCase().includes(query)
+
+    // Filter by betreuungsart
+    if (filters.betreuungsart.length > 0) {
+      results = results.filter(k =>
+        k.betreuungsart.some(b => filters.betreuungsart.includes(b))
       );
     }
-    
-    // Sort
-    if (filters.sortierung === "alphabetisch") {
-      results.sort((a, b) => a.name.localeCompare(b.name));
-    }
-    
-    return results;
-  }, [filters, searchQuery]);
 
-  const activeFilterCount = 
-    filters.bezirke.length + 
-    filters.alter.length + 
-    filters.konzepte.length + 
-    filters.betreuungszeiten.length + 
-    (filters.plaetzeFrei !== "alle" ? 1 : 0);
+    // Filter by öffnungszeiten
+    if (filters.oeffnungszeiten.length > 0) {
+      results = results.filter(k =>
+        filters.oeffnungszeiten.includes(k.oeffnungszeitenKategorie)
+      );
+    }
+
+    // Filter by besonderheiten
+    if (filters.besonderheiten.length > 0) {
+      results = results.filter(k =>
+        k.besonderheiten.some(b => filters.besonderheiten.includes(b))
+      );
+    }
+
+    // Filter by konzepte
+    if (filters.konzepte.length > 0) {
+      results = results.filter(k => filters.konzepte.includes(k.konzept));
+    }
+
+    // Filter by verfügbarkeit
+    if (filters.plaetzeFrei === "frei") {
+      results = results.filter(k => k.status === "frei");
+    } else if (filters.plaetzeFrei === "warteliste") {
+      results = results.filter(k => k.status === "warteliste");
+    }
+
+    // Filter by radius
+    if (filters.radius && hasLocation) {
+      results = results.filter(k => k.distance !== undefined && k.distance <= filters.radius!);
+    }
+
+    // Sort results
+    if (filters.sortierung === "entfernung" && hasLocation) {
+      results.sort((a, b) => (a.distance || 0) - (b.distance || 0));
+    } else if (filters.sortierung === "alphabetisch") {
+      results.sort((a, b) => a.name.localeCompare(b.name, "de"));
+    }
+    // 'relevanz' is default, no specific sorting
+
+    return results;
+  }, [filters, searchQuery, hasLocation, latitude, longitude]);
+
+  const activeFilterCount =
+    filters.bezirke.length +
+    filters.stadtteile.length +
+    filters.betreuungsart.length +
+    filters.oeffnungszeiten.length +
+    filters.besonderheiten.length +
+    filters.konzepte.length +
+    (filters.plaetzeFrei !== "alle" ? 1 : 0) +
+    (filters.radius ? 1 : 0);
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <main className="pt-6 pb-16">
         <div className="max-w-[1400px] mx-auto px-4 md:px-6">
           {/* Mobile Filter Button */}
@@ -200,6 +212,8 @@ const Suche = () => {
                   filters={filters}
                   onFiltersChange={updateFilters}
                   onReset={resetFilters}
+                  hasLocation={hasLocation}
+                  onRequestLocation={requestLocation}
                 />
               </div>
             </aside>
@@ -208,18 +222,11 @@ const Suche = () => {
             <div className="flex-1 min-w-0">
               <SearchResults
                 results={filteredResults}
-                totalCount={mockKitas.length}
+                totalCount={kitas.length}
                 searchQuery={searchQuery}
                 filters={filters}
-                onRemoveFilter={(key, value) => {
-                  const newFilters = { ...filters };
-                  if (key === "bezirke" || key === "alter" || key === "konzepte" || key === "betreuungszeiten") {
-                    newFilters[key] = filters[key].filter(v => v !== value);
-                  } else if (key === "plaetzeFrei") {
-                    newFilters.plaetzeFrei = "alle";
-                  }
-                  updateFilters(newFilters);
-                }}
+                onRemoveFilter={handleRemoveFilter}
+                loading={locationLoading}
               />
             </div>
           </div>
@@ -233,6 +240,8 @@ const Suche = () => {
         filters={filters}
         onFiltersChange={updateFilters}
         onReset={resetFilters}
+        hasLocation={hasLocation}
+        onRequestLocation={requestLocation}
       />
 
       <Footer />
