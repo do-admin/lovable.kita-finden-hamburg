@@ -126,7 +126,7 @@ const FeaturedListingItem = ({
 const FeaturedListings = ({
   city = "Hamburg",
   citySlug = "hamburg",
-  maxItems = 4,
+  maxItems = 6,
   featuredIds,
   className,
 }: FeaturedListingsProps) => {
@@ -134,24 +134,29 @@ const FeaturedListings = ({
 
   return (
     <section
-      className={cn("py-8 md:py-10 bg-muted/30", className)}
+      className={cn("py-12 md:py-16 bg-muted/30", className)}
       aria-labelledby="featured-listings-heading"
     >
       <div className="max-w-[1400px] mx-auto px-6">
         {/* Section Header */}
-        <div className="flex items-center justify-between gap-4 mb-4">
-          <h2
-            id="featured-listings-heading"
-            className="text-lg md:text-xl font-semibold text-foreground"
-          >
-            Empfohlene Kitas
-          </h2>
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div>
+            <h2
+              id="featured-listings-heading"
+              className="text-2xl md:text-3xl font-bold text-foreground"
+            >
+              Empfohlene Kitas
+            </h2>
+            <p className="mt-2 text-muted-foreground">
+              Schnelle Abkürzung – direkt zu passenden Einrichtungen in {city}
+            </p>
+          </div>
 
           <Link
             to="/suche"
             className={cn(
               "inline-flex items-center gap-1 text-sm font-medium text-primary",
-              "hover:underline"
+              "hover:underline self-start sm:self-auto"
             )}
           >
             Alle anzeigen
@@ -159,8 +164,8 @@ const FeaturedListings = ({
           </Link>
         </div>
 
-        {/* Listings Grid - tighter spacing */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+        {/* Listings Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {featuredKitas.map((kita) => (
             <FeaturedListingItem
               key={kita.id}
@@ -170,12 +175,12 @@ const FeaturedListings = ({
           ))}
         </div>
 
-        {/* Bottom CTA - smaller */}
-        <div className="mt-5 text-center">
+        {/* Bottom CTA */}
+        <div className="mt-8 text-center">
           <Link
             to="/suche"
             className={cn(
-              "inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm",
+              "inline-flex items-center gap-2 px-6 py-3 rounded-lg",
               "bg-primary text-primary-foreground font-medium",
               "hover:bg-primary/90 transition-colors"
             )}

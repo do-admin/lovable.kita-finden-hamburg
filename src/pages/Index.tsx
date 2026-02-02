@@ -1,9 +1,8 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TrendingSearches from "@/components/TrendingSearches";
-import PrimaryCategoryShortcuts from "@/components/PrimaryCategoryShortcuts";
-import FeaturedListings from "@/components/FeaturedListings";
 import BrowseCategories from "@/components/BrowseCategories";
+import FeaturedListings from "@/components/FeaturedListings";
 import PopularDistricts from "@/components/PopularDistricts";
 import SearchModule from "@/components/SearchModule";
 import InfoSection from "@/components/InfoSection";
@@ -21,16 +20,8 @@ const Index = () => {
       <Header />
       <Hero />
       <TrendingSearches />
-      
-      {/* 1. Primary Category Shortcuts - high-intent, compact */}
-      <PrimaryCategoryShortcuts />
-      
-      {/* 2. Featured Listings - condensed */}
-      <FeaturedListings maxItems={4} />
-      
-      {/* 3. Extended Categories - collapsible secondary grid */}
-      <BrowseCategories collapsible />
-      
+      <BrowseCategories />
+      <FeaturedListings />
       <SearchModule />
       <HowToUse />
       <InfoSection />
@@ -41,8 +32,8 @@ const Index = () => {
       {/* Hamburg Stats Section */}
       <HamburgStatsSection />
       
-      {/* Ratgeber Section - reduced padding */}
-      <section className="bg-[#f1f5f9] py-12 md:py-16">
+      {/* Ratgeber Section */}
+      <section className="bg-[#f1f5f9] py-[80px]">
         <div className="max-w-[1400px] mx-auto px-6">
           <RatgeberSection />
         </div>
