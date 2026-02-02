@@ -159,15 +159,6 @@ const KategoriePage = () => {
 
       <main className="pt-8 pb-16">
         <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-            <Link to="/" className="hover:text-primary">Startseite</Link>
-            <ChevronRight className="h-4 w-4" />
-            <Link to="/kita/hamburg" className="hover:text-primary">Hamburg</Link>
-            <ChevronRight className="h-4 w-4" />
-            <span className="text-foreground">{kategorie.name}</span>
-          </nav>
-
           {/* Hero */}
           <div className="mb-10">
             <h1 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
