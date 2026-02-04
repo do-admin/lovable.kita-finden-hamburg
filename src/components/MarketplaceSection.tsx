@@ -136,11 +136,13 @@ const KitaCard = ({ kita, distance }: { kita: KitaDetail; distance?: number }) =
 // Main Component
 const MarketplaceSection = ({
   city = "Hamburg",
-  maxItems = 6,
+  initialItems = 6,
+  loadMoreCount = 6,
   className,
 }: {
   city?: string;
-  maxItems?: number;
+  initialItems?: number;
+  loadMoreCount?: number;
   className?: string;
 }) => {
   const isMobile = useIsMobile();
@@ -148,12 +150,19 @@ const MarketplaceSection = ({
   const hasLocation = latitude !== null && longitude !== null;
   const [filters, setFilters] = useState<FilterState>(initialFilters);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(initialItems);
 
   const handleReset = () => {
     setFilters(initialFilters);
+    setVisibleCount(initialItems);
   };
 
-  const displayedKitas = useMemo((): KitaWithDistance[] => {
+  const handleShowMore = () => {
+    setVisibleCount(prev => prev + loadMoreCount);
+  };
+
+  // Get all filtered & sorted kitas
+  const allFilteredKitas = useMemo((): KitaWithDistance[] => {
     const kitasWithDistance: KitaWithDistance[] = kitas.map(k => ({
       ...k,
       distance: hasLocation ? calculateDistance(latitude!, longitude!, k.coordinates.lat, k.coordinates.lng) : undefined
@@ -178,8 +187,12 @@ const MarketplaceSection = ({
       results = sortKitas(results);
     }
     
-    return results.slice(0, maxItems);
-  }, [hasLocation, latitude, longitude, maxItems, filters]);
+    return results;
+  }, [hasLocation, latitude, longitude, filters]);
+
+  // Slice for display
+  const displayedKitas = allFilteredKitas.slice(0, visibleCount);
+  const hasMore = visibleCount < allFilteredKitas.length;
 
   const activeFilterCount =
     filters.bezirke.length +
@@ -285,15 +298,15 @@ const MarketplaceSection = ({
               </div>
             )}
 
-            {/* View All Button */}
-            <div className="mt-10 text-center">
-              <Link to="/suche">
-                <Button size="lg">
-                  Alle Kitas durchsuchen
+            {/* Show More Button */}
+            {hasMore && (
+              <div className="mt-10 text-center">
+                <Button size="lg" variant="outline" onClick={handleShowMore}>
+                  Zeige mehr ({allFilteredKitas.length - visibleCount} weitere)
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
-              </Link>
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
