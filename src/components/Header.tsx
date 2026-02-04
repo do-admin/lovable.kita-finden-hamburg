@@ -131,6 +131,14 @@ const Header = () => {
               Lexikon
             </Link>
             <Link 
+              to="/kita/hamburg/top-10"
+              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
+                location.pathname === "/kita/hamburg/top-10" ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
+              }`}
+            >
+              Top 10
+            </Link>
+            <Link 
               to="/ratgeber"
               className={`text-base font-medium text-[#020617] hover:text-[#0f172a] hover:border-b-2 hover:border-[#0f172a] hover:pb-[2px] transition-all ${
                 location.pathname === "/ratgeber" || location.pathname.startsWith("/ratgeber/") ? "font-semibold border-b-2 border-[#0f172a] pb-[2px]" : ""
@@ -228,7 +236,16 @@ const Header = () => {
               }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Lexikon
+             Lexikon
+            </Link>
+            <Link 
+              to="/kita/hamburg/top-10"
+              className={`text-base font-medium text-[#020617] hover:text-[#0f172a] py-2 ${
+                location.pathname === "/kita/hamburg/top-10" ? "font-semibold text-[#0f172a]" : ""
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Top 10
             </Link>
             <Link 
               to="/ratgeber"

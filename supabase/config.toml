@@ -1,1 +1,4 @@
 project_id = "uyruhavhfambksjspvgv"
+
+[functions.handle-vote]
+verify_jwt = false

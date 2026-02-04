@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { KitaVoteButton } from "@/components/KitaVoteButton";
 import { getKitaById } from "@/data/kitas";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -316,6 +317,11 @@ const KitaDetail = () => {
                     </Button>
                   </a>
                 </div>
+              </div>
+
+              {/* Vote Button Card */}
+              <div className="bg-white rounded-2xl border border-border p-6 flex flex-col items-center justify-center">
+                <KitaVoteButton kitaId={kita.id.toString()} kitaName={kita.name} size="md" />
               </div>
 
               {/* Status Card */}
