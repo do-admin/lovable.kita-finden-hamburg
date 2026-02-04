@@ -277,8 +277,8 @@ const StadtteilPage = () => {
               <p className="text-lg text-muted-foreground">
                 Aktuell keine Kitas in diesem Bereich gelistet.
               </p>
-              <Link to="/suche" className="inline-block mt-4">
-                <Button>Alle Kitas durchsuchen</Button>
+              <Link to="/" className="inline-block mt-4">
+                <Button>Zur Startseite</Button>
               </Link>
             </div>
           )}

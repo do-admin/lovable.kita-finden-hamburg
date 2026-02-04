@@ -151,7 +151,7 @@ const FeaturedListings = ({
           </div>
 
           <Link
-            to="/suche"
+            to="/"
             className={cn(
               "inline-flex items-center gap-1 text-sm font-medium text-primary",
               "hover:underline self-start sm:self-auto"
@@ -176,7 +176,7 @@ const FeaturedListings = ({
         {/* Bottom CTA */}
         <div className="mt-8 text-center">
           <Link
-            to="/suche"
+            to="/"
             className={cn(
               "inline-flex items-center gap-2 px-6 py-3 rounded-lg",
               "bg-primary text-primary-foreground font-medium",
