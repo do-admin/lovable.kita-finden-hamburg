@@ -108,18 +108,6 @@ const Header = () => {
                           </ul>
                         </div>
                       </div>
-                      
-                      {/* All Kitas Link */}
-                      <div className="mt-4 pt-4 border-t">
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/"
-                            className="block py-2 px-3 text-sm font-medium text-primary bg-secondary/50 hover:bg-secondary rounded-md transition-colors text-center"
-                          >
-                            Alle Kitas durchsuchen →
-                          </Link>
-                        </NavigationMenuLink>
-                      </div>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -187,15 +175,6 @@ const Header = () => {
               
               {mobileSubmenuOpen === "kitas" && (
                 <div className="pl-4 mt-2 space-y-4 border-l-2 border-secondary">
-                  {/* All Kitas */}
-                  <Link
-                    to="/"
-                    className="block py-1.5 text-sm font-medium text-primary"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Alle Kitas durchsuchen
-                  </Link>
-                  
                   {/* Bezirke */}
                   <div>
                     <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Bezirke</p>
