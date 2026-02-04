@@ -1,17 +1,10 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Star, ArrowRight, Navigation, ChevronDown, Filter, RotateCcw } from "lucide-react";
+import { MapPin, Star, ArrowRight, Navigation, Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { kitas, hamburgerBezirke, type KitaDetail } from "@/data/kitas";
+import { kitas, type KitaDetail } from "@/data/kitas";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 import {
   Sheet,
   SheetContent,
@@ -21,99 +14,12 @@ import {
 } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { formatDistance, calculateDistance, useGeolocation } from "@/hooks/useGeolocation";
+import SearchFilters from "@/components/search/SearchFilters";
+import { FilterState, initialFilters } from "@/types/filters";
 
 interface KitaWithDistance extends KitaDetail {
   distance?: number;
 }
-
-// Filter configuration
-const filterConfig = {
-  betreuungsform: {
-    label: "Betreuungsform",
-    options: [
-      { value: "krippe", label: "Krippe" },
-      { value: "elementar", label: "Elementar" },
-      { value: "hort", label: "Hort" },
-    ],
-  },
-  bezirke: {
-    label: "Bezirke",
-    options: Object.keys(hamburgerBezirke).map(b => ({ value: b, label: b })),
-  },
-  oeffnungszeiten: {
-    label: "Öffnungszeiten",
-    options: [
-      { value: "ganztag", label: "Ganztagsbetreuung" },
-      { value: "teilzeit", label: "Teilzeit" },
-      { value: "erweitert", label: "Erweiterte Zeiten" },
-    ],
-  },
-  paedagogik: {
-    label: "Pädagogik",
-    options: [
-      { value: "Montessori", label: "Montessori" },
-      { value: "Waldorf", label: "Waldorf" },
-      { value: "Situationsansatz", label: "Situationsansatz" },
-      { value: "Naturpädagogik", label: "Naturpädagogik" },
-    ],
-  },
-  besonderheiten: {
-    label: "Besonderheiten",
-    options: [
-      { value: "Integrativ", label: "Integrativ" },
-      { value: "Bio-Essen", label: "Bio-Essen" },
-      { value: "Outdoor", label: "Außenbereich" },
-      { value: "Bilingual", label: "Mehrsprachig" },
-    ],
-  },
-};
-
-type FilterState = {
-  betreuungsform: string[];
-  bezirke: string[];
-  oeffnungszeiten: string[];
-  paedagogik: string[];
-  besonderheiten: string[];
-};
-
-const initialFilters: FilterState = {
-  betreuungsform: [],
-  bezirke: [],
-  oeffnungszeiten: [],
-  paedagogik: [],
-  besonderheiten: [],
-};
-
-// Filter kitas based on selected filters
-const filterKitas = (allKitas: KitaWithDistance[], filters: FilterState): KitaWithDistance[] => {
-  return allKitas.filter((kita) => {
-    if (filters.betreuungsform.length > 0) {
-      const hasMatch = filters.betreuungsform.some((f) =>
-        kita.betreuungsart.some((b) => b.toLowerCase() === f.toLowerCase())
-      );
-      if (!hasMatch) return false;
-    }
-
-    if (filters.bezirke.length > 0) {
-      if (!filters.bezirke.includes(kita.bezirk)) return false;
-    }
-
-    if (filters.oeffnungszeiten.length > 0) {
-      if (!filters.oeffnungszeiten.includes(kita.oeffnungszeitenKategorie)) return false;
-    }
-
-    if (filters.paedagogik.length > 0) {
-      if (!filters.paedagogik.includes(kita.konzept)) return false;
-    }
-
-    if (filters.besonderheiten.length > 0) {
-      const hasFeature = filters.besonderheiten.some((f) => kita.besonderheiten.includes(f));
-      if (!hasFeature) return false;
-    }
-
-    return true;
-  });
-};
 
 // Sort by rating (highest first), then by name
 const sortKitas = (kitaList: KitaWithDistance[]): KitaWithDistance[] => {
@@ -125,123 +31,47 @@ const sortKitas = (kitaList: KitaWithDistance[]): KitaWithDistance[] => {
   });
 };
 
-// Filter Group Component
-const FilterGroup = ({
-  groupKey,
-  config,
-  filters,
-  onFilterChange,
-  defaultOpen = false,
-}: {
-  groupKey: keyof FilterState;
-  config: (typeof filterConfig)[keyof typeof filterConfig];
-  filters: FilterState;
-  onFilterChange: (key: keyof FilterState, value: string, checked: boolean) => void;
-  defaultOpen?: boolean;
-}) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
-  const selectedCount = filters[groupKey].length;
+// Filter kitas based on selected filters
+const filterKitas = (allKitas: KitaWithDistance[], filters: FilterState): KitaWithDistance[] => {
+  return allKitas.filter((kita) => {
+    // Bezirke
+    if (filters.bezirke.length > 0) {
+      if (!filters.bezirke.includes(kita.bezirk)) return false;
+    }
 
-  return (
-    <Collapsible open={isOpen} onOpenChange={setIsOpen} className="border-b border-border/50">
-      <CollapsibleTrigger className="flex items-center justify-between w-full py-3 text-left hover:bg-muted/30 transition-colors">
-        <span className="text-sm font-medium text-foreground flex items-center gap-2">
-          {config.label}
-          {selectedCount > 0 && (
-            <span className="text-xs bg-primary text-primary-foreground px-1.5 py-0.5 rounded-full">
-              {selectedCount}
-            </span>
-          )}
-        </span>
-        <ChevronDown
-          className={cn(
-            "h-4 w-4 text-muted-foreground transition-transform duration-200",
-            isOpen && "rotate-180"
-          )}
-        />
-      </CollapsibleTrigger>
-      <CollapsibleContent className="pb-3">
-        <div className="space-y-2 pt-1">
-          {config.options.map((option) => (
-            <div key={option.value} className="flex items-center gap-2">
-              <Checkbox
-                id={`marketplace-${groupKey}-${option.value}`}
-                checked={filters[groupKey].includes(option.value)}
-                onCheckedChange={(checked) => onFilterChange(groupKey, option.value, !!checked)}
-                className="h-4 w-4"
-              />
-              <Label
-                htmlFor={`marketplace-${groupKey}-${option.value}`}
-                className="text-sm text-foreground cursor-pointer leading-none"
-              >
-                {option.label}
-              </Label>
-            </div>
-          ))}
-        </div>
-      </CollapsibleContent>
-    </Collapsible>
-  );
-};
+    // Betreuungsart
+    if (filters.betreuungsart.length > 0) {
+      const hasMatch = filters.betreuungsart.some((f) =>
+        kita.betreuungsart.some((b) => b.toLowerCase() === f.toLowerCase())
+      );
+      if (!hasMatch) return false;
+    }
 
-// Filter Sidebar Content
-const FilterContent = ({
-  filters,
-  onFilterChange,
-  onReset,
-}: {
-  filters: FilterState;
-  onFilterChange: (key: keyof FilterState, value: string, checked: boolean) => void;
-  onReset: () => void;
-}) => {
-  const hasActiveFilters = Object.values(filters).some((arr) => arr.length > 0);
+    // Öffnungszeiten
+    if (filters.oeffnungszeiten.length > 0) {
+      if (!filters.oeffnungszeiten.includes(kita.oeffnungszeitenKategorie)) return false;
+    }
 
-  return (
-    <div className="space-y-0">
-      <FilterGroup
-        groupKey="betreuungsform"
-        config={filterConfig.betreuungsform}
-        filters={filters}
-        onFilterChange={onFilterChange}
-        defaultOpen
-      />
-      <FilterGroup
-        groupKey="bezirke"
-        config={filterConfig.bezirke}
-        filters={filters}
-        onFilterChange={onFilterChange}
-        defaultOpen
-      />
-      <FilterGroup
-        groupKey="oeffnungszeiten"
-        config={filterConfig.oeffnungszeiten}
-        filters={filters}
-        onFilterChange={onFilterChange}
-      />
-      <FilterGroup
-        groupKey="paedagogik"
-        config={filterConfig.paedagogik}
-        filters={filters}
-        onFilterChange={onFilterChange}
-      />
-      <FilterGroup
-        groupKey="besonderheiten"
-        config={filterConfig.besonderheiten}
-        filters={filters}
-        onFilterChange={onFilterChange}
-      />
+    // Pädagogik/Konzepte
+    if (filters.konzepte.length > 0) {
+      if (!filters.konzepte.includes(kita.konzept)) return false;
+    }
 
-      {hasActiveFilters && (
-        <button
-          onClick={onReset}
-          className="flex items-center gap-2 w-full mt-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <RotateCcw className="h-4 w-4" />
-          Filter zurücksetzen
-        </button>
-      )}
-    </div>
-  );
+    // Besonderheiten
+    if (filters.besonderheiten.length > 0) {
+      const hasFeature = filters.besonderheiten.some((f) => kita.besonderheiten.includes(f));
+      if (!hasFeature) return false;
+    }
+
+    // Verfügbarkeit
+    if (filters.plaetzeFrei === "frei") {
+      if (kita.status !== "frei") return false;
+    } else if (filters.plaetzeFrei === "warteliste") {
+      if (kita.status !== "warteliste") return false;
+    }
+
+    return true;
+  });
 };
 
 // Kita Card Component
@@ -314,17 +144,10 @@ const MarketplaceSection = ({
   className?: string;
 }) => {
   const isMobile = useIsMobile();
-  const { latitude, longitude } = useGeolocation();
+  const { latitude, longitude, requestLocation } = useGeolocation();
   const hasLocation = latitude !== null && longitude !== null;
   const [filters, setFilters] = useState<FilterState>(initialFilters);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-
-  const handleFilterChange = (key: keyof FilterState, value: string, checked: boolean) => {
-    setFilters((prev) => ({
-      ...prev,
-      [key]: checked ? [...prev[key], value] : prev[key].filter((v) => v !== value),
-    }));
-  };
 
   const handleReset = () => {
     setFilters(initialFilters);
@@ -338,18 +161,35 @@ const MarketplaceSection = ({
 
     // Apply filters
     const filtered = filterKitas(kitasWithDistance, filters);
-    
-    // Sort by distance if available, otherwise by rating
-    if (hasLocation) {
-      return filtered
-        .sort((a, b) => (a.distance || 0) - (b.distance || 0))
-        .slice(0, maxItems);
+
+    // Apply radius filter if location available
+    let results = filtered;
+    if (filters.radius && hasLocation) {
+      results = filtered.filter(k => k.distance !== undefined && k.distance <= filters.radius!);
     }
     
-    return sortKitas(filtered).slice(0, maxItems);
+    // Sort based on sortierung
+    if (filters.sortierung === "entfernung" && hasLocation) {
+      results = [...results].sort((a, b) => (a.distance || 0) - (b.distance || 0));
+    } else if (filters.sortierung === "alphabetisch") {
+      results = [...results].sort((a, b) => a.name.localeCompare(b.name, "de"));
+    } else {
+      // Default: sort by rating
+      results = sortKitas(results);
+    }
+    
+    return results.slice(0, maxItems);
   }, [hasLocation, latitude, longitude, maxItems, filters]);
 
-  const activeFilterCount = Object.values(filters).reduce((acc, arr) => acc + arr.length, 0);
+  const activeFilterCount =
+    filters.bezirke.length +
+    filters.stadtteile.length +
+    filters.betreuungsart.length +
+    filters.oeffnungszeiten.length +
+    filters.besonderheiten.length +
+    filters.konzepte.length +
+    (filters.plaetzeFrei !== "alle" ? 1 : 0) +
+    (filters.radius ? 1 : 0);
 
   return (
     <section
@@ -379,7 +219,7 @@ const MarketplaceSection = ({
                 className="w-full mb-4 flex items-center justify-center gap-2"
               >
                 <Filter className="h-4 w-4" />
-                Filter
+                Filter & Sortieren
                 {activeFilterCount > 0 && (
                   <span className="bg-primary text-primary-foreground text-xs px-1.5 py-0.5 rounded-full">
                     {activeFilterCount}
@@ -389,13 +229,15 @@ const MarketplaceSection = ({
             </SheetTrigger>
             <SheetContent side="bottom" className="h-[85vh] rounded-t-2xl">
               <SheetHeader className="mb-4">
-                <SheetTitle className="text-left">Filter</SheetTitle>
+                <SheetTitle className="text-left">Filter & Sortieren</SheetTitle>
               </SheetHeader>
               <div className="overflow-y-auto h-[calc(100%-80px)] pb-4">
-                <FilterContent
+                <SearchFilters
                   filters={filters}
-                  onFilterChange={handleFilterChange}
+                  onFiltersChange={setFilters}
                   onReset={handleReset}
+                  hasLocation={hasLocation}
+                  onRequestLocation={requestLocation}
                 />
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-background border-t">
@@ -411,13 +253,14 @@ const MarketplaceSection = ({
         <div className="flex gap-6">
           {/* LEFT: Sticky Filter Sidebar (Desktop only) */}
           {!isMobile && (
-            <aside className="w-[280px] flex-shrink-0">
-              <div className="sticky top-24 bg-card border border-border/60 rounded-xl p-4 max-h-[calc(100vh-120px)] overflow-y-auto">
-                <h3 className="text-base font-semibold text-foreground mb-4">Filter</h3>
-                <FilterContent
+            <aside className="w-[280px] xl:w-[300px] flex-shrink-0">
+              <div className="sticky top-24">
+                <SearchFilters
                   filters={filters}
-                  onFilterChange={handleFilterChange}
+                  onFiltersChange={setFilters}
                   onReset={handleReset}
+                  hasLocation={hasLocation}
+                  onRequestLocation={requestLocation}
                 />
               </div>
             </aside>
