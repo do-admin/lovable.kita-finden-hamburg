@@ -126,8 +126,8 @@ const KategoriePage = () => {
         <Header />
         <main className="pt-16 pb-16 text-center">
           <h1 className="text-2xl font-bold text-primary mb-4">Kategorie nicht gefunden</h1>
-          <Link to="/suche">
-            <Button>Zur Kita-Suche</Button>
+          <Link to="/">
+            <Button>Zur Startseite</Button>
           </Link>
         </main>
         <Footer />
@@ -208,8 +208,8 @@ const KategoriePage = () => {
               <p className="text-lg text-muted-foreground">
                 Aktuell keine Kitas in dieser Kategorie gelistet.
               </p>
-              <Link to="/suche" className="inline-block mt-4">
-                <Button>Alle Kitas durchsuchen</Button>
+              <Link to="/" className="inline-block mt-4">
+                <Button>Zur Startseite</Button>
               </Link>
             </div>
           )}

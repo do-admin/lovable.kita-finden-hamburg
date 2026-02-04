@@ -50,8 +50,8 @@ const KitaDetail = () => {
             <p className="text-muted-foreground mb-8">
               Die gesuchte Kita existiert nicht oder wurde entfernt.
             </p>
-            <Link to="/suche">
-              <Button>Zurück zur Suche</Button>
+            <Link to="/">
+              <Button>Zur Startseite</Button>
             </Link>
           </div>
         </main>
@@ -158,11 +158,11 @@ const KitaDetail = () => {
         <div className="max-w-[1200px] mx-auto px-6 py-10 md:py-16">
           {/* Back Link */}
           <Link
-            to="/suche"
+            to="/"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-8"
           >
             <ArrowLeft className="h-4 w-4" />
-            Zurück zur Suche
+            Zurück zur Übersicht
           </Link>
 
           <div className="grid lg:grid-cols-3 gap-10 lg:gap-16">
