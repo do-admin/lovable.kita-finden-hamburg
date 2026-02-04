@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      kita_vote_logs: {
+        Row: {
+          id: string
+          ip_address: string
+          kita_id: string
+          voted_at: string | null
+        }
+        Insert: {
+          id?: string
+          ip_address: string
+          kita_id: string
+          voted_at?: string | null
+        }
+        Update: {
+          id?: string
+          ip_address?: string
+          kita_id?: string
+          voted_at?: string | null
+        }
+        Relationships: []
+      }
+      kita_votes: {
+        Row: {
+          created_at: string | null
+          id: string
+          kita_id: string
+          updated_at: string | null
+          vote_count: number
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          kita_id: string
+          updated_at?: string | null
+          vote_count?: number
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          kita_id?: string
+          updated_at?: string | null
+          vote_count?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

@@ -11,7 +11,7 @@ import Ratgeber from "./pages/Ratgeber";
 import RatgeberArticle from "./pages/RatgeberArticle";
 import KitaHinzufuegen from "./pages/KitaHinzufuegen";
 import Kontakt from "./pages/Kontakt";
-
+import Top10 from "./pages/Top10";
 import KitaDetail from "./pages/KitaDetail";
 import StadtteilPage from "./pages/StadtteilPage";
 import KategoriePage from "./pages/KategoriePage";
@@ -34,6 +34,7 @@ const App = () => (
           <Route path="/ratgeber/:slug" element={<RatgeberArticle />} />
           <Route path="/kita-hinzufuegen" element={<KitaHinzufuegen />} />
           <Route path="/kontakt" element={<Kontakt />} />
+          <Route path="/kita/hamburg/top-10" element={<Top10 />} />
           <Route path="/kita/:id" element={<KitaDetail />} />
           
           {/* SEO Pages: Categories - use /kategorie prefix */}
