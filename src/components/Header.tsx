@@ -112,7 +112,7 @@ const Header = () => {
                         <div className="col-span-2 pt-3 mt-3 border-t border-border">
                           <NavigationMenuLink asChild>
                             <Link
-                              to="/kita/hamburg/voting"
+                              to="/kita/hamburg/top-10"
                               className="flex items-center gap-2 py-2 px-2 text-sm font-medium text-primary hover:bg-secondary rounded-md transition-colors"
                             >
                               🏆 Top 10 Kitas in Hamburg
@@ -224,7 +224,7 @@ const Header = () => {
                   {/* Top 10 Link Mobile */}
                   <div className="pt-2 mt-2 border-t border-secondary">
                     <Link
-                      to="/kita/hamburg/voting"
+                      to="/kita/hamburg/top-10"
                       className="flex items-center gap-2 py-1.5 text-sm font-medium text-primary hover:text-primary/80"
                       onClick={() => setMobileMenuOpen(false)}
                     >
