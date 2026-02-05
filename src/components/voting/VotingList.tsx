@@ -70,11 +70,11 @@ export const VotingListItem = ({ kita, rank, onVoteSuccess, showRank = false }: 
             <div
               className={`flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-xl font-bold text-lg ${
                 rank === 1
-                  ? "bg-amber-500 text-white"
+                  ? "bg-accent text-accent-foreground"
                   : rank === 2
                   ? "bg-slate-400 text-white"
                   : rank === 3
-                  ? "bg-amber-700 text-white"
+                  ? "bg-accent/70 text-accent-foreground"
                   : "bg-muted text-foreground"
               }`}
             >
