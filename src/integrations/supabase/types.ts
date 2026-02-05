@@ -20,18 +20,21 @@ export type Database = {
           ip_address: string
           kita_id: string
           voted_at: string | null
+          voting_week_id: string | null
         }
         Insert: {
           id?: string
           ip_address: string
           kita_id: string
           voted_at?: string | null
+          voting_week_id?: string | null
         }
         Update: {
           id?: string
           ip_address?: string
           kita_id?: string
           voted_at?: string | null
+          voting_week_id?: string | null
         }
         Relationships: []
       }
@@ -42,6 +45,8 @@ export type Database = {
           kita_id: string
           updated_at: string | null
           vote_count: number
+          votes_weekly: number
+          voting_week_id: string | null
         }
         Insert: {
           created_at?: string | null
@@ -49,6 +54,8 @@ export type Database = {
           kita_id: string
           updated_at?: string | null
           vote_count?: number
+          votes_weekly?: number
+          voting_week_id?: string | null
         }
         Update: {
           created_at?: string | null
@@ -56,6 +63,8 @@ export type Database = {
           kita_id?: string
           updated_at?: string | null
           vote_count?: number
+          votes_weekly?: number
+          voting_week_id?: string | null
         }
         Relationships: []
       }
@@ -64,7 +73,8 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_current_voting_week: { Args: never; Returns: string }
+      get_voting_end_time: { Args: never; Returns: string }
     }
     Enums: {
       [_ in never]: never
