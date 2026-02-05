@@ -18,6 +18,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { KitaRankingWidget } from "@/components/KitaRankingWidget";
+import { KitaCommentsSection } from "@/components/KitaCommentsSection";
 
 const KitaDetail = () => {
   const { id } = useParams();
@@ -191,6 +192,9 @@ const KitaDetail = () => {
                   ))}
                 </div>
               </section>
+
+              {/* Comments Section */}
+              <KitaCommentsSection />
 
             </div>
 
