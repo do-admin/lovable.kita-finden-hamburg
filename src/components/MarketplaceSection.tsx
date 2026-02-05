@@ -303,7 +303,6 @@ const MarketplaceSection = ({
               <div className="mt-10 text-center">
                 <Button size="lg" variant="outline" onClick={handleShowMore}>
                   Zeige mehr ({allFilteredKitas.length - visibleCount} weitere)
-                  <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
               </div>
             )}
