@@ -1,20 +1,10 @@
 import { useParams, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getKitaById } from "@/data/kitas";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   MapPin,
   Phone,
@@ -27,18 +17,11 @@ import {
   ArrowLeft,
   ExternalLink,
 } from "lucide-react";
+import { KitaRankingWidget } from "@/components/KitaRankingWidget";
 
 const KitaDetail = () => {
   const { id } = useParams();
   const kita = getKitaById(Number(id));
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    telefon: "",
-    kindesalter: "",
-    startdatum: "",
-    nachricht: "",
-  });
 
   if (!kita) {
     return (
@@ -59,12 +42,6 @@ const KitaDetail = () => {
       </div>
     );
   }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // TODO: Handle form submission
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -219,6 +196,9 @@ const KitaDetail = () => {
 
             {/* Right Column - Sidebar */}
             <aside className="space-y-6">
+              {/* Ranking & Voting Widget */}
+              <KitaRankingWidget kitaId={kita.id.toString()} kitaName={kita.name} />
+
               {/* Contact Info Card */}
               <div className="bg-white rounded-2xl border border-border p-6">
                 <h3 className="text-lg font-bold text-primary mb-5">Kontakt & Infos</h3>
