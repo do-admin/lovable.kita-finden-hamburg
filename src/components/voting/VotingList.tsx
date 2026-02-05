@@ -1,4 +1,5 @@
  import { Link } from "react-router-dom";
+import { useNavigationContext } from "@/hooks/useNavigationContext";
 import { MapPin, Navigation, ArrowRight } from "lucide-react";
  import { Button } from "@/components/ui/button";
  import { UpvoteButton } from "@/components/voting/UpvoteButton";
@@ -17,6 +18,12 @@ import type { KitaWithVotes } from "@/pages/Top10";
    onVoteSuccess,
   showRank = false,
  }: VotingListProps) => {
+  const { saveContext } = useNavigationContext();
+
+  const handleNavigate = () => {
+    saveContext("Zurück zur Top 10");
+  };
+
    if (loading) {
      return (
        <div className="text-center py-16">
@@ -36,6 +43,7 @@ import type { KitaWithVotes } from "@/pages/Top10";
            rank={index + 1}
            onVoteSuccess={onVoteSuccess}
           showRank={showRank}
+          onNavigate={handleNavigate}
          />
        ))}
      </div>
@@ -47,9 +55,10 @@ import type { KitaWithVotes } from "@/pages/Top10";
    rank: number;
    onVoteSuccess: (kitaId: string, newWeeklyCount: number) => void;
   showRank?: boolean;
+  onNavigate?: () => void;
  }
  
-export const VotingListItem = ({ kita, rank, onVoteSuccess, showRank = false }: VotingListItemProps) => {
+export const VotingListItem = ({ kita, rank, onVoteSuccess, showRank = false, onNavigate }: VotingListItemProps) => {
    const betreuungsartLabels = {
      krippe: "U3",
      elementar: "Ü3",
@@ -98,6 +107,7 @@ export const VotingListItem = ({ kita, rank, onVoteSuccess, showRank = false }: 
          <div className="flex-1 min-w-0">
            <Link
              to={`/kita/${kita.id}`}
+            onClick={onNavigate}
              className="hover:text-primary transition-colors"
            >
              <h3 className="font-bold text-foreground line-clamp-1 text-base md:text-lg">
@@ -131,7 +141,7 @@ export const VotingListItem = ({ kita, rank, onVoteSuccess, showRank = false }: 
         <div className="flex-shrink-0 flex items-center gap-2">
           {/* Route Button (hidden on mobile) */}
           <div className="hidden md:flex flex-col gap-1">
-            <Link to={`/kita/${kita.id}`}>
+             <Link to={`/kita/${kita.id}`} onClick={onNavigate}>
               <Button size="sm" variant="outline" className="text-xs">
                 Details <ArrowRight className="h-3 w-3 ml-1" />
               </Button>

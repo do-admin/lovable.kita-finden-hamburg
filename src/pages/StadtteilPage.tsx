@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin, Navigation, Star, ChevronRight } from "lucide-react";
 import { kitas, hamburgerBezirke, getKitasByBezirk, getKitasByStadtteil, KitaDetail } from "@/data/kitas";
 import { formatDistance, calculateDistance, useGeolocation } from "@/hooks/useGeolocation";
+import { useNavigationContext, useScrollRestore } from "@/hooks/useNavigationContext";
 import {
   Accordion,
   AccordionContent,
@@ -39,7 +41,7 @@ const findStadtteilFromSlug = (slug: string): { bezirk: string; stadtteil: strin
 };
 
 // Kita card component (simplified for this page)
-const KitaCard = ({ kita, distance }: { kita: KitaDetail; distance?: number }) => {
+const KitaCard = ({ kita, distance, onNavigate }: { kita: KitaDetail; distance?: number; onNavigate?: () => void }) => {
   const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(kita.adresse)}`;
 
   return (
@@ -81,7 +83,7 @@ const KitaCard = ({ kita, distance }: { kita: KitaDetail; distance?: number }) =
         </div>
         <div className="flex-1" />
         <div className="flex gap-2 mt-auto">
-          <Link to={`/kita/${kita.id}`} className="flex-1">
+          <Link to={`/kita/${kita.id}`} className="flex-1" onClick={onNavigate}>
             <Button className="w-full" size="sm">
               Details <ArrowRight className="h-4 w-4 ml-1" />
             </Button>
@@ -141,6 +143,13 @@ const StadtteilPage = () => {
   const { bezirk: bezirkSlug, stadtteil: stadtteilSlug } = useParams<{ bezirk?: string; stadtteil?: string }>();
   const { latitude, longitude } = useGeolocation();
   const hasLocation = latitude !== null && longitude !== null;
+  const { saveContext } = useNavigationContext();
+  const { restoreScroll } = useScrollRestore();
+
+  // Restore scroll position on mount
+  useEffect(() => {
+    restoreScroll();
+  }, [restoreScroll]);
 
   // Determine if we're viewing a Bezirk or Stadtteil
   let pageTitle = "";
@@ -218,6 +227,15 @@ const StadtteilPage = () => {
 
   const displayedResults = resultsWithDistance.slice(0, 12);
 
+  const handleNavigate = () => {
+    const label = stadtteilSlug 
+      ? `Zurück zu ${findStadtteilFromSlug(stadtteilSlug)?.stadtteil || "Stadtteile"}`
+      : bezirkSlug 
+        ? `Zurück zu ${findBezirkFromSlug(bezirkSlug) || "Bezirke"}`
+        : "Zurück zu Hamburg";
+    saveContext(label);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -257,7 +275,7 @@ const StadtteilPage = () => {
             <>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {displayedResults.map(kita => (
-                  <KitaCard key={kita.id} kita={kita} distance={kita.distance} />
+                  <KitaCard key={kita.id} kita={kita} distance={kita.distance} onNavigate={handleNavigate} />
                 ))}
               </div>
 

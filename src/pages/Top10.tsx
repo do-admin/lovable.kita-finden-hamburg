@@ -11,6 +11,7 @@ import { VotingHero } from "@/components/voting/VotingHero";
 import { SocialProofRow } from "@/components/voting/SocialProofRow";
 import { VotingList } from "@/components/voting/VotingList";
 import { VotingDisclosure } from "@/components/voting/VotingDisclosure";
+import { useScrollRestore } from "@/hooks/useNavigationContext";
 
 export interface KitaWithVotes {
   id: number;
@@ -43,6 +44,7 @@ const Top10Page = () => {
   const [kitasWithVotes, setKitasWithVotes] = useState<KitaWithVotes[]>([]);
   const [loading, setLoading] = useState(true);
   const [totalVoters, setTotalVoters] = useState(0);
+  const { restoreScroll } = useScrollRestore();
 
   useEffect(() => {
     const loadVotingData = async () => {
@@ -90,6 +92,13 @@ const Top10Page = () => {
 
     loadVotingData();
   }, []);
+
+  // Restore scroll position after data loads
+  useEffect(() => {
+    if (!loading) {
+      restoreScroll();
+    }
+  }, [loading, restoreScroll]);
 
   const handleVoteSuccess = (kitaId: string, newWeeklyCount: number) => {
     setKitasWithVotes((prev) =>
