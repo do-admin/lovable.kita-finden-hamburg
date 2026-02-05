@@ -41,35 +41,42 @@
    const formatNumber = (num: number) => num.toString().padStart(2, "0");
  
    return (
-     <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-16 md:py-20">
+    <section className="relative bg-white py-16 md:py-20 overflow-hidden">
        <div className="max-w-[900px] mx-auto px-4 md:px-6 text-center">
-         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight text-[#0f172a]">
            Finde die beliebtesten Kitas
            <br />
            <span className="text-primary">– gewählt von Eltern</span>
          </h1>
-         <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
            Stimme diese Woche für deine Favoriten ab und hilf anderen Familien,
            die beste Kita zu finden.
          </p>
  
          {/* Countdown Block */}
-         <div className="inline-block bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 md:px-8 md:py-5">
-           <div className="flex items-center justify-center gap-2 text-sm text-slate-300 mb-3">
-             <Clock className="h-4 w-4" />
+        <div 
+          className="inline-block rounded-2xl px-6 py-4 md:px-8 md:py-5 border border-white/15 shadow-[0_16px_48px_rgba(0,0,0,0.15)]"
+          style={{
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            background: 'linear-gradient(135deg, rgba(24,0,173,0.12) 0%, rgba(24,0,173,0.06) 100%)'
+          }}
+        >
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-3">
+            <Clock className="h-4 w-4 text-primary" />
              <span>Voting endet in:</span>
            </div>
            <div className="flex items-center justify-center gap-2 md:gap-4">
              <CountdownUnit value={countdown.days} label="Tage" />
-             <span className="text-2xl md:text-3xl font-bold text-slate-400">
+            <span className="text-2xl md:text-3xl font-bold text-primary/40">
                :
              </span>
              <CountdownUnit value={countdown.hours} label="Std" />
-             <span className="text-2xl md:text-3xl font-bold text-slate-400">
+            <span className="text-2xl md:text-3xl font-bold text-primary/40">
                :
              </span>
              <CountdownUnit value={countdown.minutes} label="Min" />
-             <span className="text-2xl md:text-3xl font-bold text-slate-400">
+            <span className="text-2xl md:text-3xl font-bold text-primary/40">
                :
              </span>
              <CountdownUnit value={countdown.seconds} label="Sek" />
@@ -82,10 +89,10 @@
  
  const CountdownUnit = ({ value, label }: { value: number; label: string }) => (
    <div className="flex flex-col items-center">
-     <span className="text-3xl md:text-4xl font-bold tabular-nums">
+    <span className="text-3xl md:text-4xl font-bold tabular-nums text-[#0f172a]">
        {value.toString().padStart(2, "0")}
      </span>
-     <span className="text-xs text-slate-400 uppercase tracking-wider">
+    <span className="text-xs text-muted-foreground uppercase tracking-wider">
        {label}
      </span>
    </div>
