@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Phone, MapPin, Clock, Star, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { kitas, type KitaDetail } from "@/data/kitas";
+import { useNavigationContext } from "@/hooks/useNavigationContext";
 
 interface FeaturedListingsProps {
   city?: string;
@@ -37,9 +38,11 @@ const getFeaturedKitas = (
 const FeaturedListingItem = ({
   kita,
   citySlug,
+  onNavigate,
 }: {
   kita: KitaDetail;
   citySlug: string;
+  onNavigate: () => void;
 }) => {
   const detailUrl = `/kita/${kita.id}`;
 
@@ -54,6 +57,7 @@ const FeaturedListingItem = ({
       {/* Thumbnail */}
       <Link
         to={detailUrl}
+        onClick={onNavigate}
         className="flex-shrink-0 w-full sm:w-36 md:w-44 h-36 sm:h-32 rounded-lg overflow-hidden bg-muted"
       >
         <img
@@ -69,6 +73,7 @@ const FeaturedListingItem = ({
         <div className="flex items-start justify-between gap-3 mb-2">
           <Link
             to={detailUrl}
+            onClick={onNavigate}
             className="text-base sm:text-lg font-semibold text-foreground hover:text-primary transition-colors line-clamp-2 leading-tight"
           >
             {kita.name}
@@ -110,6 +115,7 @@ const FeaturedListingItem = ({
           {kita.beschreibung[0]}{" "}
           <Link
             to={detailUrl}
+            onClick={onNavigate}
             className="inline-flex items-center gap-0.5 font-medium text-primary hover:underline whitespace-nowrap"
           >
             Mehr anzeigen
@@ -129,6 +135,11 @@ const FeaturedListings = ({
   className,
 }: FeaturedListingsProps) => {
   const featuredKitas = getFeaturedKitas(maxItems, featuredIds);
+  const { saveContext } = useNavigationContext();
+
+  const handleNavigate = () => {
+    saveContext("Zurück zu Empfohlene Kitas");
+  };
 
   return (
     <section
@@ -169,6 +180,7 @@ const FeaturedListings = ({
               key={kita.id}
               kita={kita}
               citySlug={citySlug}
+              onNavigate={handleNavigate}
             />
           ))}
         </div>

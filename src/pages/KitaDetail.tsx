@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BackButton from "@/components/BackButton";
 import { getKitaById } from "@/data/kitas";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -135,13 +135,7 @@ const KitaDetail = () => {
         {/* Main Content */}
         <div className="max-w-[1200px] mx-auto px-6 py-10 md:py-16">
           {/* Back Link */}
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-8"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Zurück zur Übersicht
-          </Link>
+          <BackButton className="mb-8" />
 
           <div className="grid lg:grid-cols-3 gap-10 lg:gap-16">
             {/* Left Column - Main Content */}

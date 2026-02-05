@@ -4,6 +4,8 @@ import TrendingSearches from "@/components/TrendingSearches";
 import MarketplaceSection from "@/components/MarketplaceSection";
 import PopularDistricts from "@/components/PopularDistricts";
 import SearchModule from "@/components/SearchModule";
+import { useEffect } from "react";
+import { useScrollRestore } from "@/hooks/useNavigationContext";
 
 import HowToUse from "@/components/HowToUse";
 import HamburgStatsSection from "@/components/HamburgStatsSection";
@@ -14,6 +16,13 @@ import TrustBlock from "@/components/TrustBlock";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const { restoreScroll } = useScrollRestore();
+
+  // Restore scroll position on mount
+  useEffect(() => {
+    restoreScroll();
+  }, [restoreScroll]);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />

@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin, Navigation, Star, ChevronRight } from "lucide-react";
 import { kitas, kategorien, getKitasByKategorie, KitaDetail } from "@/data/kitas";
 import { formatDistance, calculateDistance, useGeolocation } from "@/hooks/useGeolocation";
+import { useNavigationContext, useScrollRestore } from "@/hooks/useNavigationContext";
 import {
   Accordion,
   AccordionContent,
@@ -14,7 +16,7 @@ import {
 } from "@/components/ui/accordion";
 
 // Kita card component
-const KitaCard = ({ kita, distance }: { kita: KitaDetail; distance?: number }) => {
+const KitaCard = ({ kita, distance, onNavigate }: { kita: KitaDetail; distance?: number; onNavigate?: () => void }) => {
   const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(kita.adresse)}`;
 
   return (
@@ -56,7 +58,7 @@ const KitaCard = ({ kita, distance }: { kita: KitaDetail; distance?: number }) =
         </div>
         <div className="flex-1" />
         <div className="flex gap-2 mt-auto">
-          <Link to={`/kita/${kita.id}`} className="flex-1">
+          <Link to={`/kita/${kita.id}`} className="flex-1" onClick={onNavigate}>
             <Button className="w-full" size="sm">
               Details <ArrowRight className="h-4 w-4 ml-1" />
             </Button>
@@ -116,6 +118,13 @@ const KategoriePage = () => {
   const { kategorie: kategorieSlug } = useParams<{ kategorie: string }>();
   const { latitude, longitude } = useGeolocation();
   const hasLocation = latitude !== null && longitude !== null;
+  const { saveContext } = useNavigationContext();
+  const { restoreScroll } = useScrollRestore();
+
+  // Restore scroll position on mount
+  useEffect(() => {
+    restoreScroll();
+  }, [restoreScroll]);
 
   // Find matching category
   const kategorie = kategorien.find(k => k.slug === kategorieSlug);
@@ -153,6 +162,10 @@ const KategoriePage = () => {
   // Related categories
   const relatedCategories = kategorien.filter(k => k.slug !== kategorieSlug).slice(0, 6);
 
+  const handleNavigate = () => {
+    saveContext(`Zurück zu ${kategorie?.name || "Kategorien"}`);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -188,7 +201,7 @@ const KategoriePage = () => {
             <>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {displayedResults.map(kita => (
-                  <KitaCard key={kita.id} kita={kita} distance={kita.distance} />
+                  <KitaCard key={kita.id} kita={kita} distance={kita.distance} onNavigate={handleNavigate} />
                 ))}
               </div>
 
