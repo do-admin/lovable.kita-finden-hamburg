@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, LogIn } from "lucide-react";
 import logoKitaFinden from "@/assets/logo-kita-finden-hamburg-horizontal.webp";
 import {
   NavigationMenu,
@@ -158,6 +158,10 @@ const Header = () => {
             >
               Kita hinzufügen
             </Link>
+            <button className="px-6 py-2 rounded-full bg-[#E07856] text-white font-medium text-base hover:bg-[#D46845] transition-colors flex items-center gap-2">
+              <LogIn size={20} />
+              Sign in
+            </button>
           </nav>
           
           {/* Mobile Menu Button */}
@@ -271,6 +275,10 @@ const Header = () => {
             >
               Kita hinzufügen
             </Link>
+            <button className="px-6 py-2 rounded-full bg-[#E07856] text-white font-medium text-base hover:bg-[#D46845] transition-colors flex items-center justify-center gap-2 mt-2">
+              <LogIn size={20} />
+              Sign in
+            </button>
           </nav>
         )}
       </div>
