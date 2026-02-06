@@ -190,10 +190,6 @@ const KitaDetail = () => {
 
               {/* Comments Section */}
               <KitaCommentsSection />
-
-              {/* Nearby Kitas Section for SEO internal linking */}
-              <NearbyKitas currentKita={kita} limit={5} />
-
             </div>
 
             {/* Right Column - Sidebar */}
@@ -326,6 +322,9 @@ const KitaDetail = () => {
               </div>
             </aside>
           </div>
+
+          {/* Nearby Kitas Section - Full width aligned with grid */}
+          <NearbyKitas currentKita={kita} limit={6} />
         </div>
       </main>
 
