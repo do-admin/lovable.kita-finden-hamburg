@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { KitaRankingWidget } from "@/components/KitaRankingWidget";
 import { KitaCommentsSection } from "@/components/KitaCommentsSection";
+import { NearbyKitas } from "@/components/NearbyKitas";
 
 const KitaDetail = () => {
   const { id } = useParams();
@@ -189,6 +190,9 @@ const KitaDetail = () => {
 
               {/* Comments Section */}
               <KitaCommentsSection />
+
+              {/* Nearby Kitas Section for SEO internal linking */}
+              <NearbyKitas currentKita={kita} limit={5} />
 
             </div>
 

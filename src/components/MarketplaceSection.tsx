@@ -16,10 +16,11 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { formatDistance, calculateDistance, useGeolocation } from "@/hooks/useGeolocation";
 import SearchFilters from "@/components/search/SearchFilters";
 import { FilterState, initialFilters } from "@/types/filters";
-import { VoteCountDisplay } from "@/components/VoteCountDisplay";
+import { useKitaVotes } from "@/hooks/useKitaVotes";
 
 interface KitaWithDistance extends KitaDetail {
   distance?: number;
+  voteCount?: number;
 }
 
 // Sort by rating (highest first), then by name
@@ -76,7 +77,7 @@ const filterKitas = (allKitas: KitaWithDistance[], filters: FilterState): KitaWi
 };
 
 // Kita Card Component
-const KitaCard = ({ kita, distance }: { kita: KitaDetail; distance?: number }) => {
+const KitaCard = ({ kita, distance, voteCount }: { kita: KitaDetail; distance?: number; voteCount?: number }) => {
   const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(kita.adresse)}`;
 
   return (
@@ -103,17 +104,22 @@ const KitaCard = ({ kita, distance }: { kita: KitaDetail; distance?: number }) =
 
       <div className="p-5 flex flex-col flex-1">
         <h3 className="text-[15px] md:text-[16px] font-semibold text-foreground mb-1">{kita.name}</h3>
-        <div className="flex items-center gap-3 text-sm text-muted-foreground mb-2">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2 flex-wrap">
           {kita.googleBewertung && (
-            <div className="flex items-center gap-1">
+            <span className="flex items-center gap-1">
               <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
               <span className="font-medium">{kita.googleBewertung}</span>
-            </div>
+            </span>
           )}
-          <VoteCountDisplay 
-            kitaId={kita.id} 
-            className="flex items-center gap-1 text-sm text-muted-foreground"
-          />
+          {(voteCount !== undefined && voteCount > 0) && (
+            <>
+              {kita.googleBewertung && <span className="text-muted-foreground">·</span>}
+              <span className="flex items-center gap-1">
+                <ThumbsUp className="h-3.5 w-3.5" />
+                {voteCount} {voteCount === 1 ? "Empfehlung" : "Empfehlungen"}
+              </span>
+            </>
+          )}
         </div>
         <p className="text-sm text-muted-foreground mb-3">{kita.adresse}</p>
         <div className="text-xs text-muted-foreground mb-3">{kita.alter} · {kita.betreuungszeiten}</div>
@@ -158,6 +164,7 @@ const MarketplaceSection = ({
   const [filters, setFilters] = useState<FilterState>(initialFilters);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(initialItems);
+  const { getVoteCount, votes } = useKitaVotes();
 
   const handleReset = () => {
     setFilters(initialFilters);
@@ -172,7 +179,8 @@ const MarketplaceSection = ({
   const allFilteredKitas = useMemo((): KitaWithDistance[] => {
     const kitasWithDistance: KitaWithDistance[] = kitas.map(k => ({
       ...k,
-      distance: hasLocation ? calculateDistance(latitude!, longitude!, k.coordinates.lat, k.coordinates.lng) : undefined
+      distance: hasLocation ? calculateDistance(latitude!, longitude!, k.coordinates.lat, k.coordinates.lng) : undefined,
+      voteCount: getVoteCount(k.id)
     }));
 
     // Apply filters
@@ -185,7 +193,9 @@ const MarketplaceSection = ({
     }
     
     // Sort based on sortierung
-    if (filters.sortierung === "entfernung" && hasLocation) {
+    if (filters.sortierung === "empfehlungen") {
+      results = [...results].sort((a, b) => (b.voteCount || 0) - (a.voteCount || 0));
+    } else if (filters.sortierung === "entfernung" && hasLocation) {
       results = [...results].sort((a, b) => (a.distance || 0) - (b.distance || 0));
     } else if (filters.sortierung === "alphabetisch") {
       results = [...results].sort((a, b) => a.name.localeCompare(b.name, "de"));
@@ -195,7 +205,7 @@ const MarketplaceSection = ({
     }
     
     return results;
-  }, [hasLocation, latitude, longitude, filters]);
+  }, [hasLocation, latitude, longitude, filters, votes, getVoteCount]);
 
   // Slice for display
   const displayedKitas = allFilteredKitas.slice(0, visibleCount);
@@ -291,7 +301,7 @@ const MarketplaceSection = ({
             {displayedKitas.length > 0 ? (
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {displayedKitas.map(kita => (
-                  <KitaCard key={kita.id} kita={kita} distance={kita.distance} />
+                  <KitaCard key={kita.id} kita={kita} distance={kita.distance} voteCount={kita.voteCount} />
                 ))}
               </div>
             ) : (
