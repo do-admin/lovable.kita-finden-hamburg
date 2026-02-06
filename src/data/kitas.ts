@@ -150,7 +150,7 @@ export const kitas: KitaDetail[] = [
     traeger: "NaturKinder Hamburg e.V.",
     traegerArt: "freier Träger",
     status: "frei",
-    statusText: "Noch 3 Plätze für 2025 frei",
+    statusText: "Noch 3 Plätze für 2026 frei",
     alter: "3–6 Jahre",
     plaetze: 22,
     betreuungszeiten: "8:00–15:00 Uhr",
