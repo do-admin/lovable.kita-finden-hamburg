@@ -56,7 +56,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          © 2025 kita-finden-hamburg.de – Ein unabhängiges Informationsangebot zur Kita-Suche in Hamburg.
+          © 2026 kita-finden-hamburg.de – Ein unabhängiges Informationsangebot zur Kita-Suche in Hamburg.
         </div>
       </div>
     </footer>
