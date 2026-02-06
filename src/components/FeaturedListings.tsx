@@ -3,7 +3,7 @@ import { Phone, MapPin, Clock, Star, ChevronRight, ThumbsUp } from "lucide-react
 import { cn } from "@/lib/utils";
 import { kitas, type KitaDetail } from "@/data/kitas";
 import { useNavigationContext } from "@/hooks/useNavigationContext";
-import { VoteCountDisplay } from "@/components/VoteCountDisplay";
+import { useKitaVotes } from "@/hooks/useKitaVotes";
 
 interface FeaturedListingsProps {
   city?: string;
@@ -40,10 +40,12 @@ const FeaturedListingItem = ({
   kita,
   citySlug,
   onNavigate,
+  voteCount,
 }: {
   kita: KitaDetail;
   citySlug: string;
   onNavigate: () => void;
+  voteCount: number;
 }) => {
   const detailUrl = `/kita/${kita.id}`;
 
@@ -80,8 +82,8 @@ const FeaturedListingItem = ({
             {kita.name}
           </Link>
 
-          {/* Rating & Votes badges */}
-          <div className="flex items-center gap-2 flex-shrink-0">
+          {/* Rating & Votes */}
+          <div className="flex items-center gap-2 flex-shrink-0 flex-wrap">
             {kita.googleBewertung && (
               <div className="flex items-center gap-1.5 bg-amber-50 px-2 py-1 rounded-md">
                 <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
@@ -90,10 +92,12 @@ const FeaturedListingItem = ({
                 </span>
               </div>
             )}
-            <VoteCountDisplay 
-              kitaId={kita.id} 
-              className="flex items-center gap-1 text-sm text-muted-foreground bg-muted px-2 py-1 rounded-md"
-            />
+            {voteCount > 0 && (
+              <div className="flex items-center gap-1 text-sm text-muted-foreground bg-muted px-2 py-1 rounded-md">
+                <ThumbsUp className="h-3.5 w-3.5" />
+                <span>{voteCount} {voteCount === 1 ? "Empfehlung" : "Empfehlungen"}</span>
+              </div>
+            )}
           </div>
         </div>
 
@@ -143,6 +147,7 @@ const FeaturedListings = ({
 }: FeaturedListingsProps) => {
   const featuredKitas = getFeaturedKitas(maxItems, featuredIds);
   const { saveContext } = useNavigationContext();
+  const { getVoteCount } = useKitaVotes();
 
   const handleNavigate = () => {
     saveContext("Zurück zu Empfohlene Kitas");
@@ -188,6 +193,7 @@ const FeaturedListings = ({
               kita={kita}
               citySlug={citySlug}
               onNavigate={handleNavigate}
+              voteCount={getVoteCount(kita.id)}
             />
           ))}
         </div>

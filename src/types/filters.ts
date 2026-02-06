@@ -7,7 +7,7 @@ export interface FilterState {
   konzepte: string[];
   plaetzeFrei: "alle" | "frei" | "warteliste";
   radius: number | null; // in km, null = no radius filter
-  sortierung: "relevanz" | "entfernung" | "alphabetisch";
+  sortierung: "relevanz" | "entfernung" | "alphabetisch" | "empfehlungen";
 }
 
 export const initialFilters: FilterState = {
@@ -65,6 +65,7 @@ export const radiusOptionen = [
 
 export const sortierungOptionen = [
   { value: "relevanz", label: "Relevanz" },
+  { value: "empfehlungen", label: "Nach Empfehlungen" },
   { value: "entfernung", label: "Entfernung (nächste zuerst)" },
   { value: "alphabetisch", label: "Alphabetisch (A–Z)" },
 ] as const;
