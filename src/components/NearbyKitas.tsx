@@ -2,6 +2,14 @@ import { Link } from "react-router-dom";
 import { MapPin } from "lucide-react";
 import { kitas, type KitaDetail, hamburgerBezirke } from "@/data/kitas";
 import { calculateDistance, formatDistance } from "@/hooks/useGeolocation";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface NearbyKitasProps {
   currentKita: KitaDetail;
@@ -22,7 +30,7 @@ const getAdjacentBezirke = (bezirk: string): string[] => {
   return adjacencyMap[bezirk] || [];
 };
 
-export const NearbyKitas = ({ currentKita, limit = 5 }: NearbyKitasProps) => {
+export const NearbyKitas = ({ currentKita, limit = 6 }: NearbyKitasProps) => {
   // Calculate distances from current kita
   const kitasWithDistance = kitas
     .filter((k) => k.id !== currentKita.id)
@@ -71,30 +79,46 @@ export const NearbyKitas = ({ currentKita, limit = 5 }: NearbyKitasProps) => {
         Weitere Kitas in der Nähe
       </h2>
       
-      <ul className="space-y-3">
-        {nearbyKitas.map((kita) => (
-          <li key={kita.id}>
-            <Link
-              to={`/kita/${kita.id}`}
-              className="flex items-center justify-between gap-4 p-4 rounded-lg border border-border bg-card hover:border-primary/30 hover:bg-muted/30 transition-all group"
-            >
-              <div className="min-w-0">
-                <span className="font-medium text-foreground group-hover:text-primary transition-colors block truncate">
-                  {kita.name}
-                </span>
-                <span className="text-sm text-muted-foreground flex items-center gap-1 mt-0.5">
-                  <MapPin className="h-3.5 w-3.5" />
-                  {kita.stadtteil}, {kita.bezirk}
-                </span>
-              </div>
-              
-              <span className="text-sm text-muted-foreground flex-shrink-0">
-                ca. {formatDistance(kita.distance)}
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <Carousel
+        opts={{
+          align: "start",
+          loop: false,
+        }}
+        className="w-full"
+      >
+        <CarouselContent className="-ml-3">
+          {nearbyKitas.map((kita) => (
+            <CarouselItem key={kita.id} className="pl-3 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+              <Link
+                to={`/kita/${kita.id}`}
+                className="block rounded-lg border border-border bg-card overflow-hidden hover:border-primary/30 hover:shadow-md transition-all group"
+              >
+                <AspectRatio ratio={1}>
+                  <img
+                    src="/placeholder.svg"
+                    alt={kita.name}
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+                <div className="p-3">
+                  <h3 className="font-medium text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-tight mb-1.5">
+                    {kita.name}
+                  </h3>
+                  <p className="text-xs text-muted-foreground flex items-center gap-1">
+                    <MapPin className="h-3 w-3 flex-shrink-0" />
+                    <span className="truncate">{kita.stadtteil}</span>
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    ca. {formatDistance(kita.distance)}
+                  </p>
+                </div>
+              </Link>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="hidden sm:flex -left-4" />
+        <CarouselNext className="hidden sm:flex -right-4" />
+      </Carousel>
     </section>
   );
 };
