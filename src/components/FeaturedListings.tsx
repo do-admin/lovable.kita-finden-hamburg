@@ -82,21 +82,22 @@ const FeaturedListingItem = ({
             {kita.name}
           </Link>
 
-          {/* Rating & Votes */}
-          <div className="flex items-center gap-2 flex-shrink-0 flex-wrap">
+          {/* Rating & Votes - Combined Format */}
+          <div className="flex items-center gap-1.5 text-sm text-muted-foreground bg-muted px-2.5 py-1 rounded-md flex-shrink-0">
             {kita.googleBewertung && (
-              <div className="flex items-center gap-1.5 bg-amber-50 px-2 py-1 rounded-md">
-                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                <span className="text-sm font-semibold text-amber-700">
-                  {kita.googleBewertung.toFixed(1)}
-                </span>
-              </div>
+              <>
+                <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                <span className="font-medium text-foreground">{kita.googleBewertung.toFixed(1)}</span>
+              </>
+            )}
+            {kita.googleBewertung && voteCount > 0 && (
+              <span className="text-muted-foreground/60">·</span>
             )}
             {voteCount > 0 && (
-              <div className="flex items-center gap-1 text-sm text-muted-foreground bg-muted px-2 py-1 rounded-md">
+              <>
                 <ThumbsUp className="h-3.5 w-3.5" />
                 <span>{voteCount} {voteCount === 1 ? "Empfehlung" : "Empfehlungen"}</span>
-              </div>
+              </>
             )}
           </div>
         </div>
