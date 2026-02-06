@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Star, ArrowRight, Navigation, Filter } from "lucide-react";
+import { MapPin, Star, ArrowRight, Navigation, Filter, ThumbsUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { kitas, type KitaDetail } from "@/data/kitas";
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { formatDistance, calculateDistance, useGeolocation } from "@/hooks/useGeolocation";
 import SearchFilters from "@/components/search/SearchFilters";
 import { FilterState, initialFilters } from "@/types/filters";
+import { VoteCountDisplay } from "@/components/VoteCountDisplay";
 
 interface KitaWithDistance extends KitaDetail {
   distance?: number;
@@ -102,12 +103,18 @@ const KitaCard = ({ kita, distance }: { kita: KitaDetail; distance?: number }) =
 
       <div className="p-5 flex flex-col flex-1">
         <h3 className="text-[15px] md:text-[16px] font-semibold text-foreground mb-1">{kita.name}</h3>
-        {kita.googleBewertung && (
-          <div className="flex items-center gap-1 text-sm text-muted-foreground mb-2">
-            <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-            <span className="font-medium">{kita.googleBewertung}</span>
-          </div>
-        )}
+        <div className="flex items-center gap-3 text-sm text-muted-foreground mb-2">
+          {kita.googleBewertung && (
+            <div className="flex items-center gap-1">
+              <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+              <span className="font-medium">{kita.googleBewertung}</span>
+            </div>
+          )}
+          <VoteCountDisplay 
+            kitaId={kita.id} 
+            className="flex items-center gap-1 text-sm text-muted-foreground"
+          />
+        </div>
         <p className="text-sm text-muted-foreground mb-3">{kita.adresse}</p>
         <div className="text-xs text-muted-foreground mb-3">{kita.alter} · {kita.betreuungszeiten}</div>
         <div className="flex flex-wrap gap-1.5 mb-4">

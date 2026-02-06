@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Phone, MapPin, Clock, Star, ChevronRight } from "lucide-react";
+import { Phone, MapPin, Clock, Star, ChevronRight, ThumbsUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { kitas, type KitaDetail } from "@/data/kitas";
 import { useNavigationContext } from "@/hooks/useNavigationContext";
+import { VoteCountDisplay } from "@/components/VoteCountDisplay";
 
 interface FeaturedListingsProps {
   city?: string;
@@ -79,15 +80,21 @@ const FeaturedListingItem = ({
             {kita.name}
           </Link>
 
-          {/* Rating badge */}
-          {kita.googleBewertung && (
-            <div className="flex items-center gap-1.5 flex-shrink-0 bg-amber-50 px-2 py-1 rounded-md">
-              <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-              <span className="text-sm font-semibold text-amber-700">
-                {kita.googleBewertung.toFixed(1)}
-              </span>
-            </div>
-          )}
+          {/* Rating & Votes badges */}
+          <div className="flex items-center gap-2 flex-shrink-0">
+            {kita.googleBewertung && (
+              <div className="flex items-center gap-1.5 bg-amber-50 px-2 py-1 rounded-md">
+                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                <span className="text-sm font-semibold text-amber-700">
+                  {kita.googleBewertung.toFixed(1)}
+                </span>
+              </div>
+            )}
+            <VoteCountDisplay 
+              kitaId={kita.id} 
+              className="flex items-center gap-1 text-sm text-muted-foreground bg-muted px-2 py-1 rounded-md"
+            />
+          </div>
         </div>
 
         {/* Meta row with icons */}
