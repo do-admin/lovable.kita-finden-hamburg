@@ -111,15 +111,11 @@ const KitaCard = ({ kita, distance, voteCount }: { kita: KitaDetail; distance?: 
               <span className="font-medium">{kita.googleBewertung}</span>
             </span>
           )}
-          {(voteCount !== undefined && voteCount > 0) && (
-            <>
-              {kita.googleBewertung && <span className="text-muted-foreground">·</span>}
-              <span className="flex items-center gap-1">
-                <ThumbsUp className="h-3.5 w-3.5" />
-                {voteCount} {voteCount === 1 ? "Empfehlung" : "Empfehlungen"}
-              </span>
-            </>
-          )}
+          {kita.googleBewertung && <span className="text-muted-foreground">·</span>}
+          <span className="flex items-center gap-1">
+            <ThumbsUp className="h-3.5 w-3.5" />
+            {voteCount ?? 0} {(voteCount ?? 0) === 1 ? "Empfehlung" : "Empfehlungen"}
+          </span>
         </div>
         <p className="text-sm text-muted-foreground mb-3">{kita.adresse}</p>
         <div className="text-xs text-muted-foreground mb-3">{kita.alter} · {kita.betreuungszeiten}</div>
