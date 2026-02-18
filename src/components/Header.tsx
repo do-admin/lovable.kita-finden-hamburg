@@ -158,7 +158,7 @@ const Header = () => {
             >
               Kita hinzufügen
             </Link>
-            <button className="px-6 py-2 rounded-full bg-[#E07856] text-white font-medium text-base hover:bg-[#D46845] transition-colors flex items-center gap-2">
+            <button className="px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium text-base hover:bg-primary/90 transition-colors flex items-center gap-2">
               <LogIn size={20} />
               Sign in
             </button>
@@ -275,7 +275,7 @@ const Header = () => {
             >
               Kita hinzufügen
             </Link>
-            <button className="px-6 py-2 rounded-full bg-[#E07856] text-white font-medium text-base hover:bg-[#D46845] transition-colors flex items-center justify-center gap-2 mt-2">
+            <button className="px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium text-base hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 mt-2">
               <LogIn size={20} />
               Sign in
             </button>
