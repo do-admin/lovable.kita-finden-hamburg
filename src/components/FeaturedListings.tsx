@@ -86,7 +86,7 @@ const FeaturedListingItem = ({
           <div className="flex items-center gap-1.5 text-sm text-muted-foreground bg-muted px-2.5 py-1 rounded-md flex-shrink-0">
             {kita.googleBewertung && (
               <>
-                <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                <Star className="h-3.5 w-3.5 fill-primary text-primary" />
                 <span className="font-medium text-foreground">{kita.googleBewertung.toFixed(1)}</span>
               </>
             )}

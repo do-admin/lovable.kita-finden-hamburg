@@ -163,7 +163,7 @@
          className={`w-full h-12 text-base font-semibold rounded-xl transition-all ${
            hasVoted
              ? "bg-muted text-muted-foreground cursor-default"
-             : "bg-accent hover:bg-accent/90 text-accent-foreground"
+             : "bg-success hover:bg-success/90 text-success-foreground"
          }`}
        >
          <ThumbsUp className={`h-4 w-4 mr-2 ${hasVoted ? "" : "animate-pulse"}`} />

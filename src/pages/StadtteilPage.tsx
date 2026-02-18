@@ -51,7 +51,7 @@ const KitaCard = ({ kita, distance, onNavigate }: { kita: KitaDetail; distance?:
         <div className="absolute top-3 left-3">
           <Badge
             variant={kita.status === "frei" ? "default" : "secondary"}
-            className={kita.status === "frei" ? "bg-green-600 hover:bg-green-700" : ""}
+            className={kita.status === "frei" ? "bg-success hover:bg-success/90" : ""}
           >
             {kita.status === "frei" ? "Plätze frei" : "Warteliste"}
           </Badge>
@@ -70,7 +70,7 @@ const KitaCard = ({ kita, distance, onNavigate }: { kita: KitaDetail; distance?:
         <h3 className="text-[15px] md:text-[16px] font-semibold text-foreground mb-1">{kita.name}</h3>
         {kita.googleBewertung && (
           <div className="flex items-center gap-1 text-sm text-muted-foreground mb-2">
-            <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+            <Star className="h-4 w-4 fill-primary text-primary" />
             <span className="font-medium">{kita.googleBewertung}</span>
           </div>
         )}
