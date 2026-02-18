@@ -14,8 +14,8 @@ const steps = [
     heading: "Kitas vergleichen",
     text: "Vergleiche mehrere Kitas anhand von Lage, Größe und pädagogischen Schwerpunkten.",
     icon: GitCompare,
-    bgColor: "bg-[#1800ad]",
-    iconColor: "text-white",
+    bgColor: "bg-[#bdb8e1]",
+    iconColor: "text-[#1800ad]",
     highlighted: true,
   },
   {
